@@ -1,8 +1,6 @@
 import '../styles/globals.css'
 import { Fira_Code } from 'next/font/google'
-import '../components/Navigation'
-import Navigation from '../components/Navigation'
-import Navbar from '../components/Navigation'
+import NavBar from '../components/navbar'
 
 const fira_code = Fira_Code({ subsets: ['latin'] })
 
@@ -20,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
         <body className={fira_code.className}>
           <header></header>
-          <Navigation/>
+          <nav><NavBar/></nav>
           <main>{children}</main>
           <footer></footer>
         </body>
