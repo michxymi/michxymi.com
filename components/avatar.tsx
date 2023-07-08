@@ -4,7 +4,7 @@ export default function Avatar(){
     return (
         <div className="avatar">
             <div className="w-64 rounded-full">
-                <Image src="/headshot.jpg" width={512} height={512} alt="headshot" />
+                <Image src="/images/headshot.jpg" width={512} height={512} alt="headshot" />
             </div>
         </div>
     )
