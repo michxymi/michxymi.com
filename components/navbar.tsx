@@ -13,10 +13,6 @@ function NavbarMenu(classNames: string) {
         {
             label: "Projects",
             url: "/projects",
-        },
-        {
-            label: "Uses",
-            url: "/uses",
         }
     ]
 
