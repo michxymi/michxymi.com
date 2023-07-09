@@ -10,9 +10,9 @@ export default function About() {
         <div className="grid flex-grow h-auto card rounded-box place-items-center"><Avatar/></div> 
         <div className="divider lg:divider-horizontal"/> 
         <div className="grid flex-grow h-auto card rounded-box place-items-center">
-          <p>Welcome! I'm <strong>Michael Xymitoulias</strong> <em className={inter.className}>(/ksɪˌmiːˈtuːliəs/)</em>, a <strong>Software Engineer</strong> residing in the vibrant <strong>Oxfordshire</strong>.
-          <br/><br/>When I'm not <strong>leading teams</strong> and <strong>driving technical innovation</strong>,  you'll find me exploring the art of culinary delights or embracing the tranquility of the Aegean Islands alongside my cherished wife and daughter.
-          <br/><br/>With a <strong>passion for technology</strong> and a knack for <strong>problem-solving</strong>, I'm committed to delivering innovative solutions.
+          <p>Welcome! I&apos;m <strong>Michael Xymitoulias</strong> <em className={inter.className}>(/ksɪˌmiː&apos;tuːliəs/)</em>, a <strong>Software Engineer</strong> residing in the vibrant <strong>Oxfordshire</strong>.
+          <br/><br/>When I&apos;m not <strong>leading teams</strong> and <strong>driving technical innovation</strong>,  you&apos;ll find me exploring the art of culinary delights or embracing the tranquility of the Aegean Islands alongside my cherished wife and daughter.
+          <br/><br/>With a <strong>passion for technology</strong> and a knack for <strong>problem-solving</strong>, I&apos;m committed to delivering innovative solutions.
           </p> 
         </div>
       </div>

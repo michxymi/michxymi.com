@@ -21,8 +21,8 @@ function SocialMenu() {
 
     return (
         <ul tabIndex={0} className="menu bg-base-200 lg:menu-horizontal rounded-box" >
-            {items.map((item: { url: string; label: string, icon: JSX.Element }) => {
-                return <li><Link href={item.url}>{item.icon}{item.label}</Link></li>
+            {items.map((item: { url: string; label: string, icon: JSX.Element }, index) => {
+                return <li key={index}><Link href={item.url}>{item.icon}{item.label}</Link></li>
             })}
         </ul>
     )

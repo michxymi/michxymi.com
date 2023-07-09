@@ -22,8 +22,8 @@ function NavbarMenu(classNames: string) {
 
     return (
         <ul tabIndex={0} className={classNames}>
-            {menuItems.map((item, index) => {
-                return <li><Link href={item.url} key={index}>{item.label}</Link></li>
+            {menuItems.map((item: { url: string; label: string }, index) => {
+                return <li key={index}><Link href={item.url} key={index}>{item.label}</Link></li>
             })}
         </ul>
     )
