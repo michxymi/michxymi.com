@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function About() {
   return (
-    <div className="min-h-screen p-10 bg-base-200">
+    <div className="min-h-screen bg-base-200">
       <div className="flex flex-col w-full lg:flex-row">
         <div className="grid flex-grow card rounded-box place-items-center"><Avatar/></div> 
         <div className="divider lg:divider-horizontal"/> 
