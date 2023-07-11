@@ -1,7 +1,61 @@
 import Avatar from "@/components/avatar"
+import Roles from "@/components/roles"
 import {Inter} from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const jobRoles = [
+  {
+    title: 'Technical Software Manager',
+    company: 'Oxford Nanopore Technologies',
+    duration: 'Apr 2023 - Present',
+    responsibilities: [
+      'Manage a team of four integration engineers, overseeing tasks, objectives, and training.',
+      'Lead the management and integration of third-party packages into the C++ codebase.',
+      'Drive improvements in the CI/CD infrastructure while ensuring the adherence to best practices.',
+    ],
+  },
+  {
+    title: 'Software Engineer & Section Leader',
+    company: 'UK Atomic Energy Authority',
+    duration: 'Mar 2022 - Apr 2023',
+    responsibilities: [
+      'Line manage a group of four multi-disciplinary engineers.',
+      'Core developer of the multi-award robotic middleware, CorteX.',
+      'Integration of robotic hardware and HMI development.',
+    ],
+  },
+  {
+    title: 'Control Systems Software Engineer',
+    company: 'UK Atomic Energy Authority',
+    duration: 'Dec 2017 - Mar 2022',
+    responsibilities: [
+      'Control system design for remote handling systems.',
+      'Performance analysis of control systems.',
+      'Key interface to external stakeholders ranging from small business to academic institutions.'
+    ],
+  },
+  {
+    title: 'Web Developer (Contract)',
+    company: 'BubbleAd Ltd',
+    duration: 'Mar 2017 - Jun 2017',
+    responsibilities: [
+      'Website development using the Wordpress platform.',
+      'Search Engine Optimization.',
+      'Support with various IT issues.'
+    ],
+  },
+  {
+    title: 'Robotics Engineer (Internship)',
+    company: 'Conferience Ltd',
+    duration: 'Oct 2016 - Mar 2017',
+    responsibilities: [
+      'Embedded programming.',
+      'Electronic board design.',
+      'Web app development.'
+    ],
+  },
+];
 
 export default function About() {
   return (
@@ -15,6 +69,9 @@ export default function About() {
           <br/><br/>With a <strong>passion for technology</strong> and a knack for <strong>problem-solving</strong>, I&apos;m committed to delivering innovative solutions.
           </p> 
         </div>
+      </div>
+      <div className="flex justify-center p-10">
+        <Roles jobRoles={jobRoles} />
       </div>
     </div>
   )
