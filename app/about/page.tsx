@@ -1,4 +1,5 @@
 import Avatar from "@/components/avatar"
+import DownloadButton from "@/components/download_button"
 import Roles from "@/components/roles"
 import {Inter} from 'next/font/google'
 
@@ -59,18 +60,36 @@ const jobRoles = [
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-base-200">
-      <div className="flex flex-col w-full lg:flex-row p-10">
-        <div className="grid flex-grow h-fit card rounded-box place-items-center"><Avatar/></div> 
-        <div className="divider lg:divider-horizontal"/> 
+    <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-10">
+      <div className="flex flex-col w-1/2 lg:flex-row">
         <div className="grid flex-grow h-fit card rounded-box place-items-center">
-          <p>Welcome! I&apos;m <strong>Michael Xymitoulias</strong> <em className={inter.className}>(/ksɪˌmiː&apos;tuːliəs/)</em>, a <strong>Software Engineer</strong> residing in the vibrant <strong>Oxfordshire</strong>.
-          <br/><br/>When I&apos;m not <strong>leading teams</strong> and <strong>driving technical innovation</strong>,  you&apos;ll find me exploring the art of culinary delights or embracing the tranquility of the Aegean Islands alongside my beautiful wife and daughter.
-          <br/><br/>With a <strong>passion for technology</strong> and a knack for <strong>problem-solving</strong>, I&apos;m committed to delivering innovative solutions.
-          </p> 
+          <div className="mb-4">
+            <Avatar/>
+          </div>
+          <div className="mb-4">
+            <DownloadButton/>
+          </div>
+        </div> 
+        <div className="divider lg:divider-horizontal"/>
+        <div className="flex items-center justify-center">
+          <div className="grid flex-grow h-fit card rounded-box text-justify">
+          <p className="leading-relaxed mb-4">
+            Welcome! I&apos;m <strong>Michael Xymitoulias</strong> <em className={inter.className}>(/ksɪˌmiː&apos;tuːliəs/)</em>,
+            a <strong>Software Engineer</strong> residing in the vibrant <strong>Oxfordshire</strong>.
+          </p>
+          <p className="leading-relaxed mb-4">
+            When I&apos;m not <strong>leading teams</strong> and <strong>driving technical innovation</strong>,
+            you&apos;ll find me exploring the art of culinary delights or embracing the tranquility of the Aegean Islands
+            alongside my beautiful wife and daughter.
+          </p>
+          <p className="leading-relaxed mb-4">
+            With a <strong>passion for technology</strong> and a knack for <strong>problem-solving</strong>,
+            I&apos;m committed to delivering innovative solutions.
+          </p>
+          </div>
         </div>
       </div>
-      <div className="flex justify-center p-10">
+      <div className="min-h-screen flex justify-center p-10">
         <Roles jobRoles={jobRoles} />
       </div>
     </div>
