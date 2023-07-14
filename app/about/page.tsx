@@ -54,7 +54,7 @@ export default function About() {
         <div className="flex items-center justify-center">
           <div className="grid flex-grow h-fit card rounded-box text-justify">
             <p className="leading-relaxed mb-4 tracking-tight">
-            Welcome! My name is <strong>Michael Xymitoulias</strong> <em className={inter.className}>(/ksɪˌmiː&apos;tuːliəs/)</em>,
+            Hey! I&apos;m <strong>Michael Xymitoulias</strong> <em className={inter.className}>(/ksɪˌmiː&apos;tuːliəs/)</em>,
             a <strong>Software Engineer</strong> residing in the vibrant <strong>Oxfordshire</strong>.
             </p>
             <p className="leading-relaxed mb-4 tracking-tight">
