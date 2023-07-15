@@ -1,4 +1,5 @@
 import {getSortedPostsData} from '../../lib/posts'
+import Link from 'next/link'
 
 export default function Articles() {
     const allPostsData = getSortedPostsData();
@@ -15,7 +16,7 @@ export default function Articles() {
             <div className="grid grid-cols-1 gap-4">
               {allPostsData.map((postData) => (
                 <div className="bg-base-300 p-4 rounded" key={postData.id}>
-                  <h3 className="text-lg font-semibold mb-2">{postData.title}</h3>
+                  <Link href={`/articles/${postData.id}`}><h3 className="text-lg font-semibold mb-2 underline underline underline-offset-4 hover:no-underline">{postData.title}</h3></Link>
                   <p className="text-sm mb-1">{postData.id}</p>
                   <p className="text-sm">{postData.date}</p>
                 </div>
