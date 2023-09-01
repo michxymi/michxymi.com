@@ -1,6 +1,6 @@
 import { Fira_Code } from "next/font/google";
 import { Email, Github, LinkedIn } from "../components/UI/Icons";
-import Navbar from "../components/Navigation/NavBar";
+import Navbar from "../components/Navigation/Navbar";
 import Footer from "../components/UI/Footer";
 import "../styles/globals.css";
 
