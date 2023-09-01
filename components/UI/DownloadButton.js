@@ -3,17 +3,15 @@
 import { useRouter } from "next/navigation";
 import { DownArrow } from "./Icons";
 
-const DownloadCVButton = () => {
+const DownloadButton = (props) => {
   const router = useRouter();
 
-  const handleDownload = () => {
-    router.push("/files/cv.pdf");
-  };
+  const buttonClickHandler = () => router.push(props.url);
 
   return (
     <button
       className="btn btn-outline flex items-center"
-      onClick={handleDownload}
+      onClick={buttonClickHandler}
     >
       <DownArrow />
       <span className="capitalize">Download CV</span>
@@ -21,4 +19,4 @@ const DownloadCVButton = () => {
   );
 };
 
-export default DownloadCVButton;
+export default DownloadButton;

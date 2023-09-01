@@ -1,6 +1,6 @@
 import Avatar from "../../components/Avatar";
 import PersonalSnippet from "../../components/PersonalSnippet";
-import DownloadCVButton from "../../components/UI/DownloadCVButton";
+import DownloadButton from "../../components/UI/DownloadButton";
 import Roles from "../../components/Roles";
 
 const About = () => (
@@ -11,7 +11,7 @@ const About = () => (
           <Avatar />
         </div>
         <div className="mb-4">
-          <DownloadCVButton />
+          <DownloadButton url={"/files/cv.pdf"} />
         </div>
       </div>
       <div className="divider lg:divider-horizontal" />
