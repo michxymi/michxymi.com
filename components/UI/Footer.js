@@ -1,4 +1,4 @@
-import MenuList from "../components/Navigation/MenuList";
+import MenuList from "../../components/Navigation/MenuList";
 
 const Footer = (props) => (
   <footer>
