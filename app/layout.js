@@ -1,7 +1,7 @@
 import { Fira_Code } from "next/font/google";
-import { Email, Github, LinkedIn } from "../components/Icons";
+import { Email, Github, LinkedIn } from "../components/UI/Icons";
 import Navbar from "../components/Navigation/NavBar";
-import Footer from "../components/Footer";
+import Footer from "../components/UI/Footer";
 import "../styles/globals.css";
 
 export const metadata = {
