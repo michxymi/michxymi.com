@@ -1,5 +1,5 @@
 import MenuList from "./MenuList";
-import { Hamburger } from "../Icons";
+import { Hamburger } from "../UI/Icons";
 
 const Navbar = (props) => {
   const mobileMenu = (
