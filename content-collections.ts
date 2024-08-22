@@ -15,7 +15,21 @@ const curriculum = defineCollection({
     highlights: z.string().array(),
   }),
 });
+
+const projects = defineCollection({
+  name: "projects",
+  directory: "./content/projects",
+  include: "*.json",
+  parser: "json",
+  schema: (z) => ({
+    title: z.string(),
+    subtitle: z.string(),
+    description: z.string(),
+    url: z.string(),
+    icons: z.string().array(),
+  }),
+});
  
 export default defineConfig({
-  collections: [curriculum],
+  collections: [curriculum, projects],
 });
