@@ -2,6 +2,6 @@
     "title": "michxymi.com",
     "subtitle": "My personal website.",
     "description": "A playground to improve my web development skills and showcase my career highlights.",
-    "url": "#",
+    "url": "https://github.com/michxymi/michxymi.com",
     "icons": ["/logos/tailwind.svg", "/logos/react.svg", "/logos/next.svg", "/logos/typescript.svg", "/logos/content-collections.png"]
 }

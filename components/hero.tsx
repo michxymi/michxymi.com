@@ -1,5 +1,5 @@
+import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
-
 import MagicButton from "@/components/ui/buttons";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
@@ -48,7 +48,7 @@ const Hero = () => {
            *  change md:text-6xl, add more responsive code
            */}
           <TextGenerateEffect
-            words="Transforming Concepts into Seamless User Experiences"
+            words="Engineering and strategic management, combined."
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
@@ -56,12 +56,12 @@ const Hero = () => {
             Hi! I&apos;m Michael, a Software Manager based in UK.
           </p>
 
-          <a href="#about">
+          <Link href="#about">
             <MagicButton>
               Show My Work
               <FaLocationArrow/>
             </MagicButton>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

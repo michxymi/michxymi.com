@@ -23,7 +23,7 @@ const Footer = () => {
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base text-sm md:font-normal font-light">
-          Copyright © 2024 Michael Xymitoulias
+          © 2024 Michael Xymitoulias, Inc. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
           <Link href="https://www.linkedin.com/in/mxymitoulias/"><FaLinkedinIn className="min-h-6 min-w-6" /></Link>
