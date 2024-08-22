@@ -8,7 +8,7 @@ const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short' };
 
 const ProfessionalExperience = () => {
 
-  const curriculaSortedByDate = allCurricula.toSorted(
+  const curriculaSortedByDate = allCurricula.sort(
     (a, b) => b.startDate.getTime() - a.startDate.getTime()
   )
   return (
