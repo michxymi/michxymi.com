@@ -9,6 +9,7 @@ const curriculum = defineCollection({
     company: z.string(),
     role: z.string(),
     location: z.string(),
+    url: z.string(),
     startDate: z.coerce.date(),
     endDate: z.optional(z.coerce.date()),
     highlights: z.string().array(),

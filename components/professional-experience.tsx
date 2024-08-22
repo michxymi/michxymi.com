@@ -1,4 +1,6 @@
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { LinkPreview } from "@/components/ui/link-preview";
+
 import { IoIosCheckmark } from "react-icons/io";
 import { allCurricula } from "content-collections"
 
@@ -17,9 +19,9 @@ const ProfessionalExperience = () => {
       </div>
       <TracingBeam className="p-8">
       <div className="max-w-3xl mx-auto antialiased pt-4 relative">
-        {curriculaSortedByDate.map(({company, role, location, startDate, endDate, highlights}, index) => (
+        {curriculaSortedByDate.map(({company, role, location, startDate, endDate, url, highlights}, index) => (
           <div key={`content-${index}`} className="mb-10 flex flex-col gap-4">
-            <h1 className="text-xl font-bold text-zinc-100">{role}{" "}<span className="text-purple">@ {company}</span></h1>
+            <h1 className="text-xl font-bold text-zinc-100">{role}{" "}<span><LinkPreview url={url} className="text-purple">@ {company}</LinkPreview></span></h1>
             <p className="text-zinc-400 text-sm tracking-widest">{startDate.toLocaleDateString('en-US', options)}{" - "}{endDate ? endDate.toLocaleDateString('en-US', options) : 'Present'}</p>
             <p className="text-zinc-400 text-sm tracking-widest">{location}</p>
             {highlights.map((ach) => (
