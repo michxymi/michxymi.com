@@ -17,7 +17,7 @@ const ProfessionalExperience = () => {
         <h1 className="heading">Professional Experience</h1>
         <p className="subheading">Key roles and achievements</p>
       </div>
-      <TracingBeam className="mt-12">
+      <TracingBeam className="p-8 mt-12">
       <div className="max-w-3xl mx-auto antialiased pt-4 relative">
         {curriculaSortedByDate.map(({company, role, location, startDate, endDate, url, highlights}, index) => (
           <div key={`content-${index}`} className="mb-10 flex flex-col gap-4">
