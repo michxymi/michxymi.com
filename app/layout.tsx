@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/styles/theme-provider";
+import Footer from "@/components/footer";
 import { FloatingNav } from "@/components/ui/floating-navbar";
+
 import "@/styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,7 +15,6 @@ export const metadata: Metadata = {
 
 const navItems = [
   { name: "About", link: "#about" },
-  { name: "Blog", link: "/blog" },
   { name: "Projects", link: "#projects" },
   { name: "Contact", link: "#contact" },
 ];
@@ -36,6 +37,7 @@ export default function RootLayout({
             <div className="max-w-7xl w-full">
               <FloatingNav navItems={navItems} />
               {children}
+              <Footer />
             </div>
           </main>
         </ThemeProvider>
