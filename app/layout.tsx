@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const navItems = [
   { name: "About", link: "#about" },
   { name: "Blog", link: "/blog" },
-  { name: "Projects", link: "/projects" },
+  { name: "Projects", link: "#projects" },
   { name: "Contact", link: "#contact" },
 ];
 
