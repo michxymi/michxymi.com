@@ -1,10 +1,10 @@
-import { defineCollection, defineConfig } from "@content-collections/core";
- 
+import { defineCollection, defineConfig } from '@content-collections/core';
+
 const milestones = defineCollection({
-  name: "milestones",
-  directory: "./content/milestones",
-  include: "*.json",
-  parser: "json",
+  name: 'milestones',
+  directory: './content/milestones',
+  include: '*.json',
+  parser: 'json',
   schema: (z) => ({
     company: z.string(),
     role: z.string(),
@@ -17,10 +17,10 @@ const milestones = defineCollection({
 });
 
 const projects = defineCollection({
-  name: "projects",
-  directory: "./content/projects",
-  include: "*.json",
-  parser: "json",
+  name: 'projects',
+  directory: './content/projects',
+  include: '*.json',
+  parser: 'json',
   schema: (z) => ({
     title: z.string(),
     description: z.string(),
@@ -28,7 +28,7 @@ const projects = defineCollection({
     icons: z.string().array(),
   }),
 });
- 
+
 export default defineConfig({
   collections: [milestones, projects],
 });

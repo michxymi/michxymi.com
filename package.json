@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --check .",
-    "prettier:fix":"prettier --write .",
-    "types:check": "tsc --pretty --noEmit"
+    "prettier:fix": "prettier --write .",
+    "types:check": "tsc --pretty --noEmit",
+    "pre-commit": "npm run prettier && npm run lint && npm run types:check && npm run build"
   },
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.1",

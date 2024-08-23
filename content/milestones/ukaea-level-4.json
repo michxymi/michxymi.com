@@ -1,13 +1,13 @@
 {
-    "company": "RACE, UK Atomic Energy Authority",
-    "role": "Control Systems Software Engineer",
-    "location": "Culham, GB",
-    "startDate": "2017-12-01",
-    "endDate": "2022-03-01",
-    "url": "https://race.ukaea.uk/",
-    "highlights": [
-        "Designed, developed and demonstrated an end-to-end decommissioning solution for Sellafield Ltd.",
-        "Co-authored the chapter for the in-house robotics middleware, CorteX, in Software Engineering for Robotics book published by Springer.",
-        "Collaborated with various external stakeholders to represent RACE and its technologies."
-    ]
+  "company": "RACE, UK Atomic Energy Authority",
+  "role": "Control Systems Software Engineer",
+  "location": "Culham, GB",
+  "startDate": "2017-12-01",
+  "endDate": "2022-03-01",
+  "url": "https://race.ukaea.uk/",
+  "highlights": [
+    "Designed, developed and demonstrated an end-to-end decommissioning solution for Sellafield Ltd.",
+    "Co-authored the chapter for the in-house robotics middleware, CorteX, in Software Engineering for Robotics book published by Springer.",
+    "Collaborated with various external stakeholders to represent RACE and its technologies."
+  ]
 }

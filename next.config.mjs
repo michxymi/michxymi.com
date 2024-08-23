@@ -1,4 +1,4 @@
-import { withContentCollections } from "@content-collections/next";
+import { withContentCollections } from '@content-collections/next';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -6,9 +6,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname:  'api.microlink.io', // Microlink Image Preview
+        hostname: 'api.microlink.io', // Microlink Image Preview
         port: '',
-      }
+      },
     ],
   },
 };

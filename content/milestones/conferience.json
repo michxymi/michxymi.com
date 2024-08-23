@@ -1,13 +1,13 @@
 {
-    "company": "Conferience Ltd",
-    "role": "Robotics Engineer (Intern)",
-    "location": "Athens, GR",
-    "startDate": "2016-10-01",
-    "endDate": "2017-03-01",
-    "url": "https://conferience.com/",
-    "highlights": [
-        "Designed and developed a prototype smart recycling bin.",
-        "Improved original system's power consumption.",
-        "Collaborated with a small developer team to develop the communication layer."
-    ]
+  "company": "Conferience Ltd",
+  "role": "Robotics Engineer (Intern)",
+  "location": "Athens, GR",
+  "startDate": "2016-10-01",
+  "endDate": "2017-03-01",
+  "url": "https://conferience.com/",
+  "highlights": [
+    "Designed and developed a prototype smart recycling bin.",
+    "Improved original system's power consumption.",
+    "Collaborated with a small developer team to develop the communication layer."
+  ]
 }
