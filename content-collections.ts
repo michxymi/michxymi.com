@@ -23,7 +23,6 @@ const projects = defineCollection({
   parser: "json",
   schema: (z) => ({
     title: z.string(),
-    subtitle: z.string(),
     description: z.string(),
     url: z.string(),
     icons: z.string().array(),
