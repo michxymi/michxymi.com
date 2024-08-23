@@ -10,7 +10,8 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "types:check": "tsc --pretty --noEmit",
-    "pre-commit": "npm run prettier && npm run lint && npm run types:check && npm run build"
+    "pre-commit": "npm run prettier && npm run lint && npm run types:check",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-hover-card": "^1.1.1",
@@ -37,6 +38,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-tailwindcss": "^3.17.4",
+    "husky": "^9.1.5",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
