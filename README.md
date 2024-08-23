@@ -49,8 +49,8 @@ The basic file structure for the project is organized in the following way:
 |-- components
 |-- content
 |-- lib
+|-- public
 |-- styles
-`-- public
 ```
 
 ### [app](https://github.com/michxymi/michxymi.com/tree/main/app)
@@ -69,13 +69,13 @@ Here you'll find JSON files that populates each section.
 
 Here you'll find a set of utilities.
 
-### [styles](https://github.com/michxymi/michxymi.com/blob/main/styles)
-
-Here you'll find all css files.
-
 ### [public](https://github.com/michxymi/michxymi.com/blob/main/public)
 
 Here you'll find all the images and related files.
+
+### [styles](https://github.com/michxymi/michxymi.com/blob/main/styles)
+
+Here you'll find all css files.
 
 ## License
 
