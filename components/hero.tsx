@@ -56,9 +56,9 @@ const Hero = () => {
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg">
             I leverage a broad engineering background and a strategic mindset to lead teams, optimize processes, and deliver high-impact results for businesses.
           </p>
-          <Link href="#about">
+          <Link href="#projects">
             <MagicButton>
-              Show My Work
+              Personal Projects
               <FaLocationArrow/>
             </MagicButton>
           </Link>
