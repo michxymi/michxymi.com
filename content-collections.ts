@@ -1,8 +1,8 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
  
-const curriculum = defineCollection({
-  name: "curriculum",
-  directory: "./content/curriculum",
+const milestones = defineCollection({
+  name: "milestones",
+  directory: "./content/milestones",
   include: "*.json",
   parser: "json",
   schema: (z) => ({
@@ -31,5 +31,5 @@ const projects = defineCollection({
 });
  
 export default defineConfig({
-  collections: [curriculum, projects],
+  collections: [milestones, projects],
 });

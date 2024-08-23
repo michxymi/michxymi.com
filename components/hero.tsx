@@ -48,14 +48,14 @@ const Hero = () => {
            *  change md:text-6xl, add more responsive code
            */}
           <TextGenerateEffect
-            words="Engineering and strategic management, combined."
+            words="Dynamic Engineering Leadership for Transformative Solutions."
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
+            index={4}
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg">
-            Hi! I&apos;m Michael, a Software Manager based in UK.
+            I leverage a broad engineering background and a strategic mindset to lead teams, optimize processes, and deliver high-impact results for businesses.
           </p>
-
           <Link href="#about">
             <MagicButton>
               Show My Work

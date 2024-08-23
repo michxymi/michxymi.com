@@ -2,20 +2,20 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 import { LinkPreview } from "@/components/ui/link-preview";
 
 import { IoIosCheckmark } from "react-icons/io";
-import { allCurricula } from "content-collections"
+import { allMilestones } from "content-collections"
 
 const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short' };
 
-const ProfessionalExperience = () => {
+const CareerMilestones = () => {
 
-  const curriculaSortedByDate = allCurricula.sort(
+  const curriculaSortedByDate = allMilestones.sort(
     (a, b) => b.startDate.getTime() - a.startDate.getTime()
   )
   return (
     <section id="about" className="py-20 relative">
       <div className="flex flex-col items-center justify-center gap-8">
-        <h1 className="heading">Professional Experience</h1>
-        <p className="subheading">Key roles and achievements</p>
+        <h1 className="heading">Career Milestones</h1>
+        <p className="subheading">Key successes and recognitions</p>
       </div>
       <TracingBeam className="p-8 mt-12">
       <div className="max-w-3xl mx-auto antialiased pt-4 relative">
@@ -38,4 +38,4 @@ const ProfessionalExperience = () => {
   );
 };
 
-export default ProfessionalExperience;
+export default CareerMilestones;
