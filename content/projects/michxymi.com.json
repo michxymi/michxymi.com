@@ -1,6 +1,6 @@
 {
     "title": "michxymi.com",
-    "description": "My personal website where I share my projects, insights, and career updates.",
+    "description": "My personal website for sharing projects, insights, and career updates while experimenting with the latest web technologies.",
     "url": "https://github.com/michxymi/michxymi.com",
     "icons": ["/logos/tailwind.svg", "/logos/react.svg", "/logos/next.svg", "/logos/typescript.svg", "/logos/content-collections.png"]
 }

@@ -1,23 +1,21 @@
 import Link from "next/link";
 import MagicButton from "@/components/ui/buttons";
-import { FaGithub, FaLocationArrow, FaLinkedinIn } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaPaperPlane } from "react-icons/fa6";
 
 const Footer = () => {
   return (
     <footer className="w-full py-20" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
-          Ready to take <span className="text-purple">your </span>digital
-          presence to the next level?
+          Let&apos;s get in{" "}<span className="text-purple">touch.</span>
         </h1>
         <p className="text-white-200 md:mt-10 my-4 text-center">
-          Reach out to me today and let&apos;s discuss how I can help you achieve your
-          goals
+          Whether you have questions, feedback, or a new project in mind, I&apos;d love hearing from you.
         </p>
-        <Link href="mailto:contact@jsmastery.pro">
+        <Link href="mailto:1d76ivw3v@mozmail.com">
           <MagicButton>
-            Let&apos;s get in touch
-            <FaLocationArrow className="min-w-4 min-h-4" />
+            E-mail Me
+            <FaPaperPlane className="min-w-4 min-h-4" />
           </MagicButton>
         </Link>
       </div>
