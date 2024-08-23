@@ -1,1 +1,39 @@
-npm run pre-commit
+echo '🏗️👷 Styling, testing and building your project before committing'
+
+# Check Prettier standards
+npm run prettier ||
+(
+    echo '🤢🤮🤢🤮 Its F**KING RAW - Your styling looks disgusting. 🤢🤮🤢🤮
+            Prettier Check Failed. Run npm run prettier:fix, add changes and try commit again.';
+    false;
+)
+
+# Check ESLint Standards
+npm run lint ||
+(
+        echo '😤🏀👋😤 Get that weak s**t out of here! 😤🏀👋😤 
+                ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        false; 
+)
+
+# Check tsconfig standards
+npm run types:check ||
+(
+    echo '🤡😂❌🤡 Failed Type check. 🤡😂❌🤡
+            Are you seriously trying to write that? Make the changes required above.'
+    false;
+)
+
+# If everything passes... Now we can commit
+echo '🤔🤔🤔🤔... Alright... Code looks good to me... Trying to build now. 🤔🤔🤔🤔'
+
+# npm run build ||
+# (
+#     echo '❌👷🔨❌ Better call Bob... Because your build failed ❌👷🔨❌
+#             Next build failed: View the errors above to see why. 
+#     '
+#     false;
+# )
+
+# If everything passes... Now we can commit
+echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
