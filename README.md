@@ -59,11 +59,11 @@ Here you'll find all the main pages of the site.
 
 ### [components](https://github.com/michxymi/michxymi.com/tree/main/components)
 
-Here you'll find reusable blocks of React components.
+Here you'll find the reusable blocks of React components.
 
 ### [content](https://github.com/michxymi/michxymi.com/tree/main/content)
 
-Here you'll find JSON files that populates each section.
+Here you'll find JSON or MD files that are parsed via content collections and populate the relevant sections.
 
 ### [lib](https://github.com/michxymi/michxymi.com/tree/main/lib)
 
@@ -71,7 +71,7 @@ Here you'll find a set of utilities.
 
 ### [public](https://github.com/michxymi/michxymi.com/blob/main/public)
 
-Here you'll find all the images and related files.
+Here you'll find all the statically served files like images or documents.
 
 ### [styles](https://github.com/michxymi/michxymi.com/blob/main/styles)
 
