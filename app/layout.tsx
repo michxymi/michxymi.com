@@ -1,10 +1,9 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/styles/theme-provider';
+import { ThemeProvider } from '@/components/theme-provider';
 import Footer from '@/components/footer';
 import { FloatingNav } from '@/components/ui/floating-navbar';
-
 import '@/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
