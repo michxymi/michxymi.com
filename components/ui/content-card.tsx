@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import { cn } from '@/lib/cn';
 import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/lib/cn';
 
 type ContentCardProps = {
   author: string;
@@ -22,10 +23,11 @@ const ContentCard = ({
 }: ContentCardProps) => {
   return (
     <div className="group/card w-full max-w-xs">
-      <div
+      <Link
+        href="https://google.com"
         style={{ '--image-url': `url(${image})` } as React.CSSProperties}
         className={cn(
-          'card backgroundImage relative mx-auto flex h-96 max-w-sm cursor-pointer flex-col justify-between overflow-hidden rounded-md p-4 shadow-xl',
+          'card backgroundImage relative mx-auto flex h-96 max-w-sm flex-col justify-between overflow-hidden rounded-md p-4 shadow-xl',
           `bg-[image:var(--image-url)] bg-cover`
         )}
       >
@@ -49,7 +51,7 @@ const ContentCard = ({
           <h1 className="relative z-10 text-xl font-bold text-gray-50 md:text-2xl">{title}</h1>
           <p className="relative z-10 my-4 text-sm font-normal text-gray-50">{description}</p>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
