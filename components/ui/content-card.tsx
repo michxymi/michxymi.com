@@ -10,7 +10,8 @@ type ContentCardProps = {
   title: string;
   description: string;
   image: string;
-  timeToRead: number;
+  meta: string;
+  url: string;
 };
 
 const ContentCard = ({
@@ -19,12 +20,13 @@ const ContentCard = ({
   title,
   description,
   image,
-  timeToRead,
+  meta,
+  url,
 }: ContentCardProps) => {
   return (
     <div className="group/card w-full max-w-xs">
       <Link
-        href="https://google.com"
+        href={url}
         style={{ '--image-url': `url(${image})` } as React.CSSProperties}
         className={cn(
           'card backgroundImage relative mx-auto flex h-96 max-w-sm flex-col justify-between overflow-hidden rounded-md p-4 shadow-xl',
@@ -42,9 +44,7 @@ const ContentCard = ({
           />
           <div className="flex flex-col">
             <p className="relative z-10 text-base font-normal text-gray-50">{author}</p>
-            <p className="text-sm text-gray-400">
-              {`${timeToRead} ${timeToRead > 1 ? 'minutes' : 'minute'} read`}{' '}
-            </p>
+            <p className="text-sm text-gray-400">{meta}</p>
           </div>
         </div>
         <div>
