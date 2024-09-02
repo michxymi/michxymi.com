@@ -1,5 +1,5 @@
 import { defineCollection, defineConfig } from '@content-collections/core';
-import { compileMarkdown } from '@content-collections/markdown';
+import { compileMDX } from '@content-collections/mdx';
 
 const milestones = defineCollection({
   name: 'milestones',
@@ -20,7 +20,7 @@ const milestones = defineCollection({
 const posts = defineCollection({
   name: 'posts',
   directory: './content/posts',
-  include: '*.md',
+  include: '*.mdx',
   schema: (z) => ({
     title: z.string(),
     description: z.string(),
@@ -29,10 +29,10 @@ const posts = defineCollection({
     image: z.string(),
   }),
   transform: async (document, context) => {
-    const html = await compileMarkdown(context, document);
+    const mdx = await compileMDX(context, document);
     return {
       ...document,
-      html,
+      mdx,
     };
   },
 });
