@@ -1,4 +1,5 @@
 import { defineCollection, defineConfig } from '@content-collections/core';
+import { compileMarkdown } from '@content-collections/markdown';
 
 const milestones = defineCollection({
   name: 'milestones',
@@ -16,6 +17,26 @@ const milestones = defineCollection({
   }),
 });
 
+const posts = defineCollection({
+  name: 'posts',
+  directory: './content/posts',
+  include: '*.md',
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+    author: z.string(),
+    avatar: z.string(),
+    image: z.string(),
+  }),
+  transform: async (document, context) => {
+    const html = await compileMarkdown(context, document);
+    return {
+      ...document,
+      html,
+    };
+  },
+});
+
 const projects = defineCollection({
   name: 'projects',
   directory: './content/projects',
@@ -30,5 +51,5 @@ const projects = defineCollection({
 });
 
 export default defineConfig({
-  collections: [milestones, projects],
+  collections: [milestones, posts, projects],
 });
