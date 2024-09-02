@@ -1,6 +1,6 @@
 import ContentCard from '@/components/ui/content-card';
 import ReadingTime from '@/lib/reading-time';
-import { allPosts } from '@/.content-collections/generated';
+import { allPosts } from 'content-collections';
 
 const Blog = () => {
   return (

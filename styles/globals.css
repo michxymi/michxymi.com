@@ -85,4 +85,7 @@
   .subheading {
     @apply max-w-80 text-center text-xs uppercase tracking-widest text-blue-100;
   }
+  .article-heading {
+    @apply text-center text-2xl font-bold md:text-3xl;
+  }
 }
