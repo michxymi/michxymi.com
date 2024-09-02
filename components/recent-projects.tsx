@@ -1,5 +1,5 @@
 import { allProjects } from 'content-collections';
-import { AnimatedCard } from './ui/animated-card';
+import { AnimatedCard } from '@/components/ui/animated-card';
 
 const RecentProjects = () => {
   return (

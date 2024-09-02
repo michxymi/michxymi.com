@@ -1,5 +1,6 @@
-import Hero from '@/components/hero';
+import Blog from '@/components/blog';
 import CareerMilestones from '@/components/career-milestones';
+import Hero from '@/components/hero';
 import RecentProjects from '@/components/recent-projects';
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <CareerMilestones />
+      <Blog />
       <RecentProjects />
     </>
   );
