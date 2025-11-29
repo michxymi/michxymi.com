@@ -66,7 +66,7 @@ function SocialLink({ link }: { link: (typeof socialLinks)[number] }) {
 
 export default function ContactPage() {
   return (
-    <div className="max-w-3xl">
+    <div>
       <PageHeader
         description="Have a question or want to work together? Feel free to reach out."
         title="Contact"

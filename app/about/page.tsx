@@ -81,7 +81,7 @@ const experiences: ExperienceItemType[] = [
 
 export default function AboutPage() {
   return (
-    <div className="max-w-2xl">
+    <div>
       <PageHeader
         description="A bit about me, my skills, and my journey."
         title="About"

@@ -49,7 +49,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   }
 
   return (
-    <article className="max-w-2xl">
+    <article>
       <Link
         className="mb-6 inline-flex items-center gap-1 text-muted-foreground text-sm transition-colors hover:text-primary"
         href="/projects"

@@ -13,7 +13,7 @@ export default async function BlogPage() {
   const posts = await getAllBlogPosts();
 
   return (
-    <div className="max-w-2xl">
+    <div>
       <PageHeader
         description="Thoughts on engineering, leadership, and building great software."
         title="Blog"

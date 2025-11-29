@@ -55,10 +55,12 @@ export default function RootLayout({
                 <HeaderControls />
               </header>
               <main
-                className="flex flex-1 flex-col gap-4 p-4 pt-0"
+                className="flex flex-1 flex-col gap-4 p-4 pt-0 md:px-8 lg:px-12"
                 id="main-content"
               >
-                {children}
+                <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col">
+                  {children}
+                </div>
               </main>
             </SidebarInset>
           </SidebarProvider>

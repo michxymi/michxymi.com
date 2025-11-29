@@ -13,7 +13,7 @@ export default async function ProjectsPage() {
   const projects = await getAllProjects();
 
   return (
-    <div className="max-w-4xl">
+    <div>
       <PageHeader
         description="A collection of projects I've worked on, from open source contributions to production applications."
         title="Projects"
