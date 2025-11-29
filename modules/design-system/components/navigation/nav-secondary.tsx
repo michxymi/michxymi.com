@@ -30,11 +30,10 @@ export function NavSecondary({
               asChild
               onMouseEnter={() => downloadRef.current?.startAnimation()}
               onMouseLeave={() => downloadRef.current?.stopAnimation()}
-              size="lg"
               tooltip="Download CV"
             >
               <Link download href="/resume.pdf">
-                <DownloadIcon ref={downloadRef} size={22} />
+                <DownloadIcon ref={downloadRef} size={16} />
                 <span className="group-data-[collapsible=icon]:hidden">
                   Download CV
                 </span>
