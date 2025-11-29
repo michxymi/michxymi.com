@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "modules/design-system/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@/modules/design-system/components",
+    "utils": "@/modules/design-system/lib/utils",
+    "ui": "@/modules/design-system/components/ui",
+    "lib": "@/modules/design-system/lib",
+    "hooks": "@/modules/design-system/hooks"
+  },
+  "registries": {
+    "@ncdai": "https://chanhdai.com/r/{name}.json"
+  }
+}
