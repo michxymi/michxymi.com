@@ -1,6 +1,7 @@
 import { HeaderControls } from "@/modules/design-system/components/header-controls";
 import { AppSidebar } from "@/modules/design-system/components/navigation/app-sidebar";
 import "@/modules/design-system/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/modules/design-system/components/theme-provider";
@@ -65,6 +66,7 @@ export default function RootLayout({
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
