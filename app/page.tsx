@@ -1,50 +1,163 @@
+import { Briefcase, Code, FileText, Layers } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { FlipSentences } from "@/modules/design-system/components/flip-sentences";
+import { getAllBlogPosts } from "@/modules/content/lib/blog";
+import { getAllProjects } from "@/modules/content/lib/projects";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [blogPosts, projects] = await Promise.all([
+    getAllBlogPosts(),
+    getAllProjects(),
+  ]);
+
+  const yearsExperience = new Date().getFullYear() - 2017;
+  const technologiesCount = 19;
+
+  const stats = [
+    {
+      name: "Years of experience",
+      value: `${yearsExperience}+`,
+      icon: Briefcase,
+    },
+    {
+      name: "Projects shipped",
+      value: projects.length.toString(),
+      icon: Layers,
+    },
+    {
+      name: "Blog posts",
+      value: blogPosts.length.toString(),
+      icon: FileText,
+    },
+    {
+      name: "Technologies",
+      value: technologiesCount.toString(),
+      icon: Code,
+    },
+  ];
+
   return (
-    <div className="flex min-h-[60vh] flex-1 flex-col items-center justify-center text-center">
-      <div className="space-y-6">
-        <div>
-          <h1 className="mb-2 font-display text-4xl md:text-5xl">
-            Michael Xymitoulias
-          </h1>
-          <div className="text-lg text-muted-foreground">
-            <FlipSentences>
-              <span>Technical Software Manager</span>
-              <span>Software Engineer</span>
-              <span>Technical Lead</span>
-            </FlipSentences>
+    <div className="space-y-4">
+      {/* Stats Grid */}
+      <div className="grid w-full grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        {stats.map((stat) => (
+          <div
+            className="flex flex-col justify-between gap-0 rounded-md border border-border p-6"
+            key={stat.name}
+          >
+            <stat.icon className="mb-10 size-4 text-primary" />
+            <h2 className="flex max-w-xl flex-row items-end gap-4 text-left font-display text-4xl tracking-tighter">
+              {stat.value}
+            </h2>
+            <p className="max-w-xl text-left text-muted-foreground leading-relaxed tracking-tight">
+              {stat.name}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* GitHub Contributions */}
+      <div className="rounded-md border border-border p-6">
+        <div className="mb-4 flex items-center justify-between">
+          <div className="font-mono text-muted-foreground text-xs uppercase tracking-wider">
+            GitHub Activity
+          </div>
+          <a
+            className="text-muted-foreground text-xs transition-colors hover:text-foreground"
+            href="https://github.com/michxymi"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            @michxymi →
+          </a>
+        </div>
+        <div className="overflow-x-auto">
+          <Image
+            alt="GitHub Contributions"
+            className="w-full dark:brightness-90 dark:contrast-125 dark:hue-rotate-180 dark:invert"
+            height={104}
+            src="https://ghchart.rshah.org/michxymi"
+            unoptimized
+            width={722}
+          />
+        </div>
+      </div>
+
+      {/* Uses & Currently */}
+      <div className="grid gap-4 md:grid-cols-2">
+        {/* Uses */}
+        <div className="rounded-md border border-border p-6">
+          <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
+            Uses
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <UseItem label="Editor" value="Cursor" />
+            <UseItem label="AI" value="Claude" />
+            <UseItem label="Terminal" value="Warp" />
+            <UseItem label="Browser" value="Arc" />
           </div>
         </div>
 
-        <p className="mx-auto max-w-md text-muted-foreground leading-relaxed">
-          I build and lead teams that create impactful software. With a passion
-          for clean architecture and developer experience, I focus on delivering
-          solutions that scale.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-4 pt-2">
-          <Link
-            className="font-display text-sm transition-colors hover:text-primary"
-            href="/about"
-          >
-            About me &rarr;
-          </Link>
-          <Link
-            className="font-display text-sm transition-colors hover:text-primary"
-            href="/projects"
-          >
-            View projects &rarr;
-          </Link>
-          <Link
-            className="font-display text-sm transition-colors hover:text-primary"
-            href="/blog"
-          >
-            Read blog &rarr;
-          </Link>
+        {/* Currently */}
+        <div className="rounded-md border border-border p-6">
+          <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
+            Currently
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <UseItem label="Learning" value="Rust" />
+            <UseItem label="Building" value="This site" />
+            <UseItem label="Reading" value="Staff Engineer" />
+            <UseItem label="Watching" value="Severance" />
+          </div>
         </div>
       </div>
+
+      {/* Recent Posts */}
+      {blogPosts.length > 0 && (
+        <div className="rounded-md border border-border p-6">
+          <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
+            Recent Posts
+          </div>
+          <div className="space-y-3">
+            {blogPosts.slice(0, 3).map((post, index) => (
+              <Link
+                className="group flex items-start gap-3"
+                href={post.url}
+                key={post.slug}
+              >
+                <span
+                  className={`mt-1.5 size-2 shrink-0 rounded-full ${
+                    index === 0
+                      ? "bg-primary"
+                      : "border border-muted-foreground"
+                  }`}
+                />
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm transition-colors group-hover:text-primary">
+                    {post.frontmatter.title}
+                  </div>
+                  <div className="text-muted-foreground text-xs">
+                    {post.frontmatter.publishedAt.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function UseItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-muted-foreground text-xs">{label}</div>
+      <div className="font-display text-sm">{value}</div>
     </div>
   );
 }
