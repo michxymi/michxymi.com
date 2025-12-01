@@ -16,63 +16,75 @@ export const metadata: Metadata = {
 
 const experiences: ExperienceItemType[] = [
   {
-    id: "company-name",
-    companyName: "Company Name",
+    id: "ont",
+    companyName: "Oxford Nanopore Technologies",
+    companyLogo: "/ont-logo.svg",
     isCurrentEmployer: true,
     positions: [
       {
         id: "technical-software-manager",
         title: "Technical Software Manager",
-        employmentPeriod: "2023 - Present",
+        employmentPeriod: "April 2023 – ∞",
         employmentType: "Full-time",
         description:
-          "Leading engineering teams to deliver high-impact products. Focus on technical strategy and team development.",
-        icon: "business",
+          "Managing a team of 4 build engineers. Built observability and developer tools using React, TypeScript, Electron, and Next.js. Technical lead for C++ library integration using Conan, CMake, Docker, and GitLab CI. Developed CLI tools in Python and cross-platform FPGA tools in GoLang.",
+        icon: "code",
         isExpanded: true,
       },
     ],
   },
   {
-    id: "previous-company",
-    companyName: "Previous Company",
+    id: "ukaea",
+    companyName: "UK Atomic Energy Authority (RACE)",
+    companyLogo: "/ukaea.svg",
     positions: [
       {
-        id: "technical-lead",
-        title: "Technical Lead",
-        employmentPeriod: "2021 - 2023",
+        id: "section-leader",
+        title: "Software Engineer & Section Leader",
+        employmentPeriod: "November 2021 - April 2023",
         employmentType: "Full-time",
         description:
-          "Led architecture decisions and mentored engineers. Shipped multiple major features.",
+          "Led software development team with mentoring, recruitment, and performance reviews. Key contributor to CorteX robotic middleware, integrating C++ with ROS2, Qt, OPC-UA, and EtherCAT. Established DevOps processes including CI/CD, Git workflows, and Agile practices.",
+        icon: "code",
+        isExpanded: true,
+      },
+      {
+        id: "control-systems-engineer",
+        title: "Control Systems Software Engineer",
+        employmentPeriod: "December 2017 - November 2021",
+        employmentType: "Full-time",
+        description:
+          "Core team member developing CorteX robotic middleware in modern C++17 and Python. Built GUIs using Qt (QML & Widgets). Implemented unit testing with gTest, QtTest, and Valgrind. Primary technical interface with external partners. Mentored year-in-industry students.",
         icon: "code",
       },
     ],
   },
   {
-    id: "earlier-company",
-    companyName: "Earlier Company",
+    id: "bubblead",
+    companyName: "BubbleAD Ltd",
     positions: [
       {
-        id: "senior-software-engineer",
-        title: "Senior Software Engineer",
-        employmentPeriod: "2019 - 2021",
-        employmentType: "Full-time",
+        id: "web-developer-intern",
+        title: "Web Developer Intern",
+        employmentPeriod: "March 2017 - June 2017",
+        employmentType: "Internship",
         description:
-          "Full-stack development with focus on performance and scalability.",
+          "Designed and developed company website using WordPress, HTML, CSS, JavaScript, and PHP. Implemented SEO and security enhancements.",
         icon: "code",
       },
     ],
   },
   {
-    id: "first-company",
-    companyName: "First Company",
+    id: "conferience",
+    companyName: "Conferience Ltd",
     positions: [
       {
-        id: "software-engineer",
-        title: "Software Engineer",
-        employmentPeriod: "2017 - 2019",
-        employmentType: "Full-time",
+        id: "robotics-engineer-intern",
+        title: "Robotics Engineer Intern",
+        employmentPeriod: "October 2016 - March 2017",
+        employmentType: "Internship",
         description:
-          "Started career building web applications and learning best practices.",
+          "Led redesign of 'Smiley Bin' smart recycling system. Managed full product lifecycle from requirements to system design. Developed embedded software in C for Arduino with real-time data processing.",
         icon: "code",
       },
     ],
@@ -91,21 +103,24 @@ export default function AboutPage() {
         <h2 className="mb-4 font-display text-lg">Bio</h2>
         <Prose>
           <p>
-            I&apos;m a Technical Software Manager with a passion for building
-            great products and leading high-performing teams. With years of
-            experience spanning software engineering and technical leadership, I
-            bring a unique perspective to every project.
+            I&apos;m a Technical Software Manager at Oxford Nanopore
+            Technologies, where I lead a team of build engineers and develop
+            internal developer tools. My background spans robotics, control
+            systems, and modern web development across industries including
+            biotech, nuclear energy, and embedded systems.
           </p>
           <p>
-            My approach combines hands-on technical expertise with a focus on
-            people and processes. I believe in clean architecture, developer
-            experience, and building systems that scale both technically and
-            organizationally.
+            With over 8 years of experience, I&apos;ve worked across the full
+            stack—from C systems programming to React web apps, from writing
+            robotics middleware to Python CLI tools. I&apos;m passionate about
+            developer experience, observability tooling, and building systems
+            that make engineers more productive.
           </p>
           <p>
-            When I&apos;m not coding or managing teams, you can find me
-            exploring new technologies, contributing to open source, or sharing
-            knowledge through writing and mentoring.
+            I hold a BSc in Automation Engineering and have co-authored a
+            publication on CorteX, a distributed robotic systems framework. When
+            I&apos;m not coding or leading teams, I&apos;m exploring AI assisted
+            development and tinker with new technologies.
           </p>
         </Prose>
       </section>

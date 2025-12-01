@@ -9,19 +9,26 @@ import {
 const skillCategories = [
   {
     title: "Languages",
-    skills: ["TypeScript", "JavaScript", "Python", "Go", "SQL"],
+    skills: ["TypeScript", "Python", "Go", "C++", "C"],
   },
   {
-    title: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "HTML/CSS"],
+    title: "Frontend & Desktop",
+    skills: ["React", "NextJS", "Electron", "Tailwind CSS", "HTML/CSS"],
   },
   {
     title: "Backend",
-    skills: ["Node.js", "PostgreSQL", "Redis", "GraphQL", "REST"],
+    skills: ["NodeJS", "PostgreSQL", "Redis", "REST", "gRPC"],
   },
   {
-    title: "Tools & Platforms",
-    skills: ["Git", "Docker", "AWS", "Vercel", "GitHub Actions"],
+    title: "DevOps & Tooling",
+    skills: [
+      "Docker",
+      "GitLab CI",
+      "Github Actions",
+      "AWS",
+      "Vercel",
+      "Cloudflare",
+    ],
   },
 ];
 

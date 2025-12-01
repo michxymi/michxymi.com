@@ -5,6 +5,7 @@ import {
   CodeXmlIcon,
   DraftingCompassIcon,
   GraduationCapIcon,
+  InfinityIcon,
 } from "lucide-react";
 import Image from "next/image";
 import type React from "react";
@@ -95,7 +96,7 @@ export function ExperienceItem({
           {experience.companyLogo ? (
             <Image
               alt={experience.companyName}
-              className="rounded-full"
+              className="size-6 object-contain dark:invert"
               height={24}
               quality={100}
               src={experience.companyLogo}
@@ -183,7 +184,16 @@ export function ExperiencePositionItem({
 
             <dl>
               <dt className="sr-only">Employment Period</dt>
-              <dd>{position.employmentPeriod}</dd>
+              <dd className="flex items-center gap-1">
+                {position.employmentPeriod.includes("∞") ? (
+                  <>
+                    {position.employmentPeriod.replace("∞", "").trim()}
+                    <InfinityIcon className="size-4" />
+                  </>
+                ) : (
+                  position.employmentPeriod
+                )}
+              </dd>
             </dl>
           </div>
         </CollapsibleTrigger>
