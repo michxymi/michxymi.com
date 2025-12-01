@@ -58,14 +58,14 @@ export default async function HomePage() {
           <div className="font-mono text-muted-foreground text-xs uppercase tracking-wider">
             GitHub Activity
           </div>
-          <a
+          <Link
             className="text-muted-foreground text-xs transition-colors hover:text-foreground"
             href="https://github.com/michxymi"
             rel="noopener noreferrer"
             target="_blank"
           >
             @michxymi →
-          </a>
+          </Link>
         </div>
         <div className="overflow-x-auto">
           <Image
@@ -125,8 +125,8 @@ export default async function HomePage() {
           <div className="grid grid-cols-2 gap-4">
             <UseItem label="Editor" value="Cursor" />
             <UseItem label="AI" value="Claude" />
-            <UseItem label="Terminal" value="Warp" />
-            <UseItem label="Browser" value="Arc" />
+            <UseItem label="Terminal" value="Ghostty" />
+            <UseItem label="Notes" value="Obsidian" />
           </div>
         </div>
 
@@ -136,10 +136,10 @@ export default async function HomePage() {
             Currently
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <UseItem label="Learning" value="Rust" />
+            <UseItem label="Learning" value="Tanstack Start" />
             <UseItem label="Building" value="This site" />
-            <UseItem label="Reading" value="Staff Engineer" />
-            <UseItem label="Watching" value="Severance" />
+            <UseItem label="Listening" value="Lex Friedman Podcast" />
+            <UseItem label="Watching" value="Xmas Movies" />
           </div>
         </div>
       </div>
