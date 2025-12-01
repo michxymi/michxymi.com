@@ -1,4 +1,4 @@
-import { FlipSentences } from "@/modules/design-system/components/flip-sentences";
+import { FlipSentences } from "@/modules/content/components/flip-sentences";
 import {
   Avatar,
   AvatarFallback,

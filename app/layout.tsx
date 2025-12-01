@@ -1,5 +1,5 @@
-import { HeaderControls } from "@/modules/design-system/components/header-controls";
 import { AppSidebar } from "@/modules/design-system/components/navigation/app-sidebar";
+import { HeaderControls } from "@/modules/design-system/components/navigation/header-controls";
 import "@/modules/design-system/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";

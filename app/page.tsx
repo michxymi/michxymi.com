@@ -82,36 +82,6 @@ export default async function HomePage() {
           />
         </div>
       </div>
-
-      {/* Uses & Currently */}
-      <div className="grid gap-4 md:grid-cols-2">
-        {/* Uses */}
-        <div className="rounded-md border border-border p-6">
-          <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
-            Uses
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <UseItem label="Editor" value="Cursor" />
-            <UseItem label="AI" value="Claude" />
-            <UseItem label="Terminal" value="Warp" />
-            <UseItem label="Browser" value="Arc" />
-          </div>
-        </div>
-
-        {/* Currently */}
-        <div className="rounded-md border border-border p-6">
-          <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
-            Currently
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <UseItem label="Learning" value="Rust" />
-            <UseItem label="Building" value="This site" />
-            <UseItem label="Reading" value="Staff Engineer" />
-            <UseItem label="Watching" value="Severance" />
-          </div>
-        </div>
-      </div>
-
       {/* Recent Posts */}
       {blogPosts.length > 0 && (
         <div className="rounded-md border border-border p-6">
@@ -149,6 +119,34 @@ export default async function HomePage() {
           </div>
         </div>
       )}
+      {/* Uses & Currently */}
+      <div className="grid gap-4 md:grid-cols-2">
+        {/* Uses */}
+        <div className="rounded-md border border-border p-6">
+          <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
+            Uses
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <UseItem label="Editor" value="Cursor" />
+            <UseItem label="AI" value="Claude" />
+            <UseItem label="Terminal" value="Warp" />
+            <UseItem label="Browser" value="Arc" />
+          </div>
+        </div>
+
+        {/* Currently */}
+        <div className="rounded-md border border-border p-6">
+          <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
+            Currently
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <UseItem label="Learning" value="Rust" />
+            <UseItem label="Building" value="This site" />
+            <UseItem label="Reading" value="Staff Engineer" />
+            <UseItem label="Watching" value="Severance" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
