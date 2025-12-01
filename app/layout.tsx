@@ -2,6 +2,7 @@ import { HeaderControls } from "@/modules/design-system/components/header-contro
 import { AppSidebar } from "@/modules/design-system/components/navigation/app-sidebar";
 import "@/modules/design-system/globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/modules/design-system/components/theme-provider";
@@ -67,6 +68,7 @@ export default function RootLayout({
           </SidebarProvider>
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
