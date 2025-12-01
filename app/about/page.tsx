@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { PageHeader } from "@/modules/design-system/components/page-header";
-import { Prose } from "@/modules/design-system/components/prose";
-import { SkillsGrid } from "@/modules/design-system/components/skills-grid";
-import { Separator } from "@/modules/design-system/components/ui/separator";
+import { Prose } from "@/modules/content/components/prose";
+import { SkillsGrid } from "@/modules/content/components/skills-grid";
 import {
   type ExperienceItemType,
   WorkExperience,
-} from "@/modules/design-system/components/work-experience";
+} from "@/modules/content/components/work-experience";
+import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
+import { Separator } from "@/modules/design-system/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "About | Michael Xymitoulias",

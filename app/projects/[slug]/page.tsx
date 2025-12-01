@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { Prose } from "@/modules/content/components/prose";
 import {
   generateProjectStaticParams,
   getProject,
 } from "@/modules/content/lib/projects";
-import { PageHeader } from "@/modules/design-system/components/page-header";
-import { Prose } from "@/modules/design-system/components/prose";
+import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 import { Button } from "@/modules/design-system/components/ui/button";
 
 type Props = {

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BlogCard } from "@/modules/content/components/blog-card";
 import { getAllBlogPosts } from "@/modules/content/lib/blog";
-import { PageHeader } from "@/modules/design-system/components/page-header";
+import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 
 export const metadata: Metadata = {
   title: "Blog | Michael Xymitoulias",

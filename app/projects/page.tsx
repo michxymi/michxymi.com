@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ProjectCard } from "@/modules/content/components/project-card";
 import { getAllProjects } from "@/modules/content/lib/projects";
-import { PageHeader } from "@/modules/design-system/components/page-header";
+import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 
 export const metadata: Metadata = {
   title: "Projects | Michael Xymitoulias",

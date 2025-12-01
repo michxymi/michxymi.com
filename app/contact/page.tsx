@@ -5,7 +5,7 @@ import { ContactForm } from "@/modules/design-system/components/contact-form";
 import { GithubIcon } from "@/modules/design-system/components/icons/github";
 import { LinkedInIcon } from "@/modules/design-system/components/icons/linkedin";
 import { TwitterIcon } from "@/modules/design-system/components/icons/twitter";
-import { PageHeader } from "@/modules/design-system/components/page-header";
+import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 import {
   Card,
   CardContent,
