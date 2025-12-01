@@ -1,17 +1,13 @@
-import { Briefcase, Code, FileText, Layers } from "lucide-react";
+import { Briefcase, Building2, Code, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllBlogPosts } from "@/modules/content/lib/blog";
-import { getAllProjects } from "@/modules/content/lib/projects";
 
 export default async function HomePage() {
-  const [blogPosts, projects] = await Promise.all([
-    getAllBlogPosts(),
-    getAllProjects(),
-  ]);
+  const blogPosts = await getAllBlogPosts();
 
   const yearsExperience = new Date().getFullYear() - 2017;
-  const technologiesCount = 19;
+  const yearsLeading = new Date().getFullYear() - 2021;
 
   const stats = [
     {
@@ -20,18 +16,18 @@ export default async function HomePage() {
       icon: Briefcase,
     },
     {
-      name: "Projects shipped",
-      value: projects.length.toString(),
-      icon: Layers,
+      name: "Years leading teams",
+      value: `${yearsLeading}+`,
+      icon: Users,
     },
     {
-      name: "Blog posts",
-      value: blogPosts.length.toString(),
-      icon: FileText,
+      name: "Industries",
+      value: "4",
+      icon: Building2,
     },
     {
       name: "Technologies",
-      value: technologiesCount.toString(),
+      value: "20+",
       icon: Code,
     },
   ];
