@@ -36,12 +36,12 @@ async function submitForm(
     }
     return {
       success: false,
-      error: "Something went wrong. Please try again.",
+      error: "Something broke. Try again. If it persists, the irony of a contact form preventing contact is not lost on me.",
     };
   } catch {
     return {
       success: false,
-      error: "Failed to send message. Please try again.",
+      error: "Message didn't send. Try again. The internet is having a moment.",
     };
   }
 }
@@ -57,7 +57,7 @@ export function ContactForm() {
       <Card className="border-green-500/20 bg-green-500/10">
         <CardContent className="pt-6">
           <p className="font-display text-green-500 text-sm">
-            Thanks for reaching out! I&apos;ll get back to you soon.
+            Got it. I&apos;ll be in touch. Assuming the internet continues to function.
           </p>
         </CardContent>
       </Card>
@@ -69,8 +69,7 @@ export function ContactForm() {
       <CardHeader>
         <CardTitle className="font-display">Send a Message</CardTitle>
         <CardDescription>
-          Fill out the form below and I&apos;ll get back to you as soon as
-          possible.
+          Form&apos;s below. I&apos;ll get back to you. Unless you&apos;re trying to sell me crypto - in which case, I won&apos;t.
         </CardDescription>
       </CardHeader>
       <CardContent>

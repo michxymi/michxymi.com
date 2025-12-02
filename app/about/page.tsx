@@ -25,8 +25,11 @@ const experiences: ExperienceItemType[] = [
         title: "Technical Software Manager",
         employmentPeriod: "April 2023 – ∞",
         employmentType: "Full-time",
-        description:
-          "Managing a team of 4 build engineers. Built observability and developer tools using React, TypeScript, Electron, and Next.js. Technical lead for C++ library integration using Conan, CMake, Docker, and GitLab CI. Developed CLI tools in Python and cross-platform FPGA tools in GoLang.",
+        description: `I manage a team of four software engineers. This involves the usual suspects: mentoring, objectives, performance reviews, and convincing people that their work matters — because it does.
+
+Most of my time goes into building internal developer tools: log aggregation platforms, deployment management apps, and dashboards that make platform operations slightly less painful. The stack is React, NextJS, Electron, Typescript and Python, depending on what needs hitting.
+
+A significant portion of my sanity has gone into making C++ builds behave like civilized software. Conan, CMake, Docker, Artifactory. Some engineers are converts. Others look at me like I&apos;ve suggested we rewrite everything in Rust.`,
         icon: "code",
         isExpanded: true,
       },
@@ -42,8 +45,11 @@ const experiences: ExperienceItemType[] = [
         title: "Software Engineer & Section Leader",
         employmentPeriod: "November 2021 - April 2023",
         employmentType: "Full-time",
-        description:
-          "Led software development team with mentoring, recruitment, and performance reviews. Key contributor to CorteX robotic middleware, integrating C++ with ROS2, Qt, OPC-UA, and EtherCAT. Established DevOps processes including CI/CD, Git workflows, and Agile practices.",
+        description: `Led a software development team. Mentored engineers, allocated work, ran reviews, hired people. The leadership trifecta.
+
+I was a key contributor to CorteX – RACE's robotic middleware for distributed systems. This meant integrating with ROS2, Qt, OPC-UA, and EtherCAT, plus building interfaces for industrial manipulators using whatever proprietary API the hardware vendor decided to inflict on us.
+
+Helped put CI/CD pipelines and Git workflows in place. Infrastructure work - the sort that only gets mentioned when its missing.`,
         icon: "code",
         isExpanded: true,
       },
@@ -52,8 +58,9 @@ const experiences: ExperienceItemType[] = [
         title: "Control Systems Software Engineer",
         employmentPeriod: "December 2017 - November 2021",
         employmentType: "Full-time",
-        description:
-          "Core team member developing CorteX robotic middleware in modern C++17 and Python. Built GUIs using Qt (QML & Widgets). Implemented unit testing with gTest, QtTest, and Valgrind. Primary technical interface with external partners. Mentored year-in-industry students.",
+        description: `Core team member on CorteX from the early days. Wrote cross-platform code in modern C++ and Python. Built monitoring and control interfaces in Qt. Wrote tests. Ran Valgrind until the memory leaks stopped haunting me.
+
+I was the primary technical contact for external partners and supervised year-in-industry students who were somehow even more confused than I was when I started.`,
         icon: "code",
       },
     ],
@@ -68,7 +75,7 @@ const experiences: ExperienceItemType[] = [
         employmentPeriod: "March 2017 - June 2017",
         employmentType: "Internship",
         description:
-          "Designed and developed company website using WordPress, HTML, CSS, JavaScript, and PHP. Implemented SEO and security enhancements.",
+          "Built the company website. WordPress, HTML, CSS, JavaScript, PHP. Added SEO and security. Worked with marketing on content. Standard internship fare.",
         icon: "code",
       },
     ],
@@ -103,23 +110,32 @@ export default function AboutPage() {
         <Prose>
           <p>
             I&apos;m a Technical Software Manager at Oxford Nanopore
-            Technologies, where I lead a team of build engineers and develop
-            internal developer tools. My background spans robotics, control
-            systems, and modern web development across industries including
-            biotech, nuclear energy, and embedded systems.
+            Technologies. I lead a team of software engineers and make internal
+            developer tools that - ideally - prevent other engineers from
+            wanting to throw their laptops into the sea.
           </p>
           <p>
-            With over 8 years of experience, I&apos;ve worked across the full
-            stack—from C systems programming to React web apps, from writing
-            robotics middleware to Python CLI tools. I&apos;m passionate about
-            developer experience, observability tooling, and building systems
-            that make engineers more productive.
+            My background is a strange cocktail of robotics, control systems,
+            and modern web development. I&apos;ve worked in biotech, nuclear
+            energy, and embedded systems. Yes, nuclear. No, nothing exploded.
+            That I&apos;m aware of.
           </p>
           <p>
-            I hold a BSc in Automation Engineering and have co-authored a
-            publication on CorteX, a distributed robotic systems framework. When
-            I&apos;m not coding or leading teams, I&apos;m exploring AI assisted
-            development and tinker with new technologies.
+            Eight years of doing this has taken me across the entire stack. C
+            systems programming. React web apps. Robotics middleware. Python CLI
+            tools. If it involves making software work - or more often, figuring
+            out why it doesn&apos;t - I&apos;ve probably touched it.
+          </p>
+          <p>
+            I care about developer experience, observability tooling, and
+            building systems that make engineers productive instead of
+            miserable. These are related goals.
+          </p>
+          <p>
+            When I&apos;m not writing code or pretending to know what I&apos;m
+            doing in meetings, I&apos;m exploring AI-assisted development and
+            tinkering with whatever technology seems interesting enough to
+            justify the time investment.
           </p>
         </Prose>
       </section>

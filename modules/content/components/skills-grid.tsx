@@ -9,7 +9,7 @@ import {
 const skillCategories = [
   {
     title: "Languages",
-    skills: ["TypeScript", "Python", "Go", "C++", "C"],
+    skills: ["Typescript", "Javascript", "Python", "Go", "C++", "C"],
   },
   {
     title: "Frontend & Desktop",

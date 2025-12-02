@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { ContactForm } from "@/modules/design-system/components/contact-form";
 import { GithubIcon } from "@/modules/design-system/components/icons/github";
@@ -21,22 +22,22 @@ type IconHandle = {
 
 const socialLinks = [
   {
-    name: "GitHub",
+    name: "Github",
     href: "https://github.com/michxymi",
     icon: GithubIcon,
     description: "@michxymi",
   },
   {
-    name: "LinkedIn",
-    href: "https://linkedin.com/in/michxymi",
-    icon: LinkedInIcon,
-    description: "/in/michxymi",
-  },
-  {
-    name: "Twitter",
-    href: "https://twitter.com/michxymi",
+    name: "X",
+    href: "https://x.com/michxymi",
     icon: TwitterIcon,
     description: "@michxymi",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/mxymitoulias",
+    icon: LinkedInIcon,
+    description: "/in/mxymitoulias",
   },
 ];
 
@@ -44,7 +45,7 @@ function SocialLink({ link }: { link: (typeof socialLinks)[number] }) {
   const iconRef = useRef<IconHandle>(null);
 
   return (
-    <a
+    <Link
       className="group flex items-center gap-3 rounded-lg border border-border p-3 transition-colors hover:bg-muted/30"
       href={link.href}
       onMouseEnter={() => iconRef.current?.startAnimation()}
@@ -60,7 +61,7 @@ function SocialLink({ link }: { link: (typeof socialLinks)[number] }) {
         <div className="font-display text-sm">{link.name}</div>
         <div className="text-muted-foreground text-xs">{link.description}</div>
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -79,17 +80,13 @@ export default function ContactPage() {
           <CardHeader>
             <CardTitle className="font-display">Connect</CardTitle>
             <CardDescription>
-              Find me on social media or send me an email directly.
+              Other ways to find me - if the form felt too formal.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             {socialLinks.map((link) => (
               <SocialLink key={link.name} link={link} />
             ))}
-
-            <p className="pt-2 text-muted-foreground text-xs">
-              I typically respond within 1-2 business days.
-            </p>
           </CardContent>
         </Card>
       </div>
