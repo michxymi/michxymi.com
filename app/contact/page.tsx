@@ -68,7 +68,7 @@ export default function ContactPage() {
   return (
     <div>
       <PageHeader
-        description="Have a question or want to work together? Feel free to reach out."
+        description="You've read this far. Might as well send a message."
         title="Contact"
       />
 

@@ -5,8 +5,7 @@ import { PageHeader } from "@/modules/design-system/components/navigation/page-h
 
 export const metadata: Metadata = {
   title: "Projects | Michael Xymitoulias",
-  description:
-    "Featured projects and work by Michael Xymitoulias - from open source to production applications.",
+  description: "Things I built that didn't immediately catch fire.",
 };
 
 export default async function ProjectsPage() {
@@ -15,7 +14,7 @@ export default async function ProjectsPage() {
   return (
     <div>
       <PageHeader
-        description="A collection of projects I've worked on, from open source contributions to production applications."
+        description="Things I built that didn't immediately catch fire."
         title="Projects"
       />
 

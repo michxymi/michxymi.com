@@ -10,8 +10,7 @@ import { Separator } from "@/modules/design-system/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "About | Michael Xymitoulias",
-  description:
-    "Learn more about Michael Xymitoulias - Technical Software Manager, Software Engineer, and Technical Lead.",
+  description: "Learn more about Michael Xymitoulias",
 };
 
 const experiences: ExperienceItemType[] = [
@@ -95,7 +94,7 @@ export default function AboutPage() {
   return (
     <div>
       <PageHeader
-        description="A bit about me, my skills, and my journey."
+        description="Who I Am - Or at least who I claim to be on the internet."
         title="About"
       />
 

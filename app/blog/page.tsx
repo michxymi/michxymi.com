@@ -6,7 +6,7 @@ import { PageHeader } from "@/modules/design-system/components/navigation/page-h
 export const metadata: Metadata = {
   title: "Blog | Michael Xymitoulias",
   description:
-    "Thoughts on engineering, leadership, and building great software.",
+    "I write words sometimes. You're here now. We both made choices.",
 };
 
 export default async function BlogPage() {
@@ -15,7 +15,7 @@ export default async function BlogPage() {
   return (
     <div>
       <PageHeader
-        description="Thoughts on engineering, leadership, and building great software."
+        description="I write words sometimes. You're here now. We both made choices."
         title="Blog"
       />
 
