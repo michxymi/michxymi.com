@@ -4,7 +4,7 @@ description: "Portfolio and blog in a Vercel-inspired shell, focused on how I ac
 status: "active"
 featured: true
 order: 1
-technologies: ["NextJS", "TypeScript", "Tailwind CSS", "MDX", "Radix UI", "Motion"]
+technologies: ["NextJS", "Typescript", "Tailwind CSS", "MDX", "shadcn/ui", "Motion", "Vercel"]
 liveUrl: "https://michxymi.com"
 repoUrl: "https://github.com/michxymi/michxymi.com"
 ---
@@ -13,7 +13,7 @@ repoUrl: "https://github.com/michxymi/michxymi.com"
 
 This is my home on the internet: portfolio, blog, and mildly opinionated playground for how I like to build things.
 
-It uses a “sidefolio” layout with a persistent sidebar, so you always know where you are and what else you could be clicking instead of reading this sentence.
+It uses a "sidefolio" layout with a persistent sidebar, so you always know where you are and what else you could be clicking instead of reading this sentence. The layout idea came from [Aceternity UI's sidefolio template](https://pro.aceternity.com/products/sidefolio-portfolio-template), though I've taken it in my own direction from there.
 
 The whole thing is built to stay out of the way and make the content and structure do the talking.
 
@@ -57,15 +57,17 @@ The goal is to look considered without needing a design system committee meeting
 
 ### Content Management
 
-All posts and projects live in MDX, so I get Markdown for writing and React components when I need something smarter than text.
+All posts and projects live in [MDX](https://mdxjs.com/), so I get Markdown for writing and React components when I need something smarter than text.
 
-Schemas are defined with Zod and used to validate content at build time, which means the site fails loudly if I mess up frontmatter instead of shipping silent bugs.
+Schemas are defined with [Zod](https://zod.dev/) and used to validate content at build time, which means the site fails loudly if I mess up frontmatter instead of shipping silent bugs.
 
-This keeps the content model honest and the TypeScript types in sync with reality.
+This keeps the content model honest and the Typescript types in sync with reality.
 
 ### Component Architecture
 
-The UI is built on shadcn/ui components, so accessibility and behavior are handled in a consistent way.
+The UI is built on [shadcn/ui](https://ui.shadcn.com/) components, so accessibility and behavior are handled in a consistent way.
+
+I also pulled several components from [chanhdai.com/components](https://chanhdai.com/components) – specifically the work experience timeline, theme switcher, and flip sentences – and drew overall inspiration from the website's polished aesthetics.
 
 From there, I customize styling with Tailwind instead of inventing a new design language every time I add a component.
 
@@ -73,7 +75,7 @@ It gives me a reusable set of building blocks that feel like a product, not a on
 
 ### Performance
 
-The site runs on the NextJS App Router with a bias toward static generation wherever it makes sense.
+The site runs on the [NextJS](https://nextjs.org/) App Router with a bias toward static generation wherever it makes sense.
 
 Fonts are loaded through next/font to avoid layout shifts, and SVG logos handle dark mode through CSS instead of duplicate assets.
 
@@ -81,7 +83,7 @@ Most pages resolve to simple, cacheable output, which keeps things fast without 
 
 ### Animations
 
-Animations are handled with Motion and kept subtle on purpose.
+Animations are handled with [Motion](https://motion.dev/) and kept subtle on purpose.
 
 They add small hints of movement to emphasize interactions, and they automatically back off if the user prefers reduced motion.
 
