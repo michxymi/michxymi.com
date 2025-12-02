@@ -21,9 +21,9 @@ export function NavUser() {
           <div className="grid flex-1 gap-1 text-left leading-tight group-data-[collapsible=icon]:hidden">
             <span className="truncate font-bold">Michael Xymitoulias</span>
             <FlipSentences className="truncate font-semibold text-muted-foreground text-xs">
-              <>Technical Software Manager</>
               <>Software Engineer</>
-              <>Technical Lead</>
+              <>Engineering Manager</>
+              <>Developer Experience Enthusiast</>
             </FlipSentences>
           </div>
         </div>
