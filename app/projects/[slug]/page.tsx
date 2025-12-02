@@ -103,14 +103,14 @@ export default async function ProjectDetailPage({ params }: Props) {
               size="sm"
               variant="default"
             >
-              <a
+              <Link
                 href={project.frontmatter.liveUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 <ExternalLink className="mr-2 h-4 w-4" />
                 Live Demo
-              </a>
+              </Link>
             </Button>
           )}
           {project.frontmatter.repoUrl && (
@@ -120,14 +120,14 @@ export default async function ProjectDetailPage({ params }: Props) {
               size="sm"
               variant="outline"
             >
-              <a
+              <Link
                 href={project.frontmatter.repoUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 <Github className="mr-2 h-4 w-4" />
                 View Code
-              </a>
+              </Link>
             </Button>
           )}
         </div>
