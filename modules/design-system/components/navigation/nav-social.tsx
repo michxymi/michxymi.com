@@ -20,6 +20,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/modules/design-system/components/ui/sidebar";
+import Link from "next/link";
 
 const socialLinks = [
   {
@@ -65,10 +66,10 @@ function NavSocialItem({ item }: { item: (typeof socialLinks)[number] }) {
         onMouseLeave={() => iconRef.current?.stopAnimation()}
         tooltip={item.name}
       >
-        <a href={item.url}>
+        <Link href={item.url} target="_blank" rel="noopener noreferrer">
           <item.icon ref={iconRef} size={16} />
           <span>{item.name}</span>
-        </a>
+        </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
   );
