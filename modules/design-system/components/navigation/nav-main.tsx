@@ -14,6 +14,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/modules/design-system/components/ui/sidebar";
 
 type IconHandle = {
@@ -71,6 +72,13 @@ function NavMainItem({
   pathname: string;
 }) {
   const iconRef = useRef<IconHandle>(null);
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <SidebarMenuItem>
@@ -81,7 +89,7 @@ function NavMainItem({
         onMouseLeave={() => iconRef.current?.stopAnimation()}
         tooltip={item.title}
       >
-        <Link href={item.url}>
+        <Link href={item.url} onClick={handleClick}>
           {item.icon && <item.icon ref={iconRef} size={16} />}
           <span>{item.title}</span>
         </Link>
