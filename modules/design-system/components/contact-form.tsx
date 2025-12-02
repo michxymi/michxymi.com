@@ -21,8 +21,14 @@ async function submitForm(
   _prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  // Replace YOUR_FORM_ID with your actual Formspree form ID
-  const formspreeEndpoint = "https://formspree.io/f/YOUR_FORM_ID";
+  const formspreeEndpoint = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID}`;
+
+  if (!process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID) {
+    return {
+      success: false,
+      error: "Form's broken. And not in a way you can fix. This one's on me.",
+    };
+  }
 
   try {
     const res = await fetch(formspreeEndpoint, {
