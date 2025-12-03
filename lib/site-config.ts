@@ -12,7 +12,7 @@ export const siteConfig = {
     worksFor: "Oxford Nanopore Technologies",
   },
   locale: "en_GB",
-  ogImage: "/og-default.png",
+  ogImage: "/opengraph-image",
   links: {
     github: "https://github.com/michxymi",
     twitter: "https://x.com/michxymi",
