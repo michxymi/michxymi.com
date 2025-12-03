@@ -7,11 +7,14 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site-config";
 import { ThemeProvider } from "@/modules/design-system/components/theme-provider";
 import {
   SidebarInset,
   SidebarProvider,
 } from "@/modules/design-system/components/ui/sidebar";
+import { PersonSchema } from "@/modules/seo/components/person-schema";
+import { WebSiteSchema } from "@/modules/seo/components/website-schema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,9 +28,64 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Michael Xymitoulias",
-  description:
-    "Technical Software Manager, Software Engineer, and Technical Lead",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  authors: [{ name: siteConfig.author.name, url: siteConfig.url }],
+  creator: siteConfig.author.name,
+  keywords: [
+    "software engineering",
+    "technical leadership",
+    "engineering manager",
+    "developer tools",
+    "Typescript",
+    "React",
+    "NextJS",
+  ],
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.author.twitter,
+    creator: siteConfig.author.twitter,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -37,6 +95,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <PersonSchema />
+        <WebSiteSchema />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >

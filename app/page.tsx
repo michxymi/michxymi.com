@@ -1,7 +1,14 @@
 import { Briefcase, Building2, Code, Users } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllBlogPosts } from "@/modules/content/lib/blog";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default async function HomePage() {
   const blogPosts = await getAllBlogPosts();
@@ -69,9 +76,10 @@ export default async function HomePage() {
         </div>
         <div className="overflow-x-auto">
           <Image
-            alt="GitHub Contributions"
+            alt="GitHub Contributions chart showing activity over the past year"
             className="w-full dark:brightness-90 dark:contrast-125 dark:hue-rotate-180 dark:invert"
             height={104}
+            sizes="(max-width: 768px) 100vw, 722px"
             src="https://ghchart.rshah.org/michxymi"
             unoptimized
             width={722}

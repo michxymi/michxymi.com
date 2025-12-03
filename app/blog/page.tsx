@@ -3,10 +3,23 @@ import { BlogCard } from "@/modules/content/components/blog-card";
 import { getAllBlogPosts } from "@/modules/content/lib/blog";
 import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 
+const description =
+  "I write words sometimes. You're here now. We both made choices.";
+
 export const metadata: Metadata = {
-  title: "Blog | Michael Xymitoulias",
-  description:
-    "I write words sometimes. You're here now. We both made choices.",
+  title: "Blog",
+  description,
+  openGraph: {
+    title: "Blog",
+    description,
+  },
+  twitter: {
+    title: "Blog",
+    description,
+  },
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default async function BlogPage() {

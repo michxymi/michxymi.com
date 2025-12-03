@@ -3,9 +3,22 @@ import { ProjectCard } from "@/modules/content/components/project-card";
 import { getAllProjects } from "@/modules/content/lib/projects";
 import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 
+const description = "Things I built that didn't immediately catch fire.";
+
 export const metadata: Metadata = {
-  title: "Projects | Michael Xymitoulias",
-  description: "Things I built that didn't immediately catch fire.",
+  title: "Projects",
+  description,
+  openGraph: {
+    title: "Projects",
+    description,
+  },
+  twitter: {
+    title: "Projects",
+    description,
+  },
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 export default async function ProjectsPage() {

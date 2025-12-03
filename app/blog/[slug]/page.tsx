@@ -8,6 +8,8 @@ import {
   getBlogPost,
 } from "@/modules/content/lib/blog";
 import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
+import { ArticleSchema } from "@/modules/seo/components/article-schema";
+import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
 
 type Props = {
   params: Promise<{
@@ -27,18 +29,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Post Not Found" };
   }
 
+  const { title, description, publishedAt, updatedAt, tags, coverImage } =
+    post.frontmatter;
+
   return {
-    title: `${post.frontmatter.title} | Michael Xymitoulias`,
-    description: post.frontmatter.description,
+    title,
+    description,
+    authors: [{ name: "Michael Xymitoulias" }],
     openGraph: {
       type: "article",
-      title: post.frontmatter.title,
-      description: post.frontmatter.description,
-      publishedTime: post.frontmatter.publishedAt.toISOString(),
-      ...(post.frontmatter.updatedAt && {
-        modifiedTime: post.frontmatter.updatedAt.toISOString(),
+      title,
+      description,
+      url: `/blog/${slug}`,
+      publishedTime: publishedAt.toISOString(),
+      ...(updatedAt && {
+        modifiedTime: updatedAt.toISOString(),
       }),
-      tags: post.frontmatter.tags,
+      authors: ["Michael Xymitoulias"],
+      tags,
+      ...(coverImage && {
+        images: [
+          {
+            url: coverImage,
+            width: 1200,
+            height: 630,
+            alt: title,
+          },
+        ],
+      }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(coverImage && {
+        images: [coverImage],
+      }),
+    },
+    alternates: {
+      canonical: `/blog/${slug}`,
     },
   };
 }
@@ -52,43 +81,52 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <article>
-      <Link
-        className="mb-6 inline-flex items-center gap-1 text-muted-foreground text-sm transition-colors hover:text-primary"
-        href="/blog"
-      >
-        &larr; Back to blog
-      </Link>
+    <>
+      <ArticleSchema post={post} />
+      <BreadcrumbSchema
+        items={[
+          { name: "Blog", url: "/blog" },
+          { name: post.frontmatter.title, url: post.url },
+        ]}
+      />
+      <article>
+        <Link
+          className="mb-6 inline-flex items-center gap-1 text-muted-foreground text-sm transition-colors hover:text-primary"
+          href="/blog"
+        >
+          &larr; Back to blog
+        </Link>
 
-      <header className="mb-8">
-        <PageHeader title={post.frontmatter.title} />
-        <div className="flex items-center gap-3 text-muted-foreground text-sm">
-          <time className="font-mono">
-            {post.frontmatter.publishedAt.toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </time>
-          <span className="font-display">{post.readingTime} min read</span>
-        </div>
-        {post.frontmatter.tags.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
-            {post.frontmatter.tags.map((tag) => (
-              <span
-                className="rounded bg-muted px-2 py-0.5 font-mono text-xs"
-                key={tag}
-              >
-                {tag}
-              </span>
-            ))}
+        <header className="mb-8">
+          <PageHeader title={post.frontmatter.title} />
+          <div className="flex items-center gap-3 text-muted-foreground text-sm">
+            <time className="font-mono">
+              {post.frontmatter.publishedAt.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            <span className="font-display">{post.readingTime} min read</span>
           </div>
-        )}
-      </header>
+          {post.frontmatter.tags.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {post.frontmatter.tags.map((tag) => (
+                <span
+                  className="rounded bg-muted px-2 py-0.5 font-mono text-xs"
+                  key={tag}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </header>
 
-      <Prose>
-        <MDXRemote source={post.content} />
-      </Prose>
-    </article>
+        <Prose>
+          <MDXRemote source={post.content} />
+        </Prose>
+      </article>
+    </>
   );
 }

@@ -7,10 +7,26 @@ import {
 } from "@/modules/content/components/work-experience";
 import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 import { Separator } from "@/modules/design-system/components/ui/separator";
+import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
+import { PersonSchema } from "@/modules/seo/components/person-schema";
+
+const description =
+  "Technical Software Manager at Oxford Nanopore Technologies. Background in robotics, control systems, and web development.";
 
 export const metadata: Metadata = {
-  title: "About | Michael Xymitoulias",
-  description: "Learn more about me",
+  title: "About",
+  description,
+  openGraph: {
+    title: "About",
+    description,
+  },
+  twitter: {
+    title: "About",
+    description,
+  },
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const experiences: ExperienceItemType[] = [
@@ -99,60 +115,64 @@ I was the primary technical contact for external partners and supervised year-in
 
 export default function AboutPage() {
   return (
-    <div>
-      <PageHeader
-        description="Who I Am - Or at least who I claim to be on the internet."
-        title="About"
-      />
+    <>
+      <PersonSchema enhanced />
+      <BreadcrumbSchema items={[{ name: "About", url: "/about" }]} />
+      <div>
+        <PageHeader
+          description="Who I Am - Or at least who I claim to be on the internet."
+          title="About"
+        />
 
-      <section className="mb-12">
-        <h2 className="mb-4 font-display text-lg">Bio</h2>
-        <Prose>
-          <p>
-            I&apos;m a Technical Software Manager at Oxford Nanopore
-            Technologies. I lead a team of software engineers and make internal
-            developer tools that - ideally - prevent other engineers from
-            wanting to throw their laptops into the sea.
-          </p>
-          <p>
-            My background is a strange cocktail of robotics, control systems,
-            and modern web development. I&apos;ve worked in biotech, nuclear
-            energy, and embedded systems. Yes, nuclear. No, nothing exploded.
-            That I&apos;m aware of.
-          </p>
-          <p>
-            Eight years of doing this has taken me across the entire stack. C
-            systems programming. React web apps. Robotics middleware. Python CLI
-            tools. If it involves making software work - or more often, figuring
-            out why it doesn&apos;t - I&apos;ve probably touched it.
-          </p>
-          <p>
-            I care about developer experience, observability tooling, and
-            building systems that make engineers productive instead of
-            miserable. These are related goals.
-          </p>
-          <p>
-            When I&apos;m not writing code or pretending to know what I&apos;m
-            doing in meetings, I&apos;m exploring AI-assisted development and
-            tinkering with whatever technology seems interesting enough to
-            justify the time investment.
-          </p>
-        </Prose>
-      </section>
+        <section className="mb-12">
+          <h2 className="mb-4 font-display text-lg">Bio</h2>
+          <Prose>
+            <p>
+              I&apos;m a Technical Software Manager at Oxford Nanopore
+              Technologies. I lead a team of software engineers and make
+              internal developer tools that - ideally - prevent other engineers
+              from wanting to throw their laptops into the sea.
+            </p>
+            <p>
+              My background is a strange cocktail of robotics, control systems,
+              and modern web development. I&apos;ve worked in biotech, nuclear
+              energy, and embedded systems. Yes, nuclear. No, nothing exploded.
+              That I&apos;m aware of.
+            </p>
+            <p>
+              Eight years of doing this has taken me across the entire stack. C
+              systems programming. React web apps. Robotics middleware. Python
+              CLI tools. If it involves making software work - or more often,
+              figuring out why it doesn&apos;t - I&apos;ve probably touched it.
+            </p>
+            <p>
+              I care about developer experience, observability tooling, and
+              building systems that make engineers productive instead of
+              miserable. These are related goals.
+            </p>
+            <p>
+              When I&apos;m not writing code or pretending to know what I&apos;m
+              doing in meetings, I&apos;m exploring AI-assisted development and
+              tinkering with whatever technology seems interesting enough to
+              justify the time investment.
+            </p>
+          </Prose>
+        </section>
 
-      <Separator className="my-8" />
+        <Separator className="my-8" />
 
-      <section className="mb-12">
-        <h2 className="mb-6 font-display text-lg">Skills & Technologies</h2>
-        <SkillsGrid />
-      </section>
+        <section className="mb-12">
+          <h2 className="mb-6 font-display text-lg">Skills & Technologies</h2>
+          <SkillsGrid />
+        </section>
 
-      <Separator className="my-8" />
+        <Separator className="my-8" />
 
-      <section>
-        <h2 className="mb-6 font-display text-lg">Experience</h2>
-        <WorkExperience experiences={experiences} />
-      </section>
-    </div>
+        <section>
+          <h2 className="mb-6 font-display text-lg">Experience</h2>
+          <WorkExperience experiences={experiences} />
+        </section>
+      </div>
+    </>
   );
 }

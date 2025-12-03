@@ -95,12 +95,12 @@ export function ExperienceItem({
         >
           {experience.companyLogo ? (
             <Image
-              alt={experience.companyName}
+              alt={`${experience.companyName} logo`}
               className="size-6 object-contain dark:invert"
               height={24}
               quality={100}
+              sizes="24px"
               src={experience.companyLogo}
-              unoptimized
               width={24}
             />
           ) : (
