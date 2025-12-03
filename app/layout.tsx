@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/modules/design-system/components/navigation/app-sidebar";
+import { Footer } from "@/modules/design-system/components/navigation/footer";
 import { HeaderControls } from "@/modules/design-system/components/navigation/header-controls";
 import "@/modules/design-system/globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -64,6 +65,7 @@ export default function RootLayout({
                 <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col">
                   {children}
                 </div>
+                <Footer />
               </main>
             </SidebarInset>
           </SidebarProvider>
