@@ -1,9 +1,18 @@
 import { ImageResponse } from "next/og";
-import { getBlogPost } from "@/modules/content/lib/blog";
+import {
+  generateBlogStaticParams,
+  getBlogPost,
+} from "@/modules/content/lib/blog";
 
 export const alt = "Blog post cover image";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Generate OG images at build time for all blog posts
+// biome-ignore lint/suspicious/useAwait: NextJS requires generateStaticParams to be async
+export async function generateStaticParams() {
+  return generateBlogStaticParams();
+}
 
 export default async function OGImage({
   params,
@@ -55,6 +64,7 @@ export default async function OGImage({
       >
         <div
           style={{
+            display: "flex",
             color: "#a1a1aa",
             fontSize: 20,
             textTransform: "uppercase",
@@ -74,6 +84,7 @@ export default async function OGImage({
         />
         <div
           style={{
+            display: "flex",
             color: "#a1a1aa",
             fontSize: 18,
             fontFamily: "monospace",
@@ -93,6 +104,7 @@ export default async function OGImage({
       >
         <div
           style={{
+            display: "flex",
             color: "#ffffff",
             fontSize: 64,
             fontWeight: 700,
@@ -138,10 +150,17 @@ export default async function OGImage({
             MX
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <div style={{ color: "#ffffff", fontSize: 20, fontWeight: 500 }}>
+            <div
+              style={{
+                display: "flex",
+                color: "#ffffff",
+                fontSize: 20,
+                fontWeight: 500,
+              }}
+            >
               Michael Xymitoulias
             </div>
-            <div style={{ color: "#a1a1aa", fontSize: 16 }}>
+            <div style={{ display: "flex", color: "#a1a1aa", fontSize: 16 }}>
               {post.frontmatter.publishedAt.toLocaleDateString("en-US", {
                 month: "long",
                 day: "numeric",
@@ -152,6 +171,7 @@ export default async function OGImage({
         </div>
         <div
           style={{
+            display: "flex",
             color: "#71717a",
             fontSize: 18,
             fontFamily: "monospace",

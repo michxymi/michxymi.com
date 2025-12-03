@@ -1,9 +1,18 @@
 import { ImageResponse } from "next/og";
-import { getProject } from "@/modules/content/lib/projects";
+import {
+  generateProjectStaticParams,
+  getProject,
+} from "@/modules/content/lib/projects";
 
 export const alt = "Project cover image";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Generate OG images at build time for all projects
+// biome-ignore lint/suspicious/useAwait: NextJS requires generateStaticParams to be async
+export async function generateStaticParams() {
+  return generateProjectStaticParams();
+}
 
 export default async function OGImage({
   params,
@@ -66,6 +75,7 @@ export default async function OGImage({
       >
         <div
           style={{
+            display: "flex",
             color: "#a1a1aa",
             fontSize: 20,
             textTransform: "uppercase",
@@ -77,6 +87,7 @@ export default async function OGImage({
         </div>
         <div
           style={{
+            display: "flex",
             background: statusStyle.bg,
             color: statusStyle.text,
             fontSize: 16,
@@ -101,6 +112,7 @@ export default async function OGImage({
       >
         <div
           style={{
+            display: "flex",
             color: "#ffffff",
             fontSize: 56,
             fontWeight: 700,
@@ -112,6 +124,7 @@ export default async function OGImage({
         </div>
         <div
           style={{
+            display: "flex",
             color: "#a1a1aa",
             fontSize: 24,
             lineHeight: 1.4,
@@ -122,47 +135,18 @@ export default async function OGImage({
         </div>
       </div>
 
-      {/* Bottom section with technologies and site */}
+      {/* Bottom section with site name */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           marginTop: 32,
         }}
       >
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          {project.frontmatter.technologies.slice(0, 5).map((tech) => (
-            <div
-              key={tech}
-              style={{
-                background: "#27272a",
-                color: "#ffffff",
-                fontSize: 14,
-                padding: "6px 12px",
-                borderRadius: 4,
-                fontFamily: "monospace",
-              }}
-            >
-              {tech}
-            </div>
-          ))}
-          {project.frontmatter.technologies.length > 5 && (
-            <div
-              style={{
-                background: "#27272a",
-                color: "#a1a1aa",
-                fontSize: 14,
-                padding: "6px 12px",
-                borderRadius: 4,
-              }}
-            >
-              +{project.frontmatter.technologies.length - 5} more
-            </div>
-          )}
-        </div>
         <div
           style={{
+            display: "flex",
             color: "#71717a",
             fontSize: 18,
             fontFamily: "monospace",
