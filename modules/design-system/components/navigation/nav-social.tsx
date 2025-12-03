@@ -2,50 +2,21 @@
 
 import { useRef } from "react";
 import {
-  GithubIcon,
-  type GithubIconHandle,
-} from "@/modules/design-system/components/icons/github";
-import {
-  LinkedInIcon,
-  type LinkedInIconHandle,
-} from "@/modules/design-system/components/icons/linkedin";
-import {
-  TwitterIcon,
-  type TwitterIconHandle,
-} from "@/modules/design-system/components/icons/twitter";
-import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/modules/design-system/components/ui/sidebar";
+import { SOCIAL_LINKS, type SocialIconHandle } from "@/modules/design-system/lib/social-links";
 import Link from "next/link";
-
-const socialLinks = [
-  {
-    name: "Github",
-    url: "https://github.com/michxymi",
-    icon: GithubIcon,
-  },
-  {
-    name: "X",
-    url: "https://x.com/michxymi",
-    icon: TwitterIcon,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/mxymitoulias/",
-    icon: LinkedInIcon,
-  },
-] as const;
 
 export function NavSocial() {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Social</SidebarGroupLabel>
       <SidebarMenu>
-        {socialLinks.map((item) => (
+        {SOCIAL_LINKS.map((item) => (
           <NavSocialItem item={item} key={item.name} />
         ))}
       </SidebarMenu>
@@ -53,10 +24,8 @@ export function NavSocial() {
   );
 }
 
-function NavSocialItem({ item }: { item: (typeof socialLinks)[number] }) {
-  const iconRef = useRef<
-    GithubIconHandle | LinkedInIconHandle | TwitterIconHandle
-  >(null);
+function NavSocialItem({ item }: { item: (typeof SOCIAL_LINKS)[number] }) {
+  const iconRef = useRef<SocialIconHandle>(null);
 
   return (
     <SidebarMenuItem>
