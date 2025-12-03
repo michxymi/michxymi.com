@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow@1.2.1 pnpm",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -51,5 +52,11 @@
     "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
       "pnpm dlx ultracite fix"
     ]
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
   }
 }
