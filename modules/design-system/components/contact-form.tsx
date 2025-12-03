@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { Button } from "@/modules/design-system/components/ui/button";
 import {
@@ -124,6 +125,13 @@ export function ContactForm() {
           <Button className="font-display" disabled={isPending} type="submit">
             {isPending ? "Sending..." : "Send Message"}
           </Button>
+          <p className="text-muted-foreground text-xs">
+            By submitting, you agree to the{" "}
+            <Link className="underline hover:text-primary" href="/privacy-policy">
+              Privacy Policy
+            </Link>
+            .
+          </p>
           {state.error && (
             <p className="text-destructive text-sm">{state.error}</p>
           )}
