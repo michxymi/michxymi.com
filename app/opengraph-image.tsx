@@ -28,7 +28,7 @@ export default function OGImage() {
           marginBottom: 32,
         }}
       >
-        Personal Website
+        Portfolio
       </div>
 
       {/* Name and title */}
@@ -61,29 +61,19 @@ export default function OGImage() {
             lineHeight: 1.4,
           }}
         >
-          Technical Software Manager & Engineer
+          Software Engineer · Engineering Manager
         </div>
       </div>
 
-      {/* Bottom section with skills and site */}
+      {/* Bottom section with site */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           marginTop: 32,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            color: "#71717a",
-            fontSize: 18,
-            fontFamily: "monospace",
-          }}
-        >
-          TypeScript • React • Next.js • Python
-        </div>
         <div
           style={{
             display: "flex",
