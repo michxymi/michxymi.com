@@ -31,7 +31,7 @@ export function PersonSchema({ enhanced = false }: PersonSchemaProps) {
         "NextJS",
       ],
       description:
-        "Technical Software Manager with expertise in developer tools, software engineering, and technical leadership.",
+        "Full Stack Software Engineer and Engineering Manager with expertise in developer tools, web applications, and technical leadership.",
     }),
   };
 

@@ -2,8 +2,7 @@ import { getAllBlogPosts } from "@/modules/content/lib/blog";
 
 const BASE_URL = "https://michxymi.com";
 const SITE_NAME = "Michael Xymitoulias";
-const SITE_DESCRIPTION =
-  "Technical Software Manager, Software Engineer, and Technical Lead";
+const SITE_DESCRIPTION = "Full Stack Software Engineer and Engineering Manager";
 
 export async function GET() {
   const posts = await getAllBlogPosts({ includeDrafts: false, limit: 20 });

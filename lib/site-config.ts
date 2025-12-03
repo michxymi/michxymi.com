@@ -2,13 +2,12 @@ import { SOCIAL_LINKS } from "@/modules/design-system/lib/social-links";
 
 export const siteConfig = {
   name: "Michael Xymitoulias",
-  description:
-    "Technical Software Manager, Software Engineer, and Technical Lead",
+  description: "Full Stack Software Engineer and Engineering Manager",
   url: "https://michxymi.com",
   author: {
     name: "Michael Xymitoulias",
     twitter: "@michxymi",
-    jobTitle: "Technical Software Manager",
+    jobTitle: "Full Stack Software Engineer and Engineering Manager",
     worksFor: "Oxford Nanopore Technologies",
   },
   locale: "en_GB",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Prose } from "@/modules/content/components/prose";
 import { SkillsGrid } from "@/modules/content/components/skills-grid";
 import {
@@ -11,7 +12,7 @@ import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
 import { PersonSchema } from "@/modules/seo/components/person-schema";
 
 const description =
-  "Technical Software Manager at Oxford Nanopore Technologies. Background in robotics, control systems, and web development.";
+  "Full Stack Software Engineer and Engineering Manager at Oxford Nanopore Technologies. Background in robotics, control systems, and web development.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -128,16 +129,17 @@ export default function AboutPage() {
           <h2 className="mb-4 font-display text-lg">Bio</h2>
           <Prose>
             <p>
-              I&apos;m a Technical Software Manager at Oxford Nanopore
-              Technologies. I lead a team of software engineers and make
-              internal developer tools that - ideally - prevent other engineers
-              from wanting to throw their laptops into the sea.
-            </p>
-            <p>
-              My background is a strange cocktail of robotics, control systems,
-              and modern web development. I&apos;ve worked in biotech, nuclear
-              energy, and embedded systems. Yes, nuclear. No, nothing exploded.
-              That I&apos;m aware of.
+              I&apos;m a Technical Software Manager at{" "}
+              <Link
+                href="https://nanoporetech.com/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Oxford Nanopore Technologies
+              </Link>
+              . I lead a team of software engineers and make internal developer
+              tools that - ideally - prevent other engineers from wanting to
+              throw their laptops into the sea.
             </p>
             <p>
               Eight years of doing this has taken me across the entire stack. C
