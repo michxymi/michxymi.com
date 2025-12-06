@@ -62,18 +62,9 @@ const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
   const iconVariants: Variants = {
    normal: { scale: 1, rotate: 0 },
    animate: {
-    scale: [1, 1.08, 0.95, 1],
-    rotate: [0, -3, 3, 0],
-    transition: { duration: 1.3 * duration, ease: "easeInOut", repeat: 0 },
-   },
-  };
-
-  const drawVariants: Variants = {
-   normal: { pathLength: 1, opacity: 1 },
-   animate: {
-    pathLength: [0, 1],
-    opacity: [0.7, 1],
-    transition: { duration: 1.5 * duration, ease: "easeInOut", repeat: 0 },
+    scale: [1, 1.15, 1],
+    rotate: [0, -5, 5, 0],
+    transition: { duration: 0.5 * duration, ease: "easeOut" as const },
    },
   };
 
@@ -84,30 +75,22 @@ const LinkedInIcon = forwardRef<LinkedInIconHandle, LinkedInIconProps>(
     onMouseLeave={handleLeave}
     {...props}
    >
-    <motion.svg
+    <svg
      xmlns="http://www.w3.org/2000/svg"
      width={size}
      height={size}
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     strokeWidth="2"
-     strokeLinecap="round"
+     viewBox="0 0 16 16"
+     fill="currentColor"
      strokeLinejoin="round"
-     animate={controls}
-     initial="normal"
-     variants={iconVariants}
     >
-     <motion.path
-      d="M16 8a6 6 0 0 1 6 6v7h-4v-7
-              a2 2 0 0 0-2-2 
-              2 2 0 0 0-2 2v7h-4v-7
-              a6 6 0 0 1 6-6z"
-      variants={drawVariants}
-     />
-     <motion.rect width="4" height="12" x="2" y="9" variants={drawVariants} />
-     <motion.circle cx="4" cy="4" r="2" variants={drawVariants} />
-    </motion.svg>
+     <motion.g variants={iconVariants} initial="normal" animate={controls}>
+      <path
+       fillRule="evenodd"
+       clipRule="evenodd"
+       d="M2 0C0.895431 0 0 0.895431 0 2V14C0 15.1046 0.895431 16 2 16H14C15.1046 16 16 15.1046 16 14V2C16 0.895431 15.1046 0 14 0H2ZM5 6.75V13H3V6.75H5ZM5 4.50008C5 5.05554 4.61409 5.5 3.99408 5.5H3.98249C3.38582 5.5 3 5.05554 3 4.50008C3 3.93213 3.39765 3.5 4.00584 3.5C4.61409 3.5 4.98845 3.93213 5 4.50008ZM8.5 13H6.5C6.5 13 6.53178 7.43224 6.50007 6.75H8.5V7.78371C8.5 7.78371 9 6.75 10.5 6.75C12 6.75 13 7.59782 13 9.83107V13H11V10.1103C11 10.1103 11 8.46616 9.7361 8.46616C8.4722 8.46616 8.5 9.93972 8.5 9.93972V13Z"
+      />
+     </motion.g>
+    </svg>
    </motion.div>
   );
  },

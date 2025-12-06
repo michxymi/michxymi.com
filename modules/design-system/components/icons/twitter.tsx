@@ -59,22 +59,12 @@ const TwitterIcon = forwardRef<TwitterIconHandle, TwitterIconProps>(
    [controls, onMouseLeave],
   );
 
-  const svgVariants: Variants = {
-   normal: { y: 0, scale: 1, rotate: 0 },
+  const iconVariants: Variants = {
+   normal: { scale: 1, rotate: 0 },
    animate: {
-    y: [0, -4, 0, -2, 0],
-    scale: [1, 1.08, 0.95, 1],
-    rotate: [0, -2, 2, 0],
-    transition: { duration: 1.2 * duration, ease: "easeInOut" },
-   },
-  };
-
-  const pathVariants: Variants = {
-   normal: { opacity: 1, scale: 1 },
-   animate: {
-    opacity: [0.9, 1, 1],
-    scale: [1, 1.12, 1],
-    transition: { duration: 0.8 * duration, ease: "easeOut", delay: 0.15 },
+    scale: [1, 1.15, 1],
+    rotate: [0, -5, 5, 0],
+    transition: { duration: 0.5 * duration, ease: "easeOut" as const },
    },
   };
 
@@ -85,26 +75,22 @@ const TwitterIcon = forwardRef<TwitterIconHandle, TwitterIconProps>(
     onMouseLeave={handleLeave}
     {...props}
    >
-    <motion.svg
+    <svg
      xmlns="http://www.w3.org/2000/svg"
-     stroke="currentColor"
-     fill="currentColor"
-     viewBox="0 0 512 512"
-     height={size}
      width={size}
-     animate={controls}
-     initial="normal"
-     variants={svgVariants}
+     height={size}
+     viewBox="0 0 16 16"
+     fill="currentColor"
+     strokeLinejoin="round"
     >
-     <motion.path
-      d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 
-               106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 
-               389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-      variants={pathVariants}
-      initial="normal"
-      animate={controls}
-     />
-    </motion.svg>
+     <motion.g variants={iconVariants} initial="normal" animate={controls}>
+      <path
+       fillRule="evenodd"
+       clipRule="evenodd"
+       d="M0.5 0.5H5.75L9.48421 5.71053L14 0.5H16L10.3895 6.97368L16.5 15.5H11.25L7.51579 10.2895L3 15.5H1L6.61053 9.02632L0.5 0.5ZM12.0204 14L3.42043 2H4.97957L13.5796 14H12.0204Z"
+      />
+     </motion.g>
+    </svg>
    </motion.div>
   );
  },

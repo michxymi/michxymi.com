@@ -59,41 +59,16 @@ const StatsIcon = forwardRef<StatsIconHandle, StatsIconProps>(
       [controls, onMouseLeave],
     );
 
-    const lineVariants: Variants = {
-      normal: { pathLength: 1, opacity: 1 },
+    const iconVariants: Variants = {
+      normal: { scale: 1, y: 0 },
       animate: {
-        pathLength: [0.6, 1],
-        opacity: [0.4, 1],
+        scale: [1, 1.1, 1],
+        y: [0, -2, 0],
         transition: {
-          duration: 0.8 * duration,
-          ease: "easeInOut",
+          duration: 0.5 * duration,
+          ease: "easeOut" as const,
         },
       },
-    };
-
-    const dotVariants: Variants = {
-      normal: { scale: 1, opacity: 1 },
-      animate: {
-        scale: [0.8, 1.1, 1],
-        opacity: [0.5, 1, 1],
-        transition: {
-          duration: 0.6 * duration,
-          ease: "easeInOut",
-          times: [0, 0.6, 1],
-        },
-      },
-    };
-
-    const barVariants: Variants = {
-      normal: { scaleY: 1, originY: 1 },
-      animate: (index = 0) => ({
-        scaleY: [0.7, 1.1, 1],
-        transition: {
-          duration: 0.65 * duration,
-          ease: "easeOut",
-          delay: 0.07 * Number(index),
-        },
-      }),
     };
 
     return (
@@ -103,55 +78,22 @@ const StatsIcon = forwardRef<StatsIconHandle, StatsIconProps>(
         onMouseLeave={handleLeave}
         {...props}
       >
-        <motion.svg
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
+          viewBox="0 0 16 16"
+          fill="currentColor"
           strokeLinejoin="round"
         >
-          <motion.path
-            d="M4 19v-7l4 3 5-6 7 5"
-            variants={lineVariants}
-            initial="normal"
-            animate={controls}
-          />
-          <motion.g variants={dotVariants} initial="normal" animate={controls}>
-            <motion.circle cx="8" cy="15" r="0.8" />
-            <motion.circle cx="13" cy="9" r="0.8" />
-            <motion.circle cx="20" cy="14" r="0.8" />
-          </motion.g>
-          <motion.g initial="normal" animate={controls}>
-            <motion.rect
-              x="4"
-              y="19"
-              width="4"
-              height="1"
-              variants={barVariants}
-              custom={0}
-            />
-            <motion.rect
-              x="10"
-              y="19"
-              width="4"
-              height="1"
-              variants={barVariants}
-              custom={1}
-            />
-            <motion.rect
-              x="16"
-              y="19"
-              width="4"
-              height="1"
-              variants={barVariants}
-              custom={2}
+          <motion.g variants={iconVariants} initial="normal" animate={controls}>
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M14 1V1.75V14.25V15H12.5V14.25V1.75V1H14ZM8.75 6V6.75V14.25V15H7.25V14.25V6.75V6H8.75ZM3.5 10.75V10H2V10.75V14.25V15H3.5V14.25V10.75Z"
             />
           </motion.g>
-        </motion.svg>
+        </svg>
       </motion.div>
     );
   },

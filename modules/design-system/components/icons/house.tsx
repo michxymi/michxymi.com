@@ -59,53 +59,14 @@ const HouseIcon = forwardRef<HouseHandle, HouseProps>(
    [controls, onMouseLeave],
   );
 
-  const houseOutlineVariants: Variants = {
-   normal: { strokeDashoffset: 0, opacity: 1 },
+  const iconVariants: Variants = {
+   normal: { scale: 1, rotate: 0 },
    animate: {
-    strokeDashoffset: [100, 0],
-    opacity: [0.35, 1],
-    transition: {
-     duration: 0.8 * duration,
-     ease: "easeInOut" as const,
-    },
-   },
-  };
-
-  const doorVariants: Variants = {
-   normal: { scaleY: 1, opacity: 1 },
-   animate: {
-    scaleY: [0.6, 1.15, 1],
-    opacity: [0, 1],
+    scale: [1, 1.15, 1],
+    rotate: [0, -3, 3, 0],
     transition: {
      duration: 0.5 * duration,
-     delay: 0.45,
      ease: "easeOut" as const,
-    },
-   },
-  };
-
-  const smokeVariants: Variants = {
-   normal: { opacity: 0, y: 0, scale: 0.8 },
-   animate: {
-    opacity: [0, 0.7, 0],
-    y: [-2, -6, -10],
-    scale: [0.8, 1, 1.1],
-    transition: {
-     duration: 1.1 * duration,
-     delay: 0.3,
-     ease: "easeInOut" as const,
-    },
-   },
-  };
-
-  const wiggleVariants: Variants = {
-   normal: { rotate: 0, scale: 1 },
-   animate: {
-    rotate: [0, -1.5, 1.5, 0],
-    scale: [1, 1.02, 1],
-    transition: {
-     duration: 0.6 * duration,
-     ease: "easeInOut" as const,
     },
    },
   };
@@ -117,41 +78,22 @@ const HouseIcon = forwardRef<HouseHandle, HouseProps>(
     onMouseLeave={handleLeave}
     {...props}
    >
-    <motion.svg
+    <svg
      xmlns="http://www.w3.org/2000/svg"
      width={size}
      height={size}
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     strokeWidth="2"
-     strokeLinecap="round"
+     viewBox="0 0 16 16"
+     fill="currentColor"
      strokeLinejoin="round"
-     className="lucide lucide-house-icon lucide-house"
     >
-     <motion.g variants={wiggleVariants} initial="normal" animate={controls}>
-      <motion.path
-       d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-       strokeDasharray="100"
-       strokeDashoffset="100"
-       variants={houseOutlineVariants}
-       initial="normal"
-       animate={controls}
-      />
-      <motion.path
-       d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"
-       variants={doorVariants}
-       initial="normal"
-       animate={controls}
+     <motion.g variants={iconVariants} initial="normal" animate={controls}>
+      <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+       d="M12.5 6.56062L8.00001 2.06062L3.50001 6.56062V13.5L6.00001 13.5V11C6.00001 9.89539 6.89544 8.99996 8.00001 8.99996C9.10458 8.99996 10 9.89539 10 11V13.5L12.5 13.5V6.56062ZM13.78 5.71933L8.70711 0.646409C8.31659 0.255886 7.68342 0.255883 7.2929 0.646409L2.21987 5.71944C2.21974 5.71957 2.21961 5.7197 2.21949 5.71982L0.469676 7.46963L-0.0606537 7.99996L1.00001 9.06062L1.53034 8.53029L2.00001 8.06062V14.25V15H2.75001L6.00001 15H7.50001H8.50001H10L13.25 15H14V14.25V8.06062L14.4697 8.53029L15 9.06062L16.0607 7.99996L15.5303 7.46963L13.7806 5.71993C13.7804 5.71973 13.7802 5.71953 13.78 5.71933ZM8.50001 11V13.5H7.50001V11C7.50001 10.7238 7.72386 10.5 8.00001 10.5C8.27615 10.5 8.50001 10.7238 8.50001 11Z"
       />
      </motion.g>
-
-     <motion.g variants={smokeVariants} initial="normal" animate={controls}>
-      <motion.circle cx="16.5" cy="6" r="0.8" />
-      <motion.circle cx="17.5" cy="4.5" r="0.6" />
-      <motion.circle cx="18.3" cy="3.2" r="0.45" />
-     </motion.g>
-    </motion.svg>
+    </svg>
    </motion.div>
   );
  },

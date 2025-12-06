@@ -29,7 +29,7 @@ const FolderIcon = forwardRef<FolderIconHandle, FolderIconProps>(
   },
   ref,
  ) => {
-  const folderControls = useAnimation();
+  const controls = useAnimation();
   const reduced = useReducedMotion();
   const isControlled = useRef(false);
 
@@ -37,41 +37,35 @@ const FolderIcon = forwardRef<FolderIconHandle, FolderIconProps>(
    isControlled.current = true;
    return {
     startAnimation: () =>
-     reduced ? folderControls.start("normal") : folderControls.start("animate"),
-    stopAnimation: () => folderControls.start("normal"),
+     reduced ? controls.start("normal") : controls.start("animate"),
+    stopAnimation: () => controls.start("normal"),
    };
   });
 
   const handleEnter = useCallback(
    (e?: React.MouseEvent<HTMLDivElement>) => {
     if (!isAnimated || reduced) return;
-    if (!isControlled.current) {
-     folderControls.start("animate");
-    } else {
-     onMouseEnter?.(e as any);
-    }
+    if (!isControlled.current) controls.start("animate");
+    else onMouseEnter?.(e as any);
    },
-   [folderControls, reduced, onMouseEnter, isAnimated],
+   [controls, reduced, onMouseEnter, isAnimated],
   );
 
   const handleLeave = useCallback(
    (e?: React.MouseEvent<HTMLDivElement>) => {
-    if (!isControlled.current) {
-     folderControls.start("normal");
-    } else {
-     onMouseLeave?.(e as any);
-    }
+    if (!isControlled.current) controls.start("normal");
+    else onMouseLeave?.(e as any);
    },
-   [folderControls, onMouseLeave],
+   [controls, onMouseLeave],
   );
 
-  const folderVariants: Variants = {
+  const iconVariants: Variants = {
    normal: { scale: 1, rotate: 0, y: 0 },
    animate: {
-    scale: [1, 1.05, 0.98, 1],
-    rotate: [0, -2, 2, 0],
-    y: [0, -2, 1, 0],
-    transition: { duration: 0.9 * duration, ease: "easeInOut" },
+    scale: [1, 1.1, 1],
+    rotate: [0, -3, 3, 0],
+    y: [0, -2, 0],
+    transition: { duration: 0.5 * duration, ease: "easeOut" as const },
    },
   };
 
@@ -82,27 +76,22 @@ const FolderIcon = forwardRef<FolderIconHandle, FolderIconProps>(
     onMouseLeave={handleLeave}
     {...props}
    >
-    <motion.svg
+    <svg
      xmlns="http://www.w3.org/2000/svg"
      width={size}
      height={size}
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     strokeWidth="2"
-     strokeLinecap="round"
+     viewBox="0 0 16 16"
+     fill="currentColor"
      strokeLinejoin="round"
-     animate={folderControls}
-     initial="normal"
-     variants={folderVariants}
     >
-     <motion.path
-      d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"
-      initial="normal"
-      animate={folderControls}
-      variants={folderVariants}
-     />
-    </motion.svg>
+     <motion.g variants={iconVariants} initial="normal" animate={controls}>
+      <path
+       fillRule="evenodd"
+       clipRule="evenodd"
+       d="M13.5 4V6H2.5V2.5H6L7.33333 3.5C7.76607 3.82456 8.29241 4 8.83333 4H13.5ZM1 6V2.5V1H2.5H6.16667C6.38304 1 6.59357 1.07018 6.76667 1.2L8.23333 2.3C8.40643 2.42982 8.61696 2.5 8.83333 2.5H13.5H15V4V6H16L15.8333 7.5L15.2471 12.7761C15.1064 14.0422 14.0363 15 12.7624 15H3.23761C1.96373 15 0.893573 14.0422 0.752898 12.7761L0.166667 7.5L0 6H1ZM14 7.5H2H1.6759L2.24372 12.6104C2.29999 13.1169 2.72806 13.5 3.23761 13.5H12.7624C13.2719 13.5 13.7 13.1169 13.7563 12.6104L14.3241 7.5H14Z"
+      />
+     </motion.g>
+    </svg>
    </motion.div>
   );
  },
