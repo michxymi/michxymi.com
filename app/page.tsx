@@ -15,14 +15,14 @@ const description =
   "Full Stack Software Engineer and Engineering Manager at Oxford Nanopore Technologies. Background in robotics, control systems, and web development.";
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "About",
   description,
   openGraph: {
-    title: "Home",
+    title: "About",
     description,
   },
   twitter: {
-    title: "Home",
+    title: "About",
     description,
   },
   alternates: {
@@ -114,7 +114,7 @@ I was the primary technical contact for external partners and supervised year-in
   },
 ];
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <>
       <PersonSchema enhanced />
@@ -122,7 +122,7 @@ export default function HomePage() {
       <div>
         <PageHeader
           description="Who I am—the version polished just enough for the front page."
-          title="Home"
+          title="About"
         />
 
         <section className="mb-12">

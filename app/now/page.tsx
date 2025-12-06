@@ -5,25 +5,25 @@ import Link from "next/link";
 import { getAllBlogPosts } from "@/modules/content/lib/blog";
 
 const description =
-  "Stats, activity, and tools I rely on right now — a quick snapshot before you dive deeper.";
+  "What's happening now — a quick snapshot before you dive deeper.";
 
 export const metadata: Metadata = {
-  title: "Stats",
+  title: "Now",
   description,
   alternates: {
-    canonical: "/stats",
+    canonical: "/now",
   },
   openGraph: {
-    title: "Stats",
+    title: "Now",
     description,
   },
   twitter: {
-    title: "Stats",
+    title: "Now",
     description,
   },
 };
 
-export default async function StatsPage() {
+export default async function NowPage() {
   const blogPosts = await getAllBlogPosts();
 
   const yearsExperience = new Date().getFullYear() - 2017;
@@ -107,10 +107,16 @@ export default async function StatsPage() {
           </div>
           <div className="space-y-3">
             {blogPosts.slice(0, 3).map((post, index) => (
-              <Link className="group flex items-start gap-3" href={post.url} key={post.slug}>
+              <Link
+                className="group flex items-start gap-3"
+                href={post.url}
+                key={post.slug}
+              >
                 <span
                   className={`mt-1.5 size-2 shrink-0 rounded-full ${
-                    index === 0 ? "bg-primary" : "border border-muted-foreground"
+                    index === 0
+                      ? "bg-primary"
+                      : "border border-muted-foreground"
                   }`}
                 />
                 <div className="min-w-0 flex-1">

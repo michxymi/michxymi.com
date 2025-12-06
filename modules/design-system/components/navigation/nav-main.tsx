@@ -25,13 +25,13 @@ type IconHandle = {
 
 export const navMainData = [
   {
-    title: "Home",
+    title: "About",
     url: "/",
     icon: HouseIcon,
   },
   {
-    title: "Stats",
-    url: "/stats",
+    title: "Now",
+    url: "/now",
     icon: StatsIcon,
   },
   {
