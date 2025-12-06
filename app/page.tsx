@@ -15,14 +15,14 @@ const description =
   "Full Stack Software Engineer and Engineering Manager at Oxford Nanopore Technologies. Background in robotics, control systems, and web development.";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Home",
   description,
   openGraph: {
-    title: "About",
+    title: "Home",
     description,
   },
   twitter: {
-    title: "About",
+    title: "Home",
     description,
   },
   alternates: {
@@ -114,15 +114,15 @@ I was the primary technical contact for external partners and supervised year-in
   },
 ];
 
-export default function AboutPage() {
+export default function HomePage() {
   return (
     <>
       <PersonSchema enhanced />
       <BreadcrumbSchema items={[]} />
       <div>
         <PageHeader
-          description="Who I Am - Or at least who I claim to be on the internet."
-          title="About"
+          description="Who I am—the version polished just enough for the front page."
+          title="Home"
         />
 
         <section className="mb-12">
