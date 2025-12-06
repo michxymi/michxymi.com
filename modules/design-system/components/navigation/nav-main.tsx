@@ -7,6 +7,7 @@ import { BookOpenIcon } from "@/modules/design-system/components/icons/book-open
 import { FolderIcon } from "@/modules/design-system/components/icons/folder";
 import { HouseIcon } from "@/modules/design-system/components/icons/house";
 import { MailIcon } from "@/modules/design-system/components/icons/mail";
+import { StatsIcon } from "@/modules/design-system/components/icons/stats";
 import { UserIcon } from "@/modules/design-system/components/icons/user";
 
 import {
@@ -29,9 +30,9 @@ export const navMainData = [
     icon: HouseIcon,
   },
   {
-    title: "About",
-    url: "/about",
-    icon: UserIcon,
+    title: "Stats",
+    url: "/stats",
+    icon: StatsIcon,
   },
   {
     title: "Projects",
