@@ -157,10 +157,10 @@ export default async function NowPage() {
             Currently
           </div>
           <div className="grid grid-cols-2 gap-4">
+            <UseItem label="Working at" value="Oxford Nanopore Technologies" />
+            <UseItem label="Living in" value="Witney, UK" />
             <UseItem label="Learning" value="Tanstack Start" />
             <UseItem label="Building" value="This site" />
-            <UseItem label="Listening" value="Lex Friedman Podcast" />
-            <UseItem label="Watching" value="Xmas Movies" />
           </div>
         </div>
       </div>
