@@ -12,7 +12,7 @@ type BreadcrumbSchemaProps = {
 
 export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
   const breadcrumbItems = [
-    { name: "Home", url: SEO_CONFIG.url },
+    { name: "About", url: SEO_CONFIG.url },
     ...items.map((item) => ({
       ...item,
       url: item.url.startsWith("http")

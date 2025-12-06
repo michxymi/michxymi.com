@@ -24,14 +24,14 @@ type IconHandle = {
 
 export const navMainData = [
   {
-    title: "Home",
+    title: "About",
     url: "/",
-    icon: HouseIcon,
+    icon: UserIcon,
   },
   {
-    title: "About",
-    url: "/about",
-    icon: UserIcon,
+    title: "Stats",
+    url: "/stats",
+    icon: HouseIcon,
   },
   {
     title: "Projects",
