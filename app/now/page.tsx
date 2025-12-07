@@ -6,7 +6,7 @@ import { getAllBlogPosts } from "@/modules/content/lib/blog";
 import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 
 const description =
-  "What's happening now — a quick snapshot before you dive deeper.";
+  "A snapshot of what's happening. Before you commit to reading anything else.";
 
 export const metadata: Metadata = {
   title: "Now",
@@ -164,12 +164,9 @@ export default async function NowPage() {
               Currently
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <UseItem
-                label="Working at"
-                value="Oxford Nanopore Technologies"
-              />
-              <UseItem label="Living in" value="Witney, UK" />
-              <UseItem label="Learning" value="Tanstack Start" />
+              <UseItem label="Reading" value="Atomic Habits" />
+              <UseItem label="Listening" value="Lex Friedman #475" />
+              <UseItem label="Exploring" value="Cloudflare Hyperdrive" />
               <UseItem label="Building" value="This site" />
             </div>
           </div>
