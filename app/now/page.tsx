@@ -1,4 +1,3 @@
-import { Briefcase, Building2, Code, Users } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,55 +26,39 @@ export const metadata: Metadata = {
 export default async function NowPage() {
   const blogPosts = await getAllBlogPosts();
 
-  const yearsExperience = new Date().getFullYear() - 2017;
-  const yearsLeading = new Date().getFullYear() - 2021;
-
-  const stats = [
-    {
-      name: "Years of experience",
-      value: `${yearsExperience}+`,
-      icon: Briefcase,
-    },
-    {
-      name: "Years leading teams",
-      value: `${yearsLeading}+`,
-      icon: Users,
-    },
-    {
-      name: "Industries",
-      value: "4",
-      icon: Building2,
-    },
-    {
-      name: "Technologies",
-      value: "20+",
-      icon: Code,
-    },
-  ];
-
   return (
     <div>
       <PageHeader description={description} title="Now" />
 
       <div className="space-y-4">
-        {/* Stats Grid */}
-        <div className="grid w-full grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {stats.map((stat) => (
-            <div
-              className="flex flex-col justify-between gap-0 rounded-md border border-border p-6"
-              key={stat.name}
-            >
-              <stat.icon className="mb-10 size-4 text-primary" />
-              <h2 className="flex max-w-xl flex-row items-end gap-4 text-left font-display text-4xl tracking-tighter">
-                {stat.value}
-              </h2>
-              <p className="max-w-xl text-left text-muted-foreground leading-relaxed tracking-tight">
-                {stat.name}
-              </p>
+        {/* Uses & Currently */}
+        <div className="grid gap-4 md:grid-cols-2">
+          {/* Uses */}
+          <div className="rounded-md border border-border p-6">
+            <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
+              Uses
             </div>
-          ))}
-        </div>
+            <div className="grid grid-cols-2 gap-4">
+              <UseItem label="Editor" value="Cursor" />
+              <UseItem label="AI" value="Claude" />
+              <UseItem label="Terminal" value="Ghostty" />
+              <UseItem label="Notes" value="Obsidian" />
+            </div>
+          </div>
 
+          {/* Currently */}
+          <div className="rounded-md border border-border p-6">
+            <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
+              Currently
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <UseItem label="Reading" value="Atomic Habits" />
+              <UseItem label="Listening" value="Lex Friedman #475" />
+              <UseItem label="Exploring" value="Cloudflare Hyperdrive" />
+              <UseItem label="Building" value="This site" />
+            </div>
+          </div>
+        </div>
         {/* GitHub Contributions */}
         <div className="rounded-md border border-border p-6">
           <div className="mb-4 flex items-center justify-between">
@@ -143,34 +126,6 @@ export default async function NowPage() {
             </div>
           </div>
         )}
-        {/* Uses & Currently */}
-        <div className="grid gap-4 md:grid-cols-2">
-          {/* Uses */}
-          <div className="rounded-md border border-border p-6">
-            <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
-              Uses
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <UseItem label="Editor" value="Cursor" />
-              <UseItem label="AI" value="Claude" />
-              <UseItem label="Terminal" value="Ghostty" />
-              <UseItem label="Notes" value="Obsidian" />
-            </div>
-          </div>
-
-          {/* Currently */}
-          <div className="rounded-md border border-border p-6">
-            <div className="mb-4 font-mono text-muted-foreground text-xs uppercase tracking-wider">
-              Currently
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <UseItem label="Reading" value="Atomic Habits" />
-              <UseItem label="Listening" value="Lex Friedman #475" />
-              <UseItem label="Exploring" value="Cloudflare Hyperdrive" />
-              <UseItem label="Building" value="This site" />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
