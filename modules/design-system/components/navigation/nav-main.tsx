@@ -90,7 +90,13 @@ function NavMainItem({
         tooltip={item.title}
       >
         <Link href={item.url} onClick={handleClick}>
-          {item.icon && <item.icon ref={iconRef} size={16} />}
+          {item.icon && (
+            <item.icon
+              ref={iconRef}
+              size={14}
+              className="text-sidebar-foreground/70"
+            />
+          )}
           <span>{item.title}</span>
         </Link>
       </SidebarMenuButton>

@@ -36,7 +36,11 @@ function NavSocialItem({ item }: { item: (typeof SOCIAL_LINKS)[number] }) {
         tooltip={item.name}
       >
         <Link href={item.url} target="_blank" rel="noopener noreferrer">
-          <item.icon ref={iconRef} size={16} />
+          <item.icon
+            ref={iconRef}
+            size={14}
+            className="text-sidebar-foreground/70"
+          />
           <span>{item.name}</span>
         </Link>
       </SidebarMenuButton>
