@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { BookOpenIcon } from "@/modules/design-system/components/icons/book-open";
 import { FolderIcon } from "@/modules/design-system/components/icons/folder";
-import { HouseIcon } from "@/modules/design-system/components/icons/house";
-import { MailIcon } from "@/modules/design-system/components/icons/mail";
 import { UserIcon } from "@/modules/design-system/components/icons/user";
+import { MailIcon } from "@/modules/design-system/components/icons/mail";
+import { StatsIcon } from "@/modules/design-system/components/icons/stats";
 
 import {
   SidebarGroup,
@@ -24,14 +24,14 @@ type IconHandle = {
 
 export const navMainData = [
   {
-    title: "Home",
+    title: "About",
     url: "/",
-    icon: HouseIcon,
+    icon: UserIcon,
   },
   {
-    title: "About",
-    url: "/about",
-    icon: UserIcon,
+    title: "Now",
+    url: "/now",
+    icon: StatsIcon,
   },
   {
     title: "Projects",
@@ -90,7 +90,13 @@ function NavMainItem({
         tooltip={item.title}
       >
         <Link href={item.url} onClick={handleClick}>
-          {item.icon && <item.icon ref={iconRef} size={16} />}
+          {item.icon && (
+            <item.icon
+              ref={iconRef}
+              size={14}
+              className="text-sidebar-foreground/70"
+            />
+          )}
           <span>{item.title}</span>
         </Link>
       </SidebarMenuButton>

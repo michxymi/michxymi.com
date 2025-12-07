@@ -1,163 +1,59 @@
 "use client";
 
 import { cn } from "@/modules/design-system/lib/utils";
-import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation, useReducedMotion } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 
 export interface MailIconHandle {
- startAnimation: () => void;
- stopAnimation: () => void;
+  startAnimation: () => void;
+  stopAnimation: () => void;
 }
 
-interface MailIconProps extends HTMLMotionProps<"div"> {
- size?: number;
- duration?: number;
- isAnimated?: boolean;
+interface MailIconProps extends React.HTMLAttributes<HTMLDivElement> {
+  size?: number;
 }
 
 const MailIcon = forwardRef<MailIconHandle, MailIconProps>(
- (
-  {
-   onMouseEnter,
-   onMouseLeave,
-   className,
-   size = 24,
-   duration = 1,
-   isAnimated = true,
-   ...props
+  (
+    {
+      onMouseEnter,
+      onMouseLeave,
+      className,
+      size = 24,
+      ...props
+    },
+    ref,
+  ) => {
+    useImperativeHandle(ref, () => ({
+      startAnimation: () => {},
+      stopAnimation: () => {},
+    }));
+
+    return (
+      <div
+        className={cn("inline-flex items-center justify-center", className)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        {...props}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          strokeLinejoin="round"
+        >
+          <g>
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M13.2642 3.5H2.73578L8 8.01219L13.2642 3.5ZM1.5 4.41638V11.5C1.5 12.0523 1.94772 12.5 2.5 12.5H13.5C14.0523 12.5 14.5 12.0523 14.5 11.5V4.41638L8.48809 9.56944L8 9.98781L7.51191 9.56944L1.5 4.41638ZM0 2H1.5H14.5H16V3.5V11.5C16 12.8807 14.8807 14 13.5 14H2.5C1.11929 14 0 12.8807 0 11.5V3.5V2Z"
+            />
+          </g>
+        </svg>
+      </div>
+    );
   },
-  ref,
- ) => {
-  const flapControls = useAnimation();
-  const bodyControls = useAnimation();
-  const containerControls = useAnimation();
-  const reduced = useReducedMotion();
-  const isControlled = useRef(false);
-
-  useImperativeHandle(ref, () => {
-   isControlled.current = true;
-   return {
-    startAnimation: () => {
-     if (reduced) {
-      containerControls.start("normal");
-      flapControls.start("normal");
-      bodyControls.start("normal");
-     } else {
-      containerControls.start("animate");
-      flapControls.start("animate");
-      bodyControls.start("animate");
-     }
-    },
-    stopAnimation: () => {
-     containerControls.start("normal");
-     flapControls.start("normal");
-     bodyControls.start("normal");
-    },
-   };
-  });
-
-  const handleEnter = useCallback(
-   (e?: React.MouseEvent<HTMLDivElement>) => {
-    if (!isAnimated || reduced) return;
-    if (!isControlled.current) {
-     containerControls.start("animate");
-     flapControls.start("animate");
-     bodyControls.start("animate");
-    } else onMouseEnter?.(e as any);
-   },
-   [
-    containerControls,
-    flapControls,
-    bodyControls,
-    reduced,
-    onMouseEnter,
-    isAnimated,
-   ],
-  );
-
-  const handleLeave = useCallback(
-   (e?: React.MouseEvent<HTMLDivElement>) => {
-    if (!isControlled.current) {
-     containerControls.start("normal");
-     flapControls.start("normal");
-     bodyControls.start("normal");
-    } else onMouseLeave?.(e as any);
-   },
-   [containerControls, flapControls, bodyControls, onMouseLeave],
-  );
-
-  const containerVariants: Variants = {
-   normal: { scale: 1 },
-   animate: {
-    scale: [1, 1.04, 1],
-    transition: { duration: 0.36 * duration, ease: "easeOut" },
-   },
-  };
-
-  const flapVariants: Variants = {
-   normal: { rotateX: 0, translateY: 0, transformOrigin: "12px 6px" },
-   animate: {
-    rotateX: [-0, -12, 2, 0],
-    translateY: [0, -1.6, 0.6, 0],
-    transition: {
-     duration: 0.45 * duration,
-     ease: "easeOut",
-     times: [0, 0.5, 0.85, 1],
-    },
-   },
-  };
-
-  const bodyVariants: Variants = {
-   normal: { opacity: 1 },
-   animate: {
-    opacity: [1, 0.95, 1],
-    transition: { duration: 0.45 * duration, ease: "easeOut" },
-   },
-  };
-
-  return (
-   <motion.div
-    className={cn("inline-flex items-center justify-center", className)}
-    onMouseEnter={handleEnter}
-    onMouseLeave={handleLeave}
-    {...props}
-    initial="normal"
-    animate={containerControls}
-    variants={containerVariants}
-   >
-    <svg
-     xmlns="http://www.w3.org/2000/svg"
-     width={size}
-     height={size}
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     strokeWidth="2"
-     strokeLinecap="round"
-     strokeLinejoin="round"
-    >
-     <motion.path
-      d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
-      initial="normal"
-      animate={flapControls}
-      variants={flapVariants}
-      style={{ transformStyle: "preserve-3d" }}
-     />
-     <motion.rect
-      x="2"
-      y="4"
-      width="20"
-      height="16"
-      rx="2"
-      initial="normal"
-      animate={bodyControls}
-      variants={bodyVariants}
-     />
-    </svg>
-   </motion.div>
-  );
- },
 );
 
 MailIcon.displayName = "MailIcon";

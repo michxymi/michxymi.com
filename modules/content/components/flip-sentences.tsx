@@ -1,7 +1,7 @@
 "use client";
 
 import type { Transition, Variants } from "motion/react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { Children, useEffect, useState } from "react";
 
 import { cn } from "@/modules/design-system/lib/utils";
@@ -10,12 +10,6 @@ const defaultVariants: Variants = {
   initial: { y: -8, opacity: 0 },
   animate: { y: 0, opacity: 1 },
   exit: { y: 8, opacity: 0 },
-};
-
-const reducedMotionVariants: Variants = {
-  initial: { opacity: 1 },
-  animate: { opacity: 1 },
-  exit: { opacity: 1 },
 };
 
 type MotionElement = typeof motion.p | typeof motion.span | typeof motion.code;
@@ -44,16 +38,10 @@ export function FlipSentences({
   onIndexChange,
 }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const prefersReducedMotion = useReducedMotion();
 
   const items = Children.toArray(children);
 
   useEffect(() => {
-    // Honor prefers-reduced-motion by not cycling through items
-    if (prefersReducedMotion) {
-      return;
-    }
-
     const timer = setInterval(() => {
       setCurrentIndex((prev) => {
         const next = (prev + 1) % items.length;
@@ -63,19 +51,7 @@ export function FlipSentences({
     }, interval * 1000);
 
     return () => clearInterval(timer);
-  }, [items.length, interval, onIndexChange, prefersReducedMotion]);
-
-  // For reduced motion, show first item statically
-  if (prefersReducedMotion) {
-    return (
-      <Component
-        className={cn("inline-block", className)}
-        variants={reducedMotionVariants}
-      >
-        {items[0]}
-      </Component>
-    );
-  }
+  }, [items.length, interval, onIndexChange]);
 
   return (
     <AnimatePresence initial={false} mode="wait">

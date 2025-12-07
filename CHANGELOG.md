@@ -1,3 +1,25 @@
+# [0.2.0](https://github.com/michxymi/michxymi.com/compare/0.1.0...0.2.0) (2025-12-07)
+
+
+### Bug Fixes
+
+* adjust menu icon colors ([c46c82f](https://github.com/michxymi/michxymi.com/commit/c46c82f4fdf3f892182f66f818d02d26a6fa8a95))
+* adjust ont logo size ([2bd1c10](https://github.com/michxymi/michxymi.com/commit/2bd1c1043afcd803ab576c3c274f5d4556a24f5e))
+* adjust privacy policy update date ([8cb5faf](https://github.com/michxymi/michxymi.com/commit/8cb5faff7793451db250aed6accacc9574abd440))
+* remove career stats from now page ([ea7607a](https://github.com/michxymi/michxymi.com/commit/ea7607a76a3c5a3c541d98ad4d140b6cff21af1c))
+* rendering issue with lib-sentences and turbopack when updating to react 19.2 ([1d43047](https://github.com/michxymi/michxymi.com/commit/1d430471df9094dcd80d85b20f8564521ac36578))
+* update navigation and titles ([a5d5a89](https://github.com/michxymi/michxymi.com/commit/a5d5a89065aa764500558fb9b908336ed2ec5912))
+* update sidefolio project content to reflect latest changes ([b552561](https://github.com/michxymi/michxymi.com/commit/b55256129483947a2e1b213b71bfde3c43da8b71))
+
+
+### Features
+
+* remove animations from icons ([e58922e](https://github.com/michxymi/michxymi.com/commit/e58922eaa39f632a56d20a8475ef90a61d17d4e6))
+* update currently section ([3627675](https://github.com/michxymi/michxymi.com/commit/3627675b8fc12642db17f79e15972791c3950c9e))
+* update icons with vercel's geist ([ea578b3](https://github.com/michxymi/michxymi.com/commit/ea578b3085458819fa984147521568323e46cefa))
+
+
+
 # 0.1.0 (2025-12-04)
 
 

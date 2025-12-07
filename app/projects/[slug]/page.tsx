@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -8,6 +8,7 @@ import {
   generateProjectStaticParams,
   getProject,
 } from "@/modules/content/lib/projects";
+import { GithubIcon } from "@/modules/design-system/components/icons/github";
 import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
 import { Button } from "@/modules/design-system/components/ui/button";
 import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
@@ -159,7 +160,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <Github className="mr-2 h-4 w-4" />
+                  <GithubIcon className="mr-2" size={16} />
                   View Code
                 </Link>
               </Button>

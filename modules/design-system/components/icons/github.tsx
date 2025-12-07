@@ -1,150 +1,66 @@
 "use client";
 
 import { cn } from "@/modules/design-system/lib/utils";
-import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation, useReducedMotion } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 
 export interface GithubIconHandle {
- startAnimation: () => void;
- stopAnimation: () => void;
+  startAnimation: () => void;
+  stopAnimation: () => void;
 }
 
-interface GithubIconProps extends HTMLMotionProps<"div"> {
- size?: number;
- duration?: number;
- isAnimated?: boolean;
+interface GithubIconProps extends React.HTMLAttributes<HTMLDivElement> {
+  size?: number;
 }
 
 const GithubIcon = forwardRef<GithubIconHandle, GithubIconProps>(
- (
-  {
-   onMouseEnter,
-   onMouseLeave,
-   className,
-   size = 24,
-   duration = 1,
-   isAnimated = true,
-   ...props
+  (
+    {
+      onMouseEnter,
+      onMouseLeave,
+      className,
+      size = 24,
+      ...props
+    },
+    ref,
+  ) => {
+    useImperativeHandle(ref, () => ({
+      startAnimation: () => {},
+      stopAnimation: () => {},
+    }));
+
+    return (
+      <div
+        className={cn("inline-flex items-center justify-center", className)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        {...props}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={size}
+          height={size}
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          strokeLinejoin="round"
+        >
+          <g>
+            <g clipPath="url(#clip0_github)">
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8 0C3.58 0 0 3.57879 0 7.99729C0 11.5361 2.29 14.5251 5.47 15.5847C5.87 15.6547 6.02 15.4148 6.02 15.2049C6.02 15.0149 6.01 14.3851 6.01 13.7154C4 14.0852 3.48 13.2255 3.32 12.7757C3.23 12.5458 2.84 11.836 2.5 11.6461C2.22 11.4961 1.82 11.1262 2.49 11.1162C3.12 11.1062 3.57 11.696 3.72 11.936C4.44 13.1455 5.59 12.8057 6.05 12.5957C6.12 12.0759 6.33 11.726 6.56 11.5261C4.78 11.3262 2.92 10.6364 2.92 7.57743C2.92 6.70773 3.23 5.98797 3.74 5.42816C3.66 5.22823 3.38 4.40851 3.82 3.30888C3.82 3.30888 4.49 3.09895 6.02 4.1286C6.66 3.94866 7.34 3.85869 8.02 3.85869C8.7 3.85869 9.38 3.94866 10.02 4.1286C11.55 3.08895 12.22 3.30888 12.22 3.30888C12.66 4.40851 12.38 5.22823 12.3 5.42816C12.81 5.98797 13.12 6.69773 13.12 7.57743C13.12 10.6464 11.25 11.3262 9.47 11.5261C9.76 11.776 10.01 12.2558 10.01 13.0056C10.01 14.0752 10 14.9349 10 15.2049C10 15.4148 10.15 15.6647 10.55 15.5847C12.1381 15.0488 13.5182 14.0284 14.4958 12.6673C15.4735 11.3062 15.9996 9.67293 16 7.99729C16 3.57879 12.42 0 8 0Z"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_github">
+                <rect width="16" height="16" fill="white" />
+              </clipPath>
+            </defs>
+          </g>
+        </svg>
+      </div>
+    );
   },
-  ref,
- ) => {
-  const controls = useAnimation();
-  const reduced = useReducedMotion();
-  const isControlled = useRef(false);
-
-  useImperativeHandle(ref, () => {
-   isControlled.current = true;
-   return {
-    startAnimation: () =>
-     reduced ? controls.start("normal") : controls.start("animate"),
-    stopAnimation: () => controls.start("normal"),
-   };
-  });
-
-  const handleEnter = useCallback(
-   (e?: React.MouseEvent<HTMLDivElement>) => {
-    if (!isAnimated || reduced) return;
-    if (!isControlled.current) controls.start("animate");
-    else onMouseEnter?.(e as any);
-   },
-   [controls, reduced, onMouseEnter, isAnimated],
-  );
-
-  const handleLeave = useCallback(
-   (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isControlled.current) {
-     controls.start("normal");
-    } else {
-     onMouseLeave?.(e as any);
-    }
-   },
-   [controls, onMouseLeave],
-  );
-
-  const svgVariants: Variants = {
-   normal: {
-    scale: 1,
-    transition: { duration: 0.3 * duration },
-   },
-   animate: {
-    scale: [1, 1.05, 1],
-    transition: { duration: 1 * duration },
-   },
-  };
-
-  const bodyVariants: Variants = {
-   normal: {
-    pathLength: 1,
-    pathOffset: 0,
-    opacity: 1,
-    transition: { duration: 0.3 * duration },
-   },
-   animate: {
-    pathLength: [1, 0.6, 1],
-    pathOffset: [0, 0.4, 0],
-    opacity: [1, 0.7, 1],
-    transition: { duration: 1 * duration },
-   },
-  };
-
-  const handVariants: Variants = {
-   normal: { rotate: 0, originX: 0.9, originY: 0.5 },
-   animate: {
-    rotate: [0, 20, -15, 0],
-    originX: 0.9,
-    originY: 0.5,
-    transition: { duration: 1 * duration, repeat: Infinity },
-   },
-  };
-
-  return (
-   <motion.div
-    className={cn("inline-flex items-center justify-center", className)}
-    onMouseEnter={handleEnter}
-    onMouseLeave={handleLeave}
-    {...props}
-   >
-    <motion.svg
-     xmlns="http://www.w3.org/2000/svg"
-     width={size}
-     height={size}
-     viewBox="0 0 24 24"
-     fill="none"
-     stroke="currentColor"
-     strokeWidth="2"
-     strokeLinecap="round"
-     strokeLinejoin="round"
-     variants={svgVariants}
-     initial="normal"
-     animate={controls}
-    >
-     <motion.path
-      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5
-                        c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5
-                        .28-1.15.28-2.35 0-3.5
-                        0 0-1 0-3 1.5
-                        -2.64-.5-5.36-.5-8 0
-                        C6 2 5 2 5 2
-                        c-.3 1.15-.3 2.35 0 3.5
-                        A5.403 5.403 0 0 0 4 9
-                        c0 3.5 3 5.5 6 5.5
-                        -.39.49-.68 1.05-.85 1.65
-                        -.17.6-.22 1.23-.15 1.85v4"
-      variants={bodyVariants}
-      initial="normal"
-     />
-
-     <motion.path
-      d="M9 18c-4.51 2-5-2-7-2"
-      variants={handVariants}
-      initial="normal"
-      animate={controls}
-     />
-    </motion.svg>
-   </motion.div>
-  );
- },
 );
 
 GithubIcon.displayName = "GithubIcon";

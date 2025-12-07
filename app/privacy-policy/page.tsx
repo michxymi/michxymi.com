@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
     <article>
       <PageHeader title="Privacy Policy" />
       <p className="mb-8 text-muted-foreground text-sm">
-        Last updated: December 2024
+        Last updated: December 2025
       </p>
       <Prose>
         <h2>Who I Am</h2>

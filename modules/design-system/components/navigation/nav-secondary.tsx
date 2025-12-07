@@ -33,7 +33,11 @@ export function NavSecondary({
               tooltip="Download CV"
             >
               <Link download href="/resume.pdf">
-                <DownloadIcon ref={downloadRef} size={16} />
+                <DownloadIcon
+                  ref={downloadRef}
+                  size={14}
+                  className="text-sidebar-foreground/70"
+                />
                 <span className="group-data-[collapsible=icon]:hidden">
                   Download CV
                 </span>
