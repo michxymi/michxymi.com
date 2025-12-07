@@ -1,19 +1,15 @@
 "use client";
 
 import { cn } from "@/modules/design-system/lib/utils";
-import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation, useReducedMotion } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 
 export interface UserHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
 }
 
-interface UserProps extends HTMLMotionProps<"div"> {
+interface UserProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number;
-  duration?: number;
-  isAnimated?: boolean;
 }
 
 const UserIcon = forwardRef<UserHandle, UserProps>(
@@ -23,102 +19,39 @@ const UserIcon = forwardRef<UserHandle, UserProps>(
       onMouseLeave,
       className,
       size = 24,
-      duration = 1,
-      isAnimated = true,
       ...props
     },
     ref,
   ) => {
-    const controls = useAnimation();
-    const reduced = useReducedMotion();
-    const isControlled = useRef(false);
-
-    useImperativeHandle(ref, () => {
-      isControlled.current = true;
-      return {
-        startAnimation: () =>
-          reduced ? controls.start("normal") : controls.start("animate"),
-        stopAnimation: () => controls.start("normal"),
-      };
-    });
-
-    const handleEnter = useCallback(
-      (e?: React.MouseEvent<HTMLDivElement>) => {
-        if (!isAnimated || reduced) return;
-        if (!isControlled.current) controls.start("animate");
-        else onMouseEnter?.(e as React.MouseEvent<HTMLDivElement>);
-      },
-      [controls, reduced, isAnimated, onMouseEnter],
-    );
-
-    const handleLeave = useCallback(
-      (e?: React.MouseEvent<HTMLDivElement>) => {
-        if (!isControlled.current) controls.start("normal");
-        else onMouseLeave?.(e as React.MouseEvent<HTMLDivElement>);
-      },
-      [controls, onMouseLeave],
-    );
-
-    const headVariants: Variants = {
-      normal: { y: 0, scale: 1 },
-      animate: {
-        y: [0, -1, 0],
-        scale: [1, 1.05, 1],
-        transition: {
-          duration: 0.4 * duration,
-          ease: "easeInOut" as const,
-        },
-      },
-    };
-
-    const bodyVariants: Variants = {
-      normal: { y: 0, opacity: 1 },
-      animate: {
-        y: [0, 1, 0],
-        opacity: [1, 0.8, 1],
-        transition: {
-          duration: 0.5 * duration,
-          delay: 0.1,
-          ease: "easeInOut" as const,
-        },
-      },
-    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: () => {},
+      stopAnimation: () => {},
+    }));
 
     return (
-      <motion.div
+      <div
         className={cn("inline-flex items-center justify-center", className)}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         {...props}
       >
-        <motion.svg
+        <svg
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
+          viewBox="0 0 16 16"
+          fill="currentColor"
           strokeLinejoin="round"
-          className="lucide lucide-user"
         >
-          <motion.circle
-            cx="12"
-            cy="8"
-            r="5"
-            variants={headVariants}
-            initial="normal"
-            animate={controls}
-          />
-          <motion.path
-            d="M20 21a8 8 0 0 0-16 0"
-            variants={bodyVariants}
-            initial="normal"
-            animate={controls}
-          />
-        </motion.svg>
-      </motion.div>
+          <g>
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M7.75 0C5.95507 0 4.5 1.45507 4.5 3.25V3.75C4.5 5.54493 5.95507 7 7.75 7H8.25C10.0449 7 11.5 5.54493 11.5 3.75V3.25C11.5 1.45507 10.0449 0 8.25 0H7.75ZM6 3.25C6 2.2835 6.7835 1.5 7.75 1.5H8.25C9.2165 1.5 10 2.2835 10 3.25V3.75C10 4.7165 9.2165 5.5 8.25 5.5H7.75C6.7835 5.5 6 4.7165 6 3.75V3.25ZM2.5 14.5V13.1709C3.31958 11.5377 4.99308 10.5 6.82945 10.5H9.17055C11.0069 10.5 12.6804 11.5377 13.5 13.1709V14.5H2.5ZM6.82945 9C4.35483 9 2.10604 10.4388 1.06903 12.6857L1 12.8353V13V15.25V16H1.75H14.25H15V15.25V13V12.8353L14.931 12.6857C13.894 10.4388 11.6452 9 9.17055 9H6.82945Z"
+            />
+          </g>
+        </svg>
+      </div>
     );
   },
 );

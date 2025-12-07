@@ -1,19 +1,15 @@
 "use client";
 
 import { cn } from "@/modules/design-system/lib/utils";
-import type { HTMLMotionProps, Variants } from "motion/react";
-import { motion, useAnimation, useReducedMotion } from "motion/react";
-import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle } from "react";
 
 export interface StatsIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
 }
 
-interface StatsIconProps extends HTMLMotionProps<"div"> {
+interface StatsIconProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number;
-  duration?: number;
-  isAnimated?: boolean;
 }
 
 const StatsIcon = forwardRef<StatsIconHandle, StatsIconProps>(
@@ -23,59 +19,20 @@ const StatsIcon = forwardRef<StatsIconHandle, StatsIconProps>(
       onMouseLeave,
       className,
       size = 24,
-      duration = 1,
-      isAnimated = true,
       ...props
     },
     ref,
   ) => {
-    const controls = useAnimation();
-    const reduced = useReducedMotion();
-    const isControlled = useRef(false);
-
-    useImperativeHandle(ref, () => {
-      isControlled.current = true;
-      return {
-        startAnimation: () =>
-          reduced ? controls.start("normal") : controls.start("animate"),
-        stopAnimation: () => controls.start("normal"),
-      };
-    });
-
-    const handleEnter = useCallback(
-      (e?: React.MouseEvent<HTMLDivElement>) => {
-        if (!isAnimated || reduced) return;
-        if (!isControlled.current) controls.start("animate");
-        else onMouseEnter?.(e as any);
-      },
-      [controls, reduced, isAnimated, onMouseEnter],
-    );
-
-    const handleLeave = useCallback(
-      (e?: React.MouseEvent<HTMLDivElement>) => {
-        if (!isControlled.current) controls.start("normal");
-        else onMouseLeave?.(e as any);
-      },
-      [controls, onMouseLeave],
-    );
-
-    const iconVariants: Variants = {
-      normal: { scale: 1, y: 0 },
-      animate: {
-        scale: [1, 1.1, 1],
-        y: [0, -2, 0],
-        transition: {
-          duration: 0.5 * duration,
-          ease: "easeOut" as const,
-        },
-      },
-    };
+    useImperativeHandle(ref, () => ({
+      startAnimation: () => {},
+      stopAnimation: () => {},
+    }));
 
     return (
-      <motion.div
+      <div
         className={cn("inline-flex items-center justify-center", className)}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
         {...props}
       >
         <svg
@@ -86,15 +43,15 @@ const StatsIcon = forwardRef<StatsIconHandle, StatsIconProps>(
           fill="currentColor"
           strokeLinejoin="round"
         >
-          <motion.g variants={iconVariants} initial="normal" animate={controls}>
+          <g>
             <path
               fillRule="evenodd"
               clipRule="evenodd"
-              d="M14 1V1.75V14.25V15H12.5V14.25V1.75V1H14ZM8.75 6V6.75V14.25V15H7.25V14.25V6.75V6H8.75ZM3.5 10.75V10H2V10.75V14.25V15H3.5V14.25V10.75Z"
+              d="M5.51324 3.62367L3.76375 8.34731C3.61845 8.7396 3.24433 8.99999 2.826 8.99999H0.75H0V7.49999H0.75H2.47799L4.56666 1.86057C4.88684 0.996097 6.10683 0.988493 6.43776 1.84891L10.5137 12.4463L12.2408 8.1286C12.3926 7.74894 12.7604 7.49999 13.1693 7.49999H15.25H16V8.99999H15.25H13.5078L11.433 14.1868C11.0954 15.031 9.8976 15.023 9.57122 14.1744L5.51324 3.62367Z"
             />
-          </motion.g>
+          </g>
         </svg>
-      </motion.div>
+      </div>
     );
   },
 );

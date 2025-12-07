@@ -5,10 +5,9 @@ import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { BookOpenIcon } from "@/modules/design-system/components/icons/book-open";
 import { FolderIcon } from "@/modules/design-system/components/icons/folder";
-import { HouseIcon } from "@/modules/design-system/components/icons/house";
+import { UserIcon } from "@/modules/design-system/components/icons/user";
 import { MailIcon } from "@/modules/design-system/components/icons/mail";
 import { StatsIcon } from "@/modules/design-system/components/icons/stats";
-import { UserIcon } from "@/modules/design-system/components/icons/user";
 
 import {
   SidebarGroup,
@@ -27,7 +26,7 @@ export const navMainData = [
   {
     title: "About",
     url: "/",
-    icon: HouseIcon,
+    icon: UserIcon,
   },
   {
     title: "Now",
