@@ -52,7 +52,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
-      "pnpm dlx ultracite fix"
+      "pnpm dlx ultracite@6.3.6 fix"
     ]
   },
   "engines": {
