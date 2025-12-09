@@ -7,7 +7,7 @@ import {
   generateBlogStaticParams,
   getBlogPost,
 } from "@/features/content/lib/blog";
-import { PageHeader } from "@/components/navigation/page-header";
+import { PageHeader } from "@/features/navigation/components/page-header";
 import { ArticleSchema } from "@/features/seo/components/article-schema";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 

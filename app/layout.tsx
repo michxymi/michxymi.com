@@ -1,6 +1,6 @@
-import { AppSidebar } from "@/components/navigation/app-sidebar";
-import { Footer } from "@/components/navigation/footer";
-import { HeaderControls } from "@/components/navigation/header-controls";
+import { AppSidebar } from "@/features/navigation/components/app-sidebar";
+import { Footer } from "@/features/navigation/components/footer";
+import { HeaderControls } from "@/features/navigation/components/header-controls";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";

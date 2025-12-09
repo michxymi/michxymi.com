@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { ContactForm } from "@/components/contact-form";
-import { PageHeader } from "@/components/navigation/page-header";
+import { PageHeader } from "@/features/navigation/components/page-header";
 import {
   Card,
   CardContent,

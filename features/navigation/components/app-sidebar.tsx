@@ -1,8 +1,8 @@
 import type * as React from "react";
-import { NavMain } from "@/components/navigation/nav-main";
-import { NavSecondary } from "@/components/navigation/nav-secondary";
-import { NavSocial } from "@/components/navigation/nav-social";
-import { NavUser } from "@/components/navigation/nav-user";
+import { NavMain } from "@/features/navigation/components/nav-main";
+import { NavSecondary } from "@/features/navigation/components/nav-secondary";
+import { NavSocial } from "@/features/navigation/components/nav-social";
+import { NavUser } from "@/features/navigation/components/nav-user";
 import {
   Sidebar,
   SidebarContent,

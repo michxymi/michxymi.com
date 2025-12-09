@@ -9,7 +9,7 @@ import {
   getProject,
 } from "@/features/content/lib/projects";
 import { GithubIcon } from "@/components/icons/github";
-import { PageHeader } from "@/components/navigation/page-header";
+import { PageHeader } from "@/features/navigation/components/page-header";
 import { Button } from "@/components/ui/button";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 import { SoftwareSchema } from "@/features/seo/components/software-schema";
