@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import {
   generateProjectStaticParams,
   getProject,
-} from "@/modules/content/lib/projects";
+} from "@/features/content/lib/projects";
 
 export const alt = "Project cover image";
 export const size = { width: 1200, height: 630 };

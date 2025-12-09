@@ -4,9 +4,10 @@
   "files": {
     "includes": [
       "**/*",
-      "!modules/design-system/components",
-      "!modules/design-system/lib",
-      "!modules/design-system/hooks"
+      "!components/ui",
+      "!components/ncdai",
+      "!lib/utils.ts",
+      "!hooks/use-mobile.ts"
     ]
   }
 }

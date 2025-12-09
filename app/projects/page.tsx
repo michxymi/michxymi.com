@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { ProjectCard } from "@/modules/content/components/project-card";
-import { getAllProjects } from "@/modules/content/lib/projects";
-import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
+import { ProjectCard } from "@/features/content/components/project-card";
+import { getAllProjects } from "@/features/content/lib/projects";
+import { PageHeader } from "@/features/navigation/components/page-header";
 
 const description = "Things I built that didn't immediately catch fire.";
 

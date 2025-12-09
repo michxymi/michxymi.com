@@ -3,16 +3,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { Prose } from "@/modules/content/components/prose";
+import { GithubIcon } from "@/components/svgs/github-icon";
+import { Button } from "@/components/ui/button";
+import { Prose } from "@/features/content/components/prose";
 import {
   generateProjectStaticParams,
   getProject,
-} from "@/modules/content/lib/projects";
-import { GithubIcon } from "@/modules/design-system/components/icons/github";
-import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
-import { Button } from "@/modules/design-system/components/ui/button";
-import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
-import { SoftwareSchema } from "@/modules/seo/components/software-schema";
+} from "@/features/content/lib/projects";
+import { PageHeader } from "@/features/navigation/components/page-header";
+import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
+import { SoftwareSchema } from "@/features/seo/components/software-schema";
 
 type Props = {
   params: Promise<{
@@ -160,7 +160,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <GithubIcon className="mr-2" size={16} />
+                  <GithubIcon className="mr-2 h-4 w-4" />
                   View Code
                 </Link>
               </Button>

@@ -1,20 +1,17 @@
-import { AppSidebar } from "@/modules/design-system/components/navigation/app-sidebar";
-import { Footer } from "@/modules/design-system/components/navigation/footer";
-import { HeaderControls } from "@/modules/design-system/components/navigation/header-controls";
-import "@/modules/design-system/globals.css";
+import { AppSidebar } from "@/features/navigation/components/app-sidebar";
+import { Footer } from "@/features/navigation/components/footer";
+import { HeaderControls } from "@/features/navigation/components/header-controls";
+import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { PersonSchema } from "@/features/seo/components/person-schema";
+import { WebSiteSchema } from "@/features/seo/components/website-schema";
 import { siteConfig } from "@/lib/site-config";
-import { ThemeProvider } from "@/modules/design-system/components/theme-provider";
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/modules/design-system/components/ui/sidebar";
-import { PersonSchema } from "@/modules/seo/components/person-schema";
-import { WebSiteSchema } from "@/modules/seo/components/website-schema";
 
 const inter = Inter({
   variable: "--font-inter",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { BlogCard } from "@/modules/content/components/blog-card";
-import { getAllBlogPosts } from "@/modules/content/lib/blog";
-import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
+import { BlogCard } from "@/features/content/components/blog-card";
+import { getAllBlogPosts } from "@/features/content/lib/blog";
+import { PageHeader } from "@/features/navigation/components/page-header";
 
 const description =
   "I write words sometimes. You're here now. We both made choices.";

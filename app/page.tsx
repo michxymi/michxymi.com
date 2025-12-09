@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Prose } from "@/modules/content/components/prose";
-import { SkillsGrid } from "@/modules/content/components/skills-grid";
 import {
   type ExperienceItemType,
   WorkExperience,
-} from "@/modules/content/components/work-experience";
-import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
-import { Separator } from "@/modules/design-system/components/ui/separator";
-import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
-import { PersonSchema } from "@/modules/seo/components/person-schema";
+} from "@/components/ncdai/work-experience";
+import { Separator } from "@/components/ui/separator";
+import { Prose } from "@/features/content/components/prose";
+import { SkillsGrid } from "@/features/content/components/skills-grid";
+import { PageHeader } from "@/features/navigation/components/page-header";
+import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
+import { PersonSchema } from "@/features/seo/components/person-schema";
 
 const description =
   "Full Stack Software Engineer and Engineering Manager at Oxford Nanopore Technologies. Background in robotics, control systems, and web development.";

@@ -5,18 +5,18 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "modules/design-system/globals.css",
+    "css": "styles/globals.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/modules/design-system/components",
-    "utils": "@/modules/design-system/lib/utils",
-    "ui": "@/modules/design-system/components/ui",
-    "lib": "@/modules/design-system/lib",
-    "hooks": "@/modules/design-system/hooks"
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   },
   "registries": {
     "@ncdai": "https://chanhdai.com/r/{name}.json"

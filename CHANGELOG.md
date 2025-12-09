@@ -1,3 +1,24 @@
+## [0.2.1](https://github.com/michxymi/michxymi.com/compare/0.2.0...0.2.1) (2025-12-09)
+
+
+### Bug Fixes
+
+* add EOL in .nvmrc ([265275d](https://github.com/michxymi/michxymi.com/commit/265275d4255bd8241ca32aeece08241ca82abbbc))
+* biome to lint svgs folder ([85dd041](https://github.com/michxymi/michxymi.com/commit/85dd0410e0ed47307ae31305ffef87564a2f7b42))
+* css path in shadcn components file ([4608f9d](https://github.com/michxymi/michxymi.com/commit/4608f9d3f4176689ae518fd04959db00916d9969))
+* lint-staged to run pinned version of ultracite for consistency ([a802cb8](https://github.com/michxymi/michxymi.com/commit/a802cb8aecd77512e1cdcb56d6da92ff34ce6a79))
+* minify ukaea logo ([c04e693](https://github.com/michxymi/michxymi.com/commit/c04e693b6996a4a7605b16c187b4c86d01236627))
+* old github icon usage ([50f3bc2](https://github.com/michxymi/michxymi.com/commit/50f3bc2c33f00837a529ea89ac29e8269dd7e5c3))
+* scale ont logo to avoid cropping ([9725fa1](https://github.com/michxymi/michxymi.com/commit/9725fa1c870338ac86ede2f6413084dd77c24c1d))
+
+
+### Features
+
+* add .nvmrc file ([b4e8222](https://github.com/michxymi/michxymi.com/commit/b4e8222bedd71ac0d706a9aafe078e3e97baaedb))
+* organise icons into single file components with dark and light mode support ([f8857c8](https://github.com/michxymi/michxymi.com/commit/f8857c83e06d6836e7249f2d22a396e2015d9888))
+
+
+
 # [0.2.0](https://github.com/michxymi/michxymi.com/compare/0.1.0...0.2.0) (2025-12-07)
 
 

@@ -1,4 +1,4 @@
-import { SOCIAL_LINKS } from "@/modules/design-system/lib/social-links";
+import { SOCIAL_LINKS } from "@/lib/social-links";
 
 export const siteConfig = {
   name: "Michael Xymitoulias",
