@@ -3,16 +3,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { Prose } from "@/modules/content/components/prose";
+import { Prose } from "@/features/content/components/prose";
 import {
   generateProjectStaticParams,
   getProject,
-} from "@/modules/content/lib/projects";
-import { GithubIcon } from "@/modules/design-system/components/icons/github";
-import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
-import { Button } from "@/modules/design-system/components/ui/button";
-import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
-import { SoftwareSchema } from "@/modules/seo/components/software-schema";
+} from "@/features/content/lib/projects";
+import { GithubIcon } from "@/features/design-system/components/icons/github";
+import { PageHeader } from "@/features/design-system/components/navigation/page-header";
+import { Button } from "@/features/design-system/components/ui/button";
+import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
+import { SoftwareSchema } from "@/features/seo/components/software-schema";
 
 type Props = {
   params: Promise<{

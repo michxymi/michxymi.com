@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { Prose } from "@/modules/content/components/prose";
+import { Prose } from "@/features/content/components/prose";
 import {
   generateBlogStaticParams,
   getBlogPost,
-} from "@/modules/content/lib/blog";
-import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
-import { ArticleSchema } from "@/modules/seo/components/article-schema";
-import { BreadcrumbSchema } from "@/modules/seo/components/breadcrumb-schema";
+} from "@/features/content/lib/blog";
+import { PageHeader } from "@/features/design-system/components/navigation/page-header";
+import { ArticleSchema } from "@/features/seo/components/article-schema";
+import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 
 type Props = {
   params: Promise<{

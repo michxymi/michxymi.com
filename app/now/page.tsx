@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getAllBlogPosts } from "@/modules/content/lib/blog";
-import { PageHeader } from "@/modules/design-system/components/navigation/page-header";
+import { getAllBlogPosts } from "@/features/content/lib/blog";
+import { PageHeader } from "@/features/design-system/components/navigation/page-header";
 
 const description =
   "A snapshot of what's happening. Before you commit to reading anything else.";

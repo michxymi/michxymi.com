@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import {
   generateBlogStaticParams,
   getBlogPost,
-} from "@/modules/content/lib/blog";
+} from "@/features/content/lib/blog";
 
 export const alt = "Blog post cover image";
 export const size = { width: 1200, height: 630 };

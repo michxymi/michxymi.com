@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { getAllBlogPosts } from "@/modules/content/lib/blog";
-import { getAllProjects } from "@/modules/content/lib/projects";
+import { getAllBlogPosts } from "@/features/content/lib/blog";
+import { getAllProjects } from "@/features/content/lib/projects";
 
 const BASE_URL = "https://michxymi.com";
 

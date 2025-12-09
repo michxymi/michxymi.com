@@ -1,4 +1,4 @@
-import { getAllBlogPosts } from "@/modules/content/lib/blog";
+import { getAllBlogPosts } from "@/features/content/lib/blog";
 
 const BASE_URL = "https://michxymi.com";
 const SITE_NAME = "Michael Xymitoulias";
