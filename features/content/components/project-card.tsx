@@ -1,6 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { GithubIcon } from "@/components/icons/github";
+import { GithubIcon } from "@/components/svgs/github-icon";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -66,7 +66,9 @@ export function ProjectCard({ project }: { project: Project }) {
             </Badge>
             {(project.frontmatter.liveUrl || project.frontmatter.repoUrl) && (
               <div className="ml-auto flex items-center gap-2">
-                {project.frontmatter.repoUrl && <GithubIcon size={14} />}
+                {project.frontmatter.repoUrl && (
+                  <GithubIcon className="h-3.5 w-3.5" />
+                )}
                 {project.frontmatter.liveUrl && (
                   <ExternalLink className="h-3.5 w-3.5" />
                 )}

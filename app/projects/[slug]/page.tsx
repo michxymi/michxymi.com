@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { GithubIcon } from "@/components/icons/github";
+import { GithubIcon } from "@/components/svgs/github-icon";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/features/content/components/prose";
 import {
@@ -160,7 +160,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <GithubIcon className="mr-2" size={16} />
+                  <GithubIcon className="mr-2 h-4 w-4" />
                   View Code
                 </Link>
               </Button>
