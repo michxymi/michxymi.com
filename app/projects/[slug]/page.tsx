@@ -3,14 +3,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { GithubIcon } from "@/components/icons/github";
+import { Button } from "@/components/ui/button";
 import { Prose } from "@/features/content/components/prose";
 import {
   generateProjectStaticParams,
   getProject,
 } from "@/features/content/lib/projects";
-import { GithubIcon } from "@/components/icons/github";
 import { PageHeader } from "@/features/navigation/components/page-header";
-import { Button } from "@/components/ui/button";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 import { SoftwareSchema } from "@/features/seo/components/software-schema";
 

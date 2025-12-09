@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { BookOpenIcon } from "@/components/icons/book-open";
 import { FolderIcon } from "@/components/icons/folder";
-import { UserIcon } from "@/components/icons/user";
 import { MailIcon } from "@/components/icons/mail";
 import { StatsIcon } from "@/components/icons/stats";
+import { UserIcon } from "@/components/icons/user";
 
 import {
   SidebarGroup,
@@ -92,9 +92,9 @@ function NavMainItem({
         <Link href={item.url} onClick={handleClick}>
           {item.icon && (
             <item.icon
+              className="text-sidebar-foreground/70"
               ref={iconRef}
               size={14}
-              className="text-sidebar-foreground/70"
             />
           )}
           <span>{item.title}</span>

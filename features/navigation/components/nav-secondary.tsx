@@ -3,10 +3,7 @@
 import Link from "next/link";
 import type * as React from "react";
 import { useRef } from "react";
-import {
-  type DownloadHandle,
-  DownloadIcon,
-} from "@/components/icons/download";
+import { type DownloadHandle, DownloadIcon } from "@/components/icons/download";
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -34,9 +31,9 @@ export function NavSecondary({
             >
               <Link download href="/resume.pdf">
                 <DownloadIcon
+                  className="text-sidebar-foreground/70"
                   ref={downloadRef}
                   size={14}
-                  className="text-sidebar-foreground/70"
                 />
                 <span className="group-data-[collapsible=icon]:hidden">
                   Download CV

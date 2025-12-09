@@ -1,13 +1,6 @@
 import { FlipSentences } from "@/components/ncdai/flip-sentences";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar";
-import {
-  SidebarMenu,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { SidebarMenu, SidebarMenuItem } from "@/components/ui/sidebar";
 
 export function NavUser() {
   return (

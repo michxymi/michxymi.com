@@ -43,7 +43,8 @@ async function submitForm(
     }
     return {
       success: false,
-      error: "Something broke. Try again. If it persists, the irony of a contact form preventing contact is not lost on me.",
+      error:
+        "Something broke. Try again. If it persists, the irony of a contact form preventing contact is not lost on me.",
     };
   } catch {
     return {
@@ -64,7 +65,8 @@ export function ContactForm() {
       <Card className="border-green-500/20 bg-green-500/10">
         <CardContent className="pt-6">
           <p className="font-display text-green-500 text-sm">
-            Got it. I&apos;ll be in touch. Assuming the internet continues to function.
+            Got it. I&apos;ll be in touch. Assuming the internet continues to
+            function.
           </p>
         </CardContent>
       </Card>
@@ -76,7 +78,8 @@ export function ContactForm() {
       <CardHeader>
         <CardTitle className="font-display">Send a Message</CardTitle>
         <CardDescription>
-          Form&apos;s below. I&apos;ll get back to you. Unless you&apos;re trying to sell me crypto - in which case, I won&apos;t.
+          Form&apos;s below. I&apos;ll get back to you. Unless you&apos;re
+          trying to sell me crypto - in which case, I won&apos;t.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -127,7 +130,10 @@ export function ContactForm() {
           </Button>
           <p className="text-muted-foreground text-xs">
             By submitting, you agree to the{" "}
-            <Link className="underline hover:text-primary" href="/privacy-policy">
+            <Link
+              className="underline hover:text-primary"
+              href="/privacy-policy"
+            >
               Privacy Policy
             </Link>
             .

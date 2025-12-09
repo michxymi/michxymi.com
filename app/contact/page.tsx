@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { ContactForm } from "@/components/contact-form";
-import { PageHeader } from "@/features/navigation/components/page-header";
 import {
   Card,
   CardContent,
@@ -11,10 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  SOCIAL_LINKS,
-  type SocialIconHandle,
-} from "@/lib/social-links";
+import { PageHeader } from "@/features/navigation/components/page-header";
+import { SOCIAL_LINKS, type SocialIconHandle } from "@/lib/social-links";
 
 function SocialLink({ link }: { link: (typeof SOCIAL_LINKS)[number] }) {
   const iconRef = useRef<SocialIconHandle>(null);

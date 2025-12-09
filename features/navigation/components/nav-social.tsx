@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import {
   SidebarGroup,
@@ -9,7 +10,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { SOCIAL_LINKS, type SocialIconHandle } from "@/lib/social-links";
-import Link from "next/link";
 
 export function NavSocial() {
   return (
@@ -35,11 +35,11 @@ function NavSocialItem({ item }: { item: (typeof SOCIAL_LINKS)[number] }) {
         onMouseLeave={() => iconRef.current?.stopAnimation()}
         tooltip={item.name}
       >
-        <Link href={item.url} target="_blank" rel="noopener noreferrer">
+        <Link href={item.url} rel="noopener noreferrer" target="_blank">
           <item.icon
+            className="text-sidebar-foreground/70"
             ref={iconRef}
             size={14}
-            className="text-sidebar-foreground/70"
           />
           <span>{item.name}</span>
         </Link>

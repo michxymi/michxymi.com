@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Prose } from "@/features/content/components/prose";
-import { SkillsGrid } from "@/features/content/components/skills-grid";
 import {
   type ExperienceItemType,
   WorkExperience,
 } from "@/components/ncdai/work-experience";
-import { PageHeader } from "@/features/navigation/components/page-header";
 import { Separator } from "@/components/ui/separator";
+import { Prose } from "@/features/content/components/prose";
+import { SkillsGrid } from "@/features/content/components/skills-grid";
+import { PageHeader } from "@/features/navigation/components/page-header";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 import { PersonSchema } from "@/features/seo/components/person-schema";
 
