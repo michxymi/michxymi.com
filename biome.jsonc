@@ -6,7 +6,6 @@
       "**/*",
       "!components/ui",
       "!components/ncdai",
-      "!components/svgs",
       "!lib/utils.ts",
       "!hooks/use-mobile.ts"
     ]
