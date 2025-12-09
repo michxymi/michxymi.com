@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -9,7 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { SOCIAL_LINKS, type SocialIconHandle } from "@/lib/social-links";
+import { SOCIAL_LINKS } from "@/lib/social-links";
 
 export function NavSocial() {
   return (
@@ -25,22 +24,11 @@ export function NavSocial() {
 }
 
 function NavSocialItem({ item }: { item: (typeof SOCIAL_LINKS)[number] }) {
-  const iconRef = useRef<SocialIconHandle>(null);
-
   return (
     <SidebarMenuItem>
-      <SidebarMenuButton
-        asChild
-        onMouseEnter={() => iconRef.current?.startAnimation()}
-        onMouseLeave={() => iconRef.current?.stopAnimation()}
-        tooltip={item.name}
-      >
+      <SidebarMenuButton asChild tooltip={item.name}>
         <Link href={item.url} rel="noopener noreferrer" target="_blank">
-          <item.icon
-            className="text-sidebar-foreground/70"
-            ref={iconRef}
-            size={14}
-          />
+          <item.icon className="h-3.5 w-3.5 text-sidebar-foreground/70" />
           <span>{item.name}</span>
         </Link>
       </SidebarMenuButton>

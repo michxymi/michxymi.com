@@ -1,22 +1,11 @@
-import { GithubIcon, type GithubIconHandle } from "@/components/icons/github";
-import {
-  LinkedInIcon,
-  type LinkedInIconHandle,
-} from "@/components/icons/linkedin";
-import {
-  TwitterIcon,
-  type TwitterIconHandle,
-} from "@/components/icons/twitter";
-
-export type SocialIconHandle =
-  | GithubIconHandle
-  | LinkedInIconHandle
-  | TwitterIconHandle;
+import { GithubIcon } from "@/components/svgs/github-icon";
+import { LinkedinIcon } from "@/components/svgs/linkedin-icon";
+import { XIcon } from "@/components/svgs/x-icon";
 
 export type SocialLink = {
   name: string;
   url: string;
-  icon: typeof GithubIcon | typeof LinkedInIcon | typeof TwitterIcon;
+  icon: typeof GithubIcon | typeof LinkedinIcon | typeof XIcon;
   description?: string;
 };
 
@@ -30,13 +19,13 @@ export const SOCIAL_LINKS: readonly SocialLink[] = [
   {
     name: "X (Twitter)",
     url: "https://x.com/michxymi",
-    icon: TwitterIcon,
+    icon: XIcon,
     description: "@michxymi",
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/mxymitoulias/",
-    icon: LinkedInIcon,
+    icon: LinkedinIcon,
     description: "/in/mxymitoulias",
   },
 ] as const;

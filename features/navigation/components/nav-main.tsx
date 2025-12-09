@@ -1,14 +1,8 @@
 "use client";
 
+import { Activity, BookOpen, FolderOpen, Mail, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef } from "react";
-import { BookOpenIcon } from "@/components/icons/book-open";
-import { FolderIcon } from "@/components/icons/folder";
-import { MailIcon } from "@/components/icons/mail";
-import { StatsIcon } from "@/components/icons/stats";
-import { UserIcon } from "@/components/icons/user";
-
 import {
   SidebarGroup,
   SidebarMenu,
@@ -17,36 +11,31 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-type IconHandle = {
-  startAnimation: () => void;
-  stopAnimation: () => void;
-};
-
 export const navMainData = [
   {
     title: "About",
     url: "/",
-    icon: UserIcon,
+    icon: User,
   },
   {
     title: "Now",
     url: "/now",
-    icon: StatsIcon,
+    icon: Activity,
   },
   {
     title: "Projects",
     url: "/projects",
-    icon: FolderIcon,
+    icon: FolderOpen,
   },
   {
     title: "Blog",
     url: "/blog",
-    icon: BookOpenIcon,
+    icon: BookOpen,
   },
   {
     title: "Contact",
     url: "/contact",
-    icon: MailIcon,
+    icon: Mail,
   },
 ];
 
@@ -71,7 +60,6 @@ function NavMainItem({
   item: (typeof navMainData)[number];
   pathname: string;
 }) {
-  const iconRef = useRef<IconHandle>(null);
   const { isMobile, setOpenMobile } = useSidebar();
 
   const handleClick = () => {
@@ -85,17 +73,11 @@ function NavMainItem({
       <SidebarMenuButton
         asChild
         isActive={pathname === item.url}
-        onMouseEnter={() => iconRef.current?.startAnimation()}
-        onMouseLeave={() => iconRef.current?.stopAnimation()}
         tooltip={item.title}
       >
         <Link href={item.url} onClick={handleClick}>
           {item.icon && (
-            <item.icon
-              className="text-sidebar-foreground/70"
-              ref={iconRef}
-              size={14}
-            />
+            <item.icon className="text-sidebar-foreground/70" size={14} />
           )}
           <span>{item.title}</span>
         </Link>
