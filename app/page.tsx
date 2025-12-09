@@ -5,7 +5,7 @@ import { SkillsGrid } from "@/features/content/components/skills-grid";
 import {
   type ExperienceItemType,
   WorkExperience,
-} from "@/features/content/components/work-experience";
+} from "@/components/ncdai/work-experience";
 import { PageHeader } from "@/features/navigation/components/page-header";
 import { Separator } from "@/components/ui/separator";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";

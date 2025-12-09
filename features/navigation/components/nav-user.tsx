@@ -1,4 +1,4 @@
-import { FlipSentences } from "@/features/content/components/flip-sentences";
+import { FlipSentences } from "@/components/ncdai/flip-sentences";
 import {
   Avatar,
   AvatarFallback,

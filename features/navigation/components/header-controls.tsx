@@ -1,7 +1,7 @@
 "use client";
 
 import { PanelLeftIcon } from "lucide-react";
-import { ThemeSwitcher } from "@/components/theme-switcher";
+import { ThemeSwitcher } from "@/components/ncdai/theme-switcher";
 import { useSidebar } from "@/components/ui/sidebar";
 
 function SidebarToggle() {
