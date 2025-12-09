@@ -4,7 +4,7 @@ import type { Transition, Variants } from "motion/react";
 import { AnimatePresence, motion } from "motion/react";
 import { Children, useEffect, useState } from "react";
 
-import { cn } from "@/features/design-system/lib/utils";
+import { cn } from "@/lib/utils";
 
 const defaultVariants: Variants = {
   initial: { y: -8, opacity: 0 },

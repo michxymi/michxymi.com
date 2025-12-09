@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Prose } from "@/features/content/components/prose";
-import { PageHeader } from "@/features/design-system/components/navigation/page-header";
+import { PageHeader } from "@/components/navigation/page-header";
 
 const description =
   "Privacy policy for michxymi.com - how your data is collected and used.";

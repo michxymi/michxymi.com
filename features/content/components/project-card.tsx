@@ -1,7 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { GithubIcon } from "@/features/design-system/components/icons/github";
-import { Badge } from "@/features/design-system/components/ui/badge";
+import { GithubIcon } from "@/components/icons/github";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/features/design-system/components/ui/card";
+} from "@/components/ui/card";
 import type { Project } from "../schemas/project";
 
 export function ProjectCard({ project }: { project: Project }) {

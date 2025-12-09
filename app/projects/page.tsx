@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ProjectCard } from "@/features/content/components/project-card";
 import { getAllProjects } from "@/features/content/lib/projects";
-import { PageHeader } from "@/features/design-system/components/navigation/page-header";
+import { PageHeader } from "@/components/navigation/page-header";
 
 const description = "Things I built that didn't immediately catch fire.";
 

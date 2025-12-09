@@ -12,11 +12,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/features/design-system/components",
-    "utils": "@/features/design-system/lib/utils",
-    "ui": "@/features/design-system/components/ui",
-    "lib": "@/features/design-system/lib",
-    "hooks": "@/features/design-system/hooks"
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
   },
   "registries": {
     "@ncdai": "https://chanhdai.com/r/{name}.json"

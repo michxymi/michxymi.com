@@ -16,9 +16,9 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/features/design-system/components/ui/collapsible";
-import { Separator } from "@/features/design-system/components/ui/separator";
-import { cn } from "@/features/design-system/lib/utils";
+} from "@/components/ui/collapsible";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 const iconMap = {
   code: CodeXmlIcon,

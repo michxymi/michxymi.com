@@ -2,19 +2,19 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { ContactForm } from "@/features/design-system/components/contact-form";
-import { PageHeader } from "@/features/design-system/components/navigation/page-header";
+import { ContactForm } from "@/components/contact-form";
+import { PageHeader } from "@/components/navigation/page-header";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/features/design-system/components/ui/card";
+} from "@/components/ui/card";
 import {
   SOCIAL_LINKS,
   type SocialIconHandle,
-} from "@/features/design-system/lib/social-links";
+} from "@/lib/social-links";
 
 function SocialLink({ link }: { link: (typeof SOCIAL_LINKS)[number] }) {
   const iconRef = useRef<SocialIconHandle>(null);

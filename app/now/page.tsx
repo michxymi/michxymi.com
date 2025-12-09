@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getAllBlogPosts } from "@/features/content/lib/blog";
-import { PageHeader } from "@/features/design-system/components/navigation/page-header";
+import { PageHeader } from "@/components/navigation/page-header";
 
 const description =
   "A snapshot of what's happening. Before you commit to reading anything else.";

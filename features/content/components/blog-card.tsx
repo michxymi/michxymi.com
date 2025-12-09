@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Badge } from "@/features/design-system/components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 import type { BlogPost } from "../schemas/blog";
 
 export function BlogCard({ post }: { post: BlogPost }) {

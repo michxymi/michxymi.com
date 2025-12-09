@@ -1,4 +1,4 @@
-import { cn } from "@/features/design-system/lib/utils";
+import { cn } from "@/lib/utils";
 
 export function Prose({ className, ...props }: React.ComponentProps<"div">) {
   return (

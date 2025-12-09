@@ -6,8 +6,8 @@ import {
   type ExperienceItemType,
   WorkExperience,
 } from "@/features/content/components/work-experience";
-import { PageHeader } from "@/features/design-system/components/navigation/page-header";
-import { Separator } from "@/features/design-system/components/ui/separator";
+import { PageHeader } from "@/components/navigation/page-header";
+import { Separator } from "@/components/ui/separator";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 import { PersonSchema } from "@/features/seo/components/person-schema";
 

@@ -1,10 +1,10 @@
-import { Badge } from "@/features/design-system/components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/features/design-system/components/ui/card";
+} from "@/components/ui/card";
 
 const skillCategories = [
   {

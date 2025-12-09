@@ -8,9 +8,9 @@ import {
   generateProjectStaticParams,
   getProject,
 } from "@/features/content/lib/projects";
-import { GithubIcon } from "@/features/design-system/components/icons/github";
-import { PageHeader } from "@/features/design-system/components/navigation/page-header";
-import { Button } from "@/features/design-system/components/ui/button";
+import { GithubIcon } from "@/components/icons/github";
+import { PageHeader } from "@/components/navigation/page-header";
+import { Button } from "@/components/ui/button";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 import { SoftwareSchema } from "@/features/seo/components/software-schema";
 

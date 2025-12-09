@@ -1,18 +1,18 @@
-import { AppSidebar } from "@/features/design-system/components/navigation/app-sidebar";
-import { Footer } from "@/features/design-system/components/navigation/footer";
-import { HeaderControls } from "@/features/design-system/components/navigation/header-controls";
-import "@/features/design-system/globals.css";
+import { AppSidebar } from "@/components/navigation/app-sidebar";
+import { Footer } from "@/components/navigation/footer";
+import { HeaderControls } from "@/components/navigation/header-controls";
+import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { ThemeProvider } from "@/features/design-system/components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import {
   SidebarInset,
   SidebarProvider,
-} from "@/features/design-system/components/ui/sidebar";
+} from "@/components/ui/sidebar";
 import { PersonSchema } from "@/features/seo/components/person-schema";
 import { WebSiteSchema } from "@/features/seo/components/website-schema";
 
