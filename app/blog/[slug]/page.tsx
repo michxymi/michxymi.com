@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/features/content/components/mdx/code-block";
 import { Prose } from "@/features/content/components/prose";
 import {
   generateBlogStaticParams,
@@ -124,7 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <Prose>
-          <MDXRemote source={post.content} />
+          <MDXRemote components={mdxComponents} source={post.content} />
         </Prose>
       </article>
     </>
