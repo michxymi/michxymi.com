@@ -6,6 +6,7 @@
       "**/*",
       "!components/ui",
       "!components/ncdai",
+      "!components/kibo-ui",
       "!lib/utils.ts",
       "!hooks/use-mobile.ts"
     ]
