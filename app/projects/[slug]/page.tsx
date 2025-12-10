@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { GithubIcon } from "@/components/svgs/github-icon";
 import { Button } from "@/components/ui/button";
+import { mdxComponents } from "@/features/content/components/mdx/code-block";
 import { Prose } from "@/features/content/components/prose";
 import {
   generateProjectStaticParams,
@@ -169,7 +170,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         </header>
 
         <Prose>
-          <MDXRemote source={project.content} />
+          <MDXRemote components={mdxComponents} source={project.content} />
         </Prose>
       </article>
     </>
