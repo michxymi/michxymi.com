@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { GithubChart } from "@/features/content/components/github-chart";
 import { getAllBlogPosts } from "@/features/content/lib/blog";
 import { PageHeader } from "@/features/navigation/components/page-header";
 
@@ -75,15 +75,7 @@ export default async function NowPage() {
             </Link>
           </div>
           <div className="overflow-x-auto">
-            <Image
-              alt="GitHub Contributions chart showing activity over the past year"
-              className="w-full dark:brightness-90 dark:contrast-125 dark:hue-rotate-180 dark:invert"
-              height={104}
-              sizes="(max-width: 768px) 100vw, 722px"
-              src="https://ghchart.rshah.org/michxymi"
-              unoptimized
-              width={722}
-            />
+            <GithubChart />
           </div>
         </div>
         {/* Recent Posts */}
