@@ -1,6 +1,8 @@
 minimumReleaseAge: 10080 # 7 days
 minimumReleaseAgeExclude:
   - "@next/swc-*"
+  - "@next/env@16.0.10"
+  - "next@16.0.10"
 # Prevents installation of a package if its trust level has decreased compared to previous releases
 trustPolicy: no-downgrade
 trustPolicyExclude:
