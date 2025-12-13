@@ -22,9 +22,9 @@ async function submitForm(
   _prevState: FormState,
   formData: FormData
 ): Promise<FormState> {
-  const formspreeEndpoint = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID}`;
+  const formspreeEndpoint = `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORM}`;
 
-  if (!process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID) {
+  if (!process.env.NEXT_PUBLIC_FORM) {
     return {
       success: false,
       error: "Form's broken. And not in a way you can fix. This one's on me.",
