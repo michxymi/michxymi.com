@@ -1,0 +1,103 @@
+---
+title: "Elekk"
+description: "Auto-generated REST APIs for PostgreSQL. Point it at a database, get CRUD endpoints and OpenAPI docs. No schema files required."
+status: "active"
+featured: true
+order: 2
+technologies: ["Cloudflare Workers", "Hono", "Drizzle ORM", "Zod", "PostgreSQL", "Hyperdrive"]
+repoUrl: "https://github.com/michxymi/elekk"
+---
+
+## Overview
+
+Elekk is a [Cloudflare Worker](https://workers.cloudflare.com/) that looks at your PostgreSQL tables and generates REST APIs for them. Automatically. At runtime.
+
+No schema files. No code generation step. No YAML manifesto describing your data model in triplicate. You point it at a database, it figures out what's there, and it builds typed CRUD endpoints with full OpenAPI 3.1 documentation.
+
+The original plan was simpler: run [PostgREST](https://postgrest.org/) in a Cloudflare container and call it a day. Cloudflare had just shipped containers, [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) promised fast database access at the edge, and PostgREST already does the "instant API from Postgres" thing. Easy.
+
+Two problems. First, containers have 2-3 second cold starts minimum - potentially more depending on image size. That's fine for some workloads, but not for an API that's supposed to feel instant. Second, there's currently [no way to pass the Hyperdrive connection string to a container](https://github.com/cloudflare/containers/issues/97). Hyperdrive URLs are only accessible from Workers or containers, and without that plumbing, the whole approach falls apart.
+
+So I built it as a Worker instead. Which led to its own detour: understanding what Hyperdrive actually does. My assumption was simple: connection pooling at the edge means I don't need read replicas anymore. Turns out that's only half true. Hyperdrive pools connections - it doesn't replicate data. Your queries can still travel to wherever your database lives.
+
+So I pivoted. Instead of pretending Hyperdrive solved distribution, I layered the Cache API on top. Query results get cached at the edge, which functions like a read replica for the 90% of requests that are just fetching data. Not the same thing, but close enough for most workloads.
+
+## Key Features
+
+### Zero-Config CRUD
+
+Elekk introspects your database schema at runtime using `information_schema`. It discovers tables, columns, types, nullability, and constraints - then generates endpoints that actually respect all of it.
+
+Add a column? Elekk notices. Change a type? Elekk adjusts. You don't restart anything or regenerate anything. The API just updates.
+
+### SQL-Like Query Parameters
+
+GET requests support filtering, sorting, pagination, and field selection through query params that map directly to SQL semantics.
+
+Want users where `is_active=true`, sorted by `-created_at`, limited to 10 results, returning only `id` and `name`? That's one URL. The OpenAPI spec documents every parameter with proper types, so Swagger UI becomes genuinely useful instead of a checkbox for "we have docs."
+
+### Upsert and Soft Delete
+
+POST supports `ON CONFLICT` via query params. Specify a conflict column, tell it whether to skip or update, and Elekk handles the rest.
+
+If your table has a `deleted_at` or `is_deleted` column, DELETE becomes UPDATE automatically. You can override it with `hard_delete=true` if you actually mean it.
+
+### Tiered Caching
+
+Three layers: Cache API at the edge for query results, KV for schema version tracking, and in-memory for compiled routers.
+
+Cache invalidation happens through version bumping - POST/PUT/PATCH/DELETE increment the version, which changes cache keys, which makes old entries unreachable. No purging. No race conditions. Old data expires naturally.
+
+## Technical Highlights
+
+### Stack
+
+The foundation is Cloudflare Workers with [Hono](https://hono.dev/) for routing, [Drizzle ORM](https://orm.drizzle.team/) for query building, and Zod for runtime validation. Hyperdrive handles connection pooling to PostgreSQL.
+
+### Schema Caching
+
+Schema introspection happens once per table (until schema drift is detected), then gets cached as compiled Zod schemas and Drizzle table definitions.
+
+Subsequent requests hit the hot cache and skip straight to query execution.
+
+### Smart Placement
+
+Smart Placement runs the Worker near the database. Cache API runs at the edge near the user.
+
+## Benchmarks
+
+Here's where I prove I'm not making this up. Test setup: database in AWS us-east-1, benchmark script running from my laptop in the UK. Transatlantic round trips.
+
+I tested two providers: Neon's free tier and PlanetScale's new $5/month Postgres offering. Both in the same region, same schema, same queries.
+
+### Neon Free Tier
+
+Cold starts hit around 700ms for the first request to a table - that includes schema introspection and the actual database query crossing an ocean. Neon's free tier also suspends after 5 minutes of inactivity, so the very first request after idle can take 4 seconds just to wake the database up.
+
+Cache hits drop to ~50ms. The speedup ratio lands around 12x for cached requests. Ten parallel requests complete in 655ms total, averaging 426ms each.
+
+### PlanetScale $5 Postgres
+
+First requests to a table land around ~620ms, including schema introspection and a full round trip to the database. There’s no autosuspend penalty here — the database stays warm between requests. Cache hits are comparable to Neon at around 50–60ms.
+
+The real difference shows under load. Ten parallel requests finish in 468ms total, averaging 191ms each. That's less than half the per-request latency of the Neon's free tier.
+
+### The Takeaway
+
+The caching strategy works regardless of which provider you're on. But if you're doing anything beyond hobby traffic, the $5/month buys you meaningful headroom under concurrent load.
+
+## What I Learned
+
+This project forced me to think about caching as architecture rather than optimization. The three-tier approach - edge for data, KV for control, memory for code - came from hitting the limits of simpler solutions.
+
+I also got comfortable with runtime schema construction in Typescript, which is a different beast than the usual "define everything upfront" approach. Zod and Drizzle both support dynamic schema building, but the documentation assumes you won't actually do it. I did it anyway.
+
+## What's Next
+
+Right now Elekk is a fun demo that exposes your entire database to the internet. This is, technically speaking, bad.
+
+Auth is the obvious priority. Some combination of API keys, JWT validation, and row-level permissions so you can actually deploy this without immediately regretting it.
+
+After that: a `/graphql` route with the same caching logic. The introspection machinery already exists - generating a GraphQL schema instead of REST endpoints is mostly a translation exercise. Subscriptions are the wrinkle. They're stateful, which doesn't play nicely with Workers' request-response model. Durable Objects might be the answer. Might also be scope creep.
+
+A `/health` endpoint is also on the list, because sometimes you just want to know if the thing is running.
