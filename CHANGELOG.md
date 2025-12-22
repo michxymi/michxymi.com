@@ -1,3 +1,24 @@
+## [0.2.2](https://github.com/michxymi/michxymi.com/compare/0.2.1...0.2.2) (2025-12-22)
+
+
+### Bug Fixes
+
+* article date typo ([ffef709](https://github.com/michxymi/michxymi.com/commit/ffef7099b704f247e90ed2f155a57afb94c6c58e))
+* update sidefolio project now page section ([0bdfc48](https://github.com/michxymi/michxymi.com/commit/0bdfc48e95415fa934923b01c3c67f93749b440e))
+* whitelist next 16.0.10 to incorporate vercel's cve fix ([5382e37](https://github.com/michxymi/michxymi.com/commit/5382e37d7536bc7995f08103afe68a1d1d0ee264))
+
+
+### Features
+
+* add article about desktop frameworks ([a8e2b02](https://github.com/michxymi/michxymi.com/commit/a8e2b02a7c50b563841cb53bba43cf42e07cd0a5))
+* add code-block mdx component with copy-button ([12c63dc](https://github.com/michxymi/michxymi.com/commit/12c63dcab5ff6af913ee19a24b25f3ab90ca03f9))
+* add elekk project ([70aee73](https://github.com/michxymi/michxymi.com/commit/70aee735973a9888ad98c2627f716902bfa1e6ae))
+* add kibo-ui codeblock component ([f968711](https://github.com/michxymi/michxymi.com/commit/f968711c4948ce07ea185cbe1eb4060df6feff0b))
+* add npm-dependencies are a liability post ([4ba6a42](https://github.com/michxymi/michxymi.com/commit/4ba6a42c0719e03bf61ac8d5e6bc300a223c6883))
+* replace static image for gh contributions with a dynamic component with loading state ([f451e3f](https://github.com/michxymi/michxymi.com/commit/f451e3f7ed1500502de5ae4cbcd37108a5ee88f0))
+
+
+
 ## [0.2.1](https://github.com/michxymi/michxymi.com/compare/0.2.0...0.2.1) (2025-12-09)
 
 
