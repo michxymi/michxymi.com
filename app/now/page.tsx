@@ -52,9 +52,12 @@ export default async function NowPage() {
               Currently
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <UseItem label="Reading" value="Atomic Habits" />
-              <UseItem label="Listening" value="Lex Friedman #475" />
-              <UseItem label="Exploring" value="Cloudflare Hyperdrive" />
+              <UseItem
+                label="Reading"
+                value="Team Topologies: Organizing Business and Technology Teams for Fast Flow"
+              />
+              <UseItem label="Listening" value="Lex Friedman #447" />
+              <UseItem label="Exploring" value="Agent Skills" />
               <UseItem label="Building" value="This site" />
             </div>
           </div>
