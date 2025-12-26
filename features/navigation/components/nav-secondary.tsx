@@ -21,7 +21,7 @@ export function NavSecondary({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild tooltip="Download CV">
-              <Link download href="/resume.pdf">
+              <Link download href="/Michael_Xymitoulias_CV.pdf">
                 <Download className="text-sidebar-foreground/70" size={14} />
                 <span className="group-data-[collapsible=icon]:hidden">
                   Download CV
