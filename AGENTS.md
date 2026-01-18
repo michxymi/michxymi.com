@@ -1,114 +1,231 @@
-Concise rules for building accessible, fast, delightful UIs Use MUST/SHOULD/NEVER to guide decisions
+# AGENTS.md - AI Coding Agent Guidelines
 
-## Interactions
+This document provides guidelines for AI coding agents working on this codebase.
 
-- Keyboard
-  - MUST: Full keyboard support per [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/patterns/)
-  - MUST: Visible focus rings (`:focus-visible`; group with `:focus-within`)
-  - MUST: Manage focus (trap, move, and return) per APG patterns
-- Targets & input
-  - MUST: Hit target ≥24px (mobile ≥44px) If visual <24px, expand hit area
-  - MUST: Mobile `<input>` font-size ≥16px or set:
-    ```html
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-    ```
-  - NEVER: Disable browser zoom
-  - MUST: `touch-action: manipulation` to prevent double-tap zoom; set `-webkit-tap-highlight-color` to match design
-- Inputs & forms (behavior)
-  - MUST: Hydration-safe inputs (no lost focus/value)
-  - NEVER: Block paste in `<input>/<textarea>`
-  - MUST: Loading buttons show spinner and keep original label
-  - MUST: Enter submits focused text input In `<textarea>`, ⌘/Ctrl+Enter submits; Enter adds newline
-  - MUST: Keep submit enabled until request starts; then disable, show spinner, use idempotency key
-  - MUST: Don’t block typing; accept free text and validate after
-  - MUST: Allow submitting incomplete forms to surface validation
-  - MUST: Errors inline next to fields; on submit, focus first error
-  - MUST: `autocomplete` + meaningful `name`; correct `type` and `inputmode`
-  - SHOULD: Disable spellcheck for emails/codes/usernames
-  - SHOULD: Placeholders end with ellipsis and show example pattern (eg, `+1 (123) 456-7890`, `sk-012345…`)
-  - MUST: Warn on unsaved changes before navigation
-  - MUST: Compatible with password managers & 2FA; allow pasting one-time codes
-  - MUST: Trim values to handle text expansion trailing spaces
-  - MUST: No dead zones on checkboxes/radios; label+control share one generous hit target
-- State & navigation
-  - MUST: URL reflects state (deep-link filters/tabs/pagination/expanded panels) Prefer libs like [nuqs](https://nuqs.dev)
-  - MUST: Back/Forward restores scroll
-  - MUST: Links are links—use `<a>/<Link>` for navigation (support Cmd/Ctrl/middle-click)
-- Feedback
-  - SHOULD: Optimistic UI; reconcile on response; on failure show error and rollback or offer Undo
-  - MUST: Confirm destructive actions or provide Undo window
-  - MUST: Use polite `aria-live` for toasts/inline validation
-  - SHOULD: Ellipsis (`…`) for options that open follow-ups (eg, "Rename…") and loading states (eg, "Loading…", "Saving…", "Generating…")
-- Touch/drag/scroll
-  - MUST: Design forgiving interactions (generous targets, clear affordances; avoid finickiness)
-  - MUST: Delay first tooltip in a group; subsequent peers no delay
-  - MUST: Intentional `overscroll-behavior: contain` in modals/drawers
-  - MUST: During drag, disable text selection and set `inert` on dragged element/containers
-  - MUST: No “dead-looking” interactive zones—if it looks clickable, it is
-- Autofocus
-  - SHOULD: Autofocus on desktop when there’s a single primary input; rarely on mobile (to avoid layout shift)
+## Project Overview
 
-## Animation
+Personal portfolio/blog website built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS 4.
+Content is authored in MDX and validated with Zod schemas. Uses shadcn/ui components.
 
-- MUST: Honor `prefers-reduced-motion` (provide reduced variant)
-- SHOULD: Prefer CSS > Web Animations API > JS libraries
-- MUST: Animate compositor-friendly props (`transform`, `opacity`); avoid layout/repaint props (`top/left/width/height`)
-- SHOULD: Animate only to clarify cause/effect or add deliberate delight
-- SHOULD: Choose easing to match the change (size/distance/trigger)
-- MUST: Animations are interruptible and input-driven (avoid autoplay)
-- MUST: Correct `transform-origin` (motion starts where it “physically” should)
+## Tech Stack
 
-## Layout
+- **Framework:** Next.js 16 with App Router, React 19, React Compiler enabled
+- **Language:** TypeScript 5 with strict mode
+- **Styling:** Tailwind CSS 4, shadcn/ui (New York style)
+- **Content:** MDX with gray-matter, next-mdx-remote
+- **Validation:** Zod 4
+- **Linting/Formatting:** Biome via ultracite
+- **Package Manager:** pnpm 10.28.0 (enforced - do NOT use npm or yarn)
+- **Node Version:** 22.x
 
-- SHOULD: Optical alignment; adjust by ±1px when perception beats geometry
-- MUST: Deliberate alignment to grid/baseline/edges/optical centers—no accidental placement
-- SHOULD: Balance icon/text lockups (stroke/weight/size/spacing/color)
-- MUST: Verify mobile, laptop, ultra-wide (simulate ultra-wide at 50% zoom)
-- MUST: Respect safe areas (use env(safe-area-inset-*))
-- MUST: Avoid unwanted scrollbars; fix overflows
+## Build/Lint/Test Commands
 
-## Content & Accessibility
+```bash
+# Install dependencies (pnpm only)
+pnpm install
 
-- SHOULD: Inline help first; tooltips last resort
-- MUST: Skeletons mirror final content to avoid layout shift
-- MUST: `<title>` matches current context
-- MUST: No dead ends; always offer next step/recovery
-- MUST: Design empty/sparse/dense/error states
-- SHOULD: Curly quotes (“ ”); avoid widows/orphans
-- MUST: Tabular numbers for comparisons (`font-variant-numeric: tabular-nums` or a mono like Geist Mono)
-- MUST: Redundant status cues (not color-only); icons have text labels
-- MUST: Don’t ship the schema—visuals may omit labels but accessible names still exist
-- MUST: Use the ellipsis character `…` (not ``)
-- MUST: `scroll-margin-top` on headings for anchored links; include a “Skip to content” link; hierarchical `<h1–h6>`
-- MUST: Resilient to user-generated content (short/avg/very long)
-- MUST: Locale-aware dates/times/numbers/currency
-- MUST: Accurate names (`aria-label`), decorative elements `aria-hidden`, verify in the Accessibility Tree
-- MUST: Icon-only buttons have descriptive `aria-label`
-- MUST: Prefer native semantics (`button`, `a`, `label`, `table`) before ARIA
-- SHOULD: Right-clicking the nav logo surfaces brand assets
-- MUST: Use non-breaking spaces to glue terms: `10&nbsp;MB`, `⌘&nbsp;+&nbsp;K`, `Vercel&nbsp;SDK`
+# Development server
+pnpm dev
 
-## Performance
+# Production build
+pnpm build
 
-- SHOULD: Test iOS Low Power Mode and macOS Safari
-- MUST: Measure reliably (disable extensions that skew runtime)
-- MUST: Track and minimize re-renders (React DevTools/React Scan)
-- MUST: Profile with CPU/network throttling
-- MUST: Batch layout reads/writes; avoid unnecessary reflows/repaints
-- MUST: Mutations (`POST/PATCH/DELETE`) target <500 ms
-- SHOULD: Prefer uncontrolled inputs; make controlled loops cheap (keystroke cost)
-- MUST: Virtualize large lists (eg, `virtua`)
-- MUST: Preload only above-the-fold images; lazy-load the rest
-- MUST: Prevent CLS from images (explicit dimensions or reserved space)
+# Start production server
+pnpm start
 
-## Design
+# Lint and format (manual)
+pnpm dlx ultracite fix
 
-- SHOULD: Layered shadows (ambient + direct)
-- SHOULD: Crisp edges via semi-transparent borders + shadows
-- SHOULD: Nested radii: child ≤ parent; concentric
-- SHOULD: Hue consistency: tint borders/shadows/text toward bg hue
-- MUST: Accessible charts (color-blind-friendly palettes)
-- MUST: Meet contrast—prefer [APCA](https://apcacontrast.com/) over WCAG 2
-- MUST: Increase contrast on `:hover/:active/:focus`
-- SHOULD: Match browser UI to bg
-- SHOULD: Avoid gradient banding (use masks when needed)
+# Generate changelog
+pnpm changelog
+```
+
+### Pre-commit Hook
+
+Husky runs lint-staged on commit, which executes `ultracite fix` on staged files.
+Files covered: `*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}`
+
+### Testing
+
+No test framework is configured. If adding tests in the future, prefer Vitest.
+
+## Project Structure
+
+```
+app/                    # Next.js App Router pages
+  layout.tsx            # Root layout
+  page.tsx              # Home page
+  blog/[slug]/          # Dynamic blog routes
+  projects/[slug]/      # Dynamic project routes
+
+components/             # Shared UI components
+  ui/                   # shadcn/ui primitives (excluded from linting)
+  theme-provider.tsx    # Theme context
+
+features/               # Feature-based modules
+  content/              # Content/MDX handling
+    components/         # Blog cards, prose, MDX components
+    lib/                # Blog, projects, experience utilities
+    schemas/            # Zod schemas for frontmatter
+  navigation/           # Sidebar, header, footer
+  seo/                  # JSON-LD schema components
+
+content/                # MDX content files
+  blog/                 # Blog posts (*.mdx)
+  projects/             # Project descriptions (*.mdx)
+  experience/           # Work experience (*.mdx)
+
+lib/                    # Core utilities
+  utils.ts              # cn() utility (clsx + tailwind-merge)
+  site-config.ts        # Site metadata
+  social-links.ts       # Social media links
+
+hooks/                  # Custom React hooks
+styles/                 # Global CSS
+public/                 # Static assets
+```
+
+## Code Style Guidelines
+
+### Imports
+
+1. Use `@/*` path alias for all project imports (maps to project root)
+2. Order imports: Node builtins > external packages > internal modules > types
+3. Use `import type` for type-only imports
+4. Group related imports together
+
+```typescript
+import path from "node:path";
+import { z } from "zod";
+import { siteConfig } from "@/lib/site-config";
+import type { BlogPost } from "@/features/content/schemas/blog";
+```
+
+### TypeScript
+
+1. Strict mode enabled - no `any` types without justification
+2. Use `type` keyword for type definitions, not `interface` (Biome preference)
+3. Infer types from Zod schemas: `z.infer<typeof schema>`
+4. Prefer `Readonly<>` for component props
+5. Use explicit return types for exported functions
+
+```typescript
+export type BlogFrontmatter = z.infer<typeof blogFrontmatterSchema>;
+
+export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+  // ...
+}
+```
+
+### React Components
+
+1. Use function declarations for components (not arrow functions)
+2. Add `"use client"` directive only when needed (hooks, browser APIs)
+3. Props should be typed inline or with a separate type
+4. Use `cn()` utility for conditional class names
+5. Prefer Server Components by default
+
+```typescript
+"use client";
+
+export function ContactForm() {
+  const [state, formAction, isPending] = useActionState(submitForm, {
+    success: false,
+    error: null,
+  });
+  // ...
+}
+```
+
+### Naming Conventions
+
+- **Files:** kebab-case for all files (`blog-card.tsx`, `site-config.ts`)
+- **Components:** PascalCase (`BlogCard`, `ContactForm`)
+- **Functions:** camelCase (`getBlogPost`, `calculateReadingTime`)
+- **Constants:** SCREAMING_SNAKE_CASE for true constants (`BLOG_DIR`)
+- **Types:** PascalCase (`BlogPost`, `FormState`)
+- **Zod schemas:** camelCase with `Schema` suffix (`blogFrontmatterSchema`)
+
+### Error Handling
+
+1. Use try/catch with specific error handling
+2. Log errors with `console.error()` for debugging
+3. Return `null` or error states instead of throwing in data fetching
+4. Provide user-friendly error messages in UI
+
+```typescript
+try {
+  const { content, frontmatter } = await parseMdxFile(filePath, schema);
+  return { slug, content, frontmatter };
+} catch (error) {
+  console.error(`Failed to parse ${filePath}:`, error);
+  return null;
+}
+```
+
+### Async Patterns
+
+1. Use `Promise.all()` for parallel operations
+2. Prefer async/await over `.then()` chains
+3. Handle errors in async functions with try/catch
+
+### Styling
+
+1. Use Tailwind CSS utility classes
+2. Use `cn()` from `@/lib/utils` for conditional classes
+3. Semantic color tokens: `text-muted-foreground`, `bg-background`, etc.
+4. Responsive prefixes: `sm:`, `md:`, `lg:`
+
+### Content (MDX)
+
+Blog post frontmatter schema:
+
+```yaml
+title: string (1-100 chars, required)
+description: string (1-200 chars, required)
+publishedAt: date (required)
+updatedAt: date (optional)
+draft: boolean (default: false)
+featured: boolean (default: false)
+tags: string[] (default: [])
+coverImage: string (optional)
+```
+
+## Biome Configuration
+
+Biome extends `ultracite/core` and `ultracite/next`. The following paths are excluded from linting:
+
+- `components/ui/` (shadcn/ui generated components)
+- `components/ncdai/` (third-party registry)
+- `components/kibo-ui/` (third-party registry)
+- `lib/utils.ts` (utility functions)
+- `hooks/use-mobile.ts` (generated hook)
+
+## Key Patterns
+
+### Data Fetching
+
+Use async functions in `features/content/lib/` for content:
+
+```typescript
+import { getAllBlogPosts, getBlogPost } from "@/features/content/lib/blog";
+```
+
+### Zod Validation
+
+All content frontmatter is validated with Zod schemas in `features/content/schemas/`.
+
+### Site Configuration
+
+Central config in `lib/site-config.ts` - use for metadata, URLs, author info.
+
+### Component Libraries
+
+- shadcn/ui components in `components/ui/` - do not edit directly
+- Custom components in `components/` or feature directories
+
+## Git Conventions
+
+- Commit messages follow Angular convention (for changelog generation)
+- Pre-commit hooks run linting automatically
+- Do not commit files with linting errors
