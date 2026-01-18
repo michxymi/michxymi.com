@@ -48,7 +48,8 @@ export default async function OGImage({
     "in-progress": { bg: "#eab30820", text: "#eab308" },
   };
 
-  const statusStyle = statusColors[project.frontmatter.status] || {
+  const status = project.frontmatter.status;
+  const statusStyle = (status && statusColors[status]) || {
     bg: "#27272a",
     text: "#a1a1aa",
   };
@@ -96,7 +97,7 @@ export default async function OGImage({
             textTransform: "capitalize",
           }}
         >
-          {project.frontmatter.status}
+          {status ?? "project"}
         </div>
       </div>
 
