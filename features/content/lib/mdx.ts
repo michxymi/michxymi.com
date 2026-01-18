@@ -47,6 +47,8 @@ export async function getMdxFiles(dir: string): Promise<string[]> {
   }
 }
 
-export function getContentDir(type: "blog" | "projects"): string {
+export function getContentDir(
+  type: "blog" | "projects" | "experience"
+): string {
   return path.join(CONTENT_DIR, type);
 }

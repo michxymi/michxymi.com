@@ -8,16 +8,15 @@ import {
   InfinityIcon,
 } from "lucide-react";
 import Image from "next/image";
-import type React from "react";
-import ReactMarkdown from "react-markdown";
 
-import { Prose } from "@/features/content/components/prose";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
+import { Prose } from "@/features/content/components/prose";
+import type { ExperienceGroup, ExperiencePosition } from "@/features/content/schemas/experience";
 import { cn } from "@/lib/utils";
 
 const iconMap = {
@@ -27,64 +26,26 @@ const iconMap = {
   education: GraduationCapIcon,
 } as const;
 
-/**
- * Represents the valid keys of the `iconMap` object, used to specify the type of icon
- * associated with an experience position.
- */
-export type ExperiencePositionIconType = keyof typeof iconMap;
-
-export type ExperiencePositionItemType = {
-  /** Unique identifier for the position */
-  id: string;
-  /** The job title or position name */
-  title: string;
-  /** The period during which the position was held (e.g., "Jan 2020 - Dec 2021") */
-  employmentPeriod: string;
-  /** The type of employment (e.g., "Full-time", "Part-time", "Contract") */
-  employmentType?: string;
-  /** A brief description of the position or responsibilities */
-  description?: string;
-  /** An icon representing the position */
-  icon?: ExperiencePositionIconType;
-  /** A list of skills associated with the position */
-  skills?: string[];
-  /** Indicates if the position details are expanded in the UI */
-  isExpanded?: boolean;
-};
-
-export type ExperienceItemType = {
-  /** Unique identifier for the experience item */
-  id: string;
-  /** Name of the company where the experience was gained */
-  companyName: string;
-  /** URL or path to the company's logo image */
-  companyLogo?: string;
-  /** List of positions held at the company */
-  positions: ExperiencePositionItemType[];
-  /** Indicates if this is the user's current employer */
-  isCurrentEmployer?: boolean;
-};
-
 export function WorkExperience({
   className,
   experiences,
 }: {
   className?: string;
-  experiences: ExperienceItemType[];
+  experiences: ExperienceGroup[];
 }) {
   return (
     <div className={cn("bg-background px-4", className)}>
       {experiences.map((experience) => (
-        <ExperienceItem experience={experience} key={experience.id} />
+        <ExperienceItem experience={experience} key={experience.companyId} />
       ))}
     </div>
   );
 }
 
-export function ExperienceItem({
+function ExperienceItem({
   experience,
 }: {
-  experience: ExperienceItemType;
+  experience: ExperienceGroup;
 }) {
   return (
     <div className="space-y-4 py-4">
@@ -123,22 +84,22 @@ export function ExperienceItem({
 
       <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
         {experience.positions.map((position) => (
-          <ExperiencePositionItem key={position.id} position={position} />
+          <ExperiencePositionItem key={position.slug} position={position} />
         ))}
       </div>
     </div>
   );
 }
 
-export function ExperiencePositionItem({
+function ExperiencePositionItem({
   position,
 }: {
-  position: ExperiencePositionItemType;
+  position: ExperiencePosition;
 }) {
-  const ExperienceIcon = iconMap[position.icon || "business"];
+  const ExperienceIcon = iconMap[position.frontmatter.icon];
 
   return (
-    <Collapsible asChild defaultOpen={position.isExpanded}>
+    <Collapsible asChild defaultOpen={position.frontmatter.isExpanded}>
       <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
         <CollapsibleTrigger
           className={cn(
@@ -155,7 +116,7 @@ export function ExperiencePositionItem({
             </div>
 
             <h4 className="flex-1 text-balance font-medium text-base text-foreground">
-              {position.title}
+              {position.frontmatter.title}
             </h4>
 
             <div
@@ -168,11 +129,11 @@ export function ExperiencePositionItem({
           </div>
 
           <div className="relative z-1 flex items-center gap-2 pl-9 text-muted-foreground text-sm">
-            {position.employmentType && (
+            {position.frontmatter.employmentType && (
               <>
                 <dl>
                   <dt className="sr-only">Employment Type</dt>
-                  <dd>{position.employmentType}</dd>
+                  <dd>{position.frontmatter.employmentType}</dd>
                 </dl>
 
                 <Separator
@@ -199,35 +160,11 @@ export function ExperiencePositionItem({
         </CollapsibleTrigger>
 
         <CollapsibleContent className="overflow-hidden duration-300 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-          {position.description && (
-            <Prose className="pt-2 pl-9 font-mono">
-              <ReactMarkdown>{position.description}</ReactMarkdown>
-            </Prose>
-          )}
-
-          {Array.isArray(position.skills) && position.skills.length > 0 && (
-            <ul className="not-prose flex flex-wrap gap-1.5 pt-2 pl-9">
-              {position.skills.map((skill) => (
-                <li className="flex" key={skill}>
-                  <Skill>{skill}</Skill>
-                </li>
-              ))}
-            </ul>
-          )}
+          <Prose className="pt-2 pl-9 font-mono">
+            {position.content}
+          </Prose>
         </CollapsibleContent>
       </div>
     </Collapsible>
-  );
-}
-
-function Skill({ className, ...props }: React.ComponentProps<"span">) {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-lg border bg-muted/50 px-1.5 py-0.5 font-mono text-muted-foreground text-xs",
-        className
-      )}
-      {...props}
-    />
   );
 }

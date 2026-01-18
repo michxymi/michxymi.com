@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  type ExperienceItemType,
-  WorkExperience,
-} from "@/components/ncdai/work-experience";
+import { WorkExperience } from "@/components/ncdai/work-experience";
 import { Separator } from "@/components/ui/separator";
 import { Prose } from "@/features/content/components/prose";
 import { SkillsGrid } from "@/features/content/components/skills-grid";
+import { getExperiencesGroupedByCompany } from "@/features/content/lib/experience";
 import { PageHeader } from "@/features/navigation/components/page-header";
 import { BreadcrumbSchema } from "@/features/seo/components/breadcrumb-schema";
 import { PersonSchema } from "@/features/seo/components/person-schema";
@@ -30,91 +28,9 @@ export const metadata: Metadata = {
   },
 };
 
-const experiences: ExperienceItemType[] = [
-  {
-    id: "ont",
-    companyName: "Oxford Nanopore Technologies",
-    companyLogo: "/ont-logo.svg",
-    isCurrentEmployer: true,
-    positions: [
-      {
-        id: "technical-software-manager",
-        title: "Technical Software Manager",
-        employmentPeriod: "April 2023 – ∞",
-        employmentType: "Full-time",
-        description: `I manage a team of four software engineers. This involves the usual suspects: mentoring, objectives, performance reviews, and convincing people that their work matters — because it does.
+export default async function AboutPage() {
+  const experiences = await getExperiencesGroupedByCompany();
 
-Most of my time goes into building internal developer tools: log aggregation platforms, deployment management apps, and dashboards that make platform operations slightly less painful. The stack is React, NextJS, Electron, Typescript and Python, depending on what needs hitting.
-
-A significant portion of my sanity has gone into making C++ builds behave like civilized software. Conan, CMake, Docker, Artifactory. Some engineers are converts. Others look at me like I've suggested we rewrite everything in Rust.`,
-        icon: "code",
-        isExpanded: true,
-      },
-    ],
-  },
-  {
-    id: "ukaea",
-    companyName: "UK Atomic Energy Authority (RACE)",
-    companyLogo: "/ukaea.svg",
-    positions: [
-      {
-        id: "section-leader",
-        title: "Software Engineer & Section Leader",
-        employmentPeriod: "November 2021 - April 2023",
-        employmentType: "Full-time",
-        description: `Led a software development team. Mentored engineers, allocated work, ran reviews, hired people. The leadership trifecta.
-
-I was a key contributor to CorteX – RACE's robotic middleware for distributed systems. This meant integrating with ROS2, Qt, OPC-UA, and EtherCAT, plus building interfaces for industrial manipulators using whatever proprietary API the hardware vendor decided to inflict on us.
-
-Helped put CI/CD pipelines and Git workflows in place. Infrastructure work - the sort that only gets mentioned when its missing.`,
-        icon: "code",
-        isExpanded: true,
-      },
-      {
-        id: "control-systems-engineer",
-        title: "Control Systems Software Engineer",
-        employmentPeriod: "December 2017 - November 2021",
-        employmentType: "Full-time",
-        description: `Core team member on CorteX from the early days. Wrote cross-platform code in modern C++ and Python. Built monitoring and control interfaces in Qt. Wrote tests. Ran Valgrind until the memory leaks stopped haunting me.
-
-I was the primary technical contact for external partners and supervised year-in-industry students who were somehow even more confused than I was when I started.`,
-        icon: "code",
-      },
-    ],
-  },
-  {
-    id: "bubblead",
-    companyName: "BubbleAD Ltd",
-    positions: [
-      {
-        id: "web-developer-intern",
-        title: "Web Developer Intern",
-        employmentPeriod: "March 2017 - June 2017",
-        employmentType: "Internship",
-        description:
-          "Built the company website. WordPress, HTML, CSS, JavaScript, PHP. Added SEO and security. Worked with marketing on content. Standard internship fare.",
-        icon: "code",
-      },
-    ],
-  },
-  {
-    id: "conferience",
-    companyName: "Conferience Ltd",
-    positions: [
-      {
-        id: "robotics-engineer-intern",
-        title: "Robotics Engineer Intern",
-        employmentPeriod: "October 2016 - March 2017",
-        employmentType: "Internship",
-        description:
-          "Led redesign of 'Smiley Bin' smart recycling system. Managed full product lifecycle from requirements to system design. Developed embedded software in C for Arduino with real-time data processing.",
-        icon: "code",
-      },
-    ],
-  },
-];
-
-export default function AboutPage() {
   return (
     <>
       <PersonSchema enhanced />
