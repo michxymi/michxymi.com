@@ -64,10 +64,10 @@ export function ContactForm() {
     return (
       <Card className="border-green-500/20 bg-green-500/10">
         <CardContent className="pt-6">
-          <p className="font-display text-green-500 text-sm">
+          <output className="block font-display text-green-500 text-sm">
             Got it. I&apos;ll be in touch. Assuming the internet continues to
             function.
-          </p>
+          </output>
         </CardContent>
       </Card>
     );
@@ -89,10 +89,12 @@ export function ContactForm() {
               Name
             </label>
             <Input
+              aria-describedby={state.error ? "form-error" : undefined}
+              autoComplete="name"
               disabled={isPending}
               id="name"
               name="name"
-              placeholder="Your name"
+              placeholder="Your name…"
               required
             />
           </div>
@@ -101,6 +103,8 @@ export function ContactForm() {
               Email
             </label>
             <Input
+              aria-describedby={state.error ? "form-error" : undefined}
+              autoComplete="email"
               disabled={isPending}
               id="email"
               name="email"
@@ -117,16 +121,18 @@ export function ContactForm() {
               Message
             </label>
             <Textarea
+              aria-describedby={state.error ? "form-error" : undefined}
+              autoComplete="off"
               disabled={isPending}
               id="message"
               name="message"
-              placeholder="Your message..."
+              placeholder="Your message…"
               required
               rows={5}
             />
           </div>
           <Button className="font-display" disabled={isPending} type="submit">
-            {isPending ? "Sending..." : "Send Message"}
+            {isPending ? "Sending…" : "Send Message"}
           </Button>
           <p className="text-muted-foreground text-xs">
             By submitting, you agree to the{" "}
@@ -139,7 +145,14 @@ export function ContactForm() {
             .
           </p>
           {state.error && (
-            <p className="text-destructive text-sm">{state.error}</p>
+            <p
+              aria-live="polite"
+              className="text-destructive text-sm"
+              id="form-error"
+              role="alert"
+            >
+              {state.error}
+            </p>
           )}
         </form>
       </CardContent>
