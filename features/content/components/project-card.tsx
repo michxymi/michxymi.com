@@ -47,23 +47,25 @@ export function ProjectCard({ project }: { project: Project }) {
         </CardContent>
         <CardFooter className="pt-2">
           <div className="flex w-full items-center gap-3 text-muted-foreground text-xs">
-            <Badge
-              className={(() => {
-                if (project.frontmatter.status === "completed") {
-                  return "border-green-500/30 bg-green-500/10 text-green-500";
-                }
-                if (project.frontmatter.status === "active") {
-                  return "border-blue-500/30 bg-blue-500/10 text-blue-500";
-                }
-                if (project.frontmatter.status === "in-progress") {
-                  return "border-yellow-500/30 bg-yellow-500/10 text-yellow-500";
-                }
-                return "";
-              })()}
-              variant="outline"
-            >
-              {project.frontmatter.status}
-            </Badge>
+            {project.frontmatter.status && (
+              <Badge
+                className={(() => {
+                  if (project.frontmatter.status === "completed") {
+                    return "border-green-500/30 bg-green-500/10 text-green-500";
+                  }
+                  if (project.frontmatter.status === "active") {
+                    return "border-blue-500/30 bg-blue-500/10 text-blue-500";
+                  }
+                  if (project.frontmatter.status === "in-progress") {
+                    return "border-yellow-500/30 bg-yellow-500/10 text-yellow-500";
+                  }
+                  return "";
+                })()}
+                variant="outline"
+              >
+                {project.frontmatter.status}
+              </Badge>
+            )}
             {(project.frontmatter.liveUrl || project.frontmatter.repoUrl) && (
               <div className="ml-auto flex items-center gap-2">
                 {project.frontmatter.repoUrl && (
