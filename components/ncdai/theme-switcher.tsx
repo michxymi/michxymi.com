@@ -3,8 +3,7 @@
 import { MonitorIcon, MoonStarIcon, SunIcon } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
-import type { JSX } from "react";
-import { useSyncExternalStore } from "react";
+import { type JSX, useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -62,12 +61,11 @@ const THEME_OPTIONS = [
 
 function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
 
-  const isMounted = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false
-  );
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   if (!isMounted) {
     return <div className="flex h-8 w-24" />;
@@ -75,7 +73,6 @@ function ThemeSwitcher() {
 
   return (
     <motion.div
-      key={String(isMounted)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
