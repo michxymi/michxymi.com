@@ -1,7 +1,7 @@
 "use client";
 
 import type { Transition, Variants } from "motion/react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Children, useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -10,6 +10,12 @@ const defaultVariants: Variants = {
   initial: { y: -8, opacity: 0 },
   animate: { y: 0, opacity: 1 },
   exit: { y: 8, opacity: 0 },
+};
+
+const reducedMotionVariants: Variants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
 };
 
 type MotionElement = typeof motion.p | typeof motion.span | typeof motion.code;
@@ -38,8 +44,15 @@ export function FlipSentences({
   onIndexChange,
 }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
 
   const items = Children.toArray(children);
+
+  // Use reduced motion variants when user prefers reduced motion
+  const activeVariants = prefersReducedMotion ? reducedMotionVariants : variants;
+  const activeTransition = prefersReducedMotion
+    ? { duration: 0.15 }
+    : transition;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -61,8 +74,8 @@ export function FlipSentences({
         exit="exit"
         initial="initial"
         key={currentIndex}
-        transition={transition}
-        variants={variants}
+        transition={activeTransition}
+        variants={activeVariants}
       >
         {items[currentIndex]}
       </Component>
