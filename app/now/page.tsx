@@ -39,8 +39,8 @@ export default async function NowPage() {
               Uses
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <UseItem label="Editor" value="Cursor" />
-              <UseItem label="AI" value="Claude" />
+              <UseItem label="Editor" value="VS Code" />
+              <UseItem label="AI" value="Opencode" />
               <UseItem label="Terminal" value="Ghostty" />
               <UseItem label="Notes" value="Obsidian" />
             </div>
@@ -56,7 +56,10 @@ export default async function NowPage() {
                 label="Reading"
                 value="Team Topologies: Organizing Business and Technology Teams for Fast Flow"
               />
-              <UseItem label="Listening" value="Lex Friedman #447" />
+              <UseItem
+                label="Listening"
+                value="The Diary of A CEO - Chris Koerner"
+              />
               <UseItem label="Exploring" value="Agent Skills" />
               <UseItem label="Building" value="This site" />
             </div>
