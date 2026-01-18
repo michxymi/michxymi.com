@@ -1,3 +1,22 @@
+# [0.3.0](https://github.com/michxymi/michxymi.com/compare/0.2.2...0.3.0) (2026-01-18)
+
+
+### Bug Fixes
+
+* contact form accessibility improvements ([a104ce7](https://github.com/michxymi/michxymi.com/commit/a104ce7e5a2ff5bd10c89a11b3aa7aab3da9d43d))
+* hydration issue with useMobile hook ([c809e77](https://github.com/michxymi/michxymi.com/commit/c809e77a328e38a575c8f4ae429e05dffd25352f))
+* optional project status ([b95fb98](https://github.com/michxymi/michxymi.com/commit/b95fb9819b624161ec8127a36cb24b5258b4139b))
+* simplify themeswitcher mount detection ([7998b99](https://github.com/michxymi/michxymi.com/commit/7998b990ad5e116e90c3917cb6da213b6d5bd0de))
+
+
+### Features
+
+* reduced motion support to flip sentences ([17b09af](https://github.com/michxymi/michxymi.com/commit/17b09afa7d02af081e22ba4a687fcb69950ce146))
+* update sidebar useMobile hook usage ([c28897a](https://github.com/michxymi/michxymi.com/commit/c28897a87f7ab5d6cfb867c5a52b4f2d778bc274))
+* work experience as md files ([450a482](https://github.com/michxymi/michxymi.com/commit/450a48294aa807e9b29e384f2263a0d2d7d61eea))
+
+
+
 ## [0.2.2](https://github.com/michxymi/michxymi.com/compare/0.2.1...0.2.2) (2025-12-22)
 
 
