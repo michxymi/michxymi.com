@@ -2,7 +2,12 @@ import * as React from "react"
 
 const MOBILE_BREAKPOINT = 768
 
-export function useIsMobile() {
+/**
+ * Hook to detect if the current viewport is mobile-sized.
+ * Returns `undefined` during SSR/initial render to avoid hydration mismatches.
+ * Consumers should handle the undefined state appropriately.
+ */
+export function useIsMobile(): boolean | undefined {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
   React.useEffect(() => {
@@ -15,5 +20,5 @@ export function useIsMobile() {
     return () => mql.removeEventListener("change", onChange)
   }, [])
 
-  return !!isMobile
+  return isMobile
 }
