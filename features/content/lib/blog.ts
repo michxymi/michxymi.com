@@ -37,9 +37,9 @@ export async function getAllBlogPosts(options?: {
   limit?: number;
 }): Promise<BlogPost[]> {
   const files = await getMdxFiles(BLOG_DIR);
-  const posts: BlogPost[] = [];
 
-  for (const filePath of files) {
+  // Parse all files in parallel for better performance
+  const postPromises = files.map(async (filePath): Promise<BlogPost | null> => {
     const slug = path.basename(filePath, ".mdx");
 
     try {
@@ -54,31 +54,35 @@ export async function getAllBlogPosts(options?: {
         !options?.includeDrafts &&
         process.env.NODE_ENV === "production"
       ) {
-        continue;
+        return null;
       }
 
       // Apply filters
       if (options?.tag && !frontmatter.tags.includes(options.tag)) {
-        continue;
+        return null;
       }
       if (
         options?.featured !== undefined &&
         frontmatter.featured !== options.featured
       ) {
-        continue;
+        return null;
       }
 
-      posts.push({
+      return {
         slug,
         content,
         frontmatter,
         readingTime: calculateReadingTime(content),
         url: `/blog/${slug}`,
-      });
+      };
     } catch (error) {
       console.error(`Failed to parse ${filePath}:`, error);
+      return null;
     }
-  }
+  });
+
+  const results = await Promise.all(postPromises);
+  const posts = results.filter((post): post is BlogPost => post !== null);
 
   // Sort by publishedAt descending (newest first)
   posts.sort(

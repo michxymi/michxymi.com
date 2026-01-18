@@ -34,44 +34,52 @@ export async function getAllProjects(options?: {
   technology?: string;
 }): Promise<Project[]> {
   const files = await getMdxFiles(PROJECTS_DIR);
-  const projects: Project[] = [];
 
-  for (const filePath of files) {
-    const slug = path.basename(filePath, ".mdx");
+  // Parse all files in parallel for better performance
+  const projectPromises = files.map(
+    async (filePath): Promise<Project | null> => {
+      const slug = path.basename(filePath, ".mdx");
 
-    try {
-      const { content, frontmatter } = await parseMdxFile(
-        filePath,
-        projectFrontmatterSchema
-      );
+      try {
+        const { content, frontmatter } = await parseMdxFile(
+          filePath,
+          projectFrontmatterSchema
+        );
 
-      // Apply filters
-      if (options?.status && frontmatter.status !== options.status) {
-        continue;
+        // Apply filters
+        if (options?.status && frontmatter.status !== options.status) {
+          return null;
+        }
+        if (
+          options?.featured !== undefined &&
+          frontmatter.featured !== options.featured
+        ) {
+          return null;
+        }
+        if (
+          options?.technology &&
+          !frontmatter.technologies.includes(options.technology)
+        ) {
+          return null;
+        }
+
+        return {
+          slug,
+          content,
+          frontmatter,
+          url: `/projects/${slug}`,
+        };
+      } catch (error) {
+        console.error(`Failed to parse ${filePath}:`, error);
+        return null;
       }
-      if (
-        options?.featured !== undefined &&
-        frontmatter.featured !== options.featured
-      ) {
-        continue;
-      }
-      if (
-        options?.technology &&
-        !frontmatter.technologies.includes(options.technology)
-      ) {
-        continue;
-      }
-
-      projects.push({
-        slug,
-        content,
-        frontmatter,
-        url: `/projects/${slug}`,
-      });
-    } catch (error) {
-      console.error(`Failed to parse ${filePath}:`, error);
     }
-  }
+  );
+
+  const results = await Promise.all(projectPromises);
+  const projects = results.filter(
+    (project): project is Project => project !== null
+  );
 
   // Sort by order (manual), then by featured status
   projects.sort((a, b) => {
