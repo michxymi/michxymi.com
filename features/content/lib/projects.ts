@@ -1,9 +1,5 @@
 import path from "node:path";
-import {
-  type Project,
-  type ProjectFrontmatter,
-  projectFrontmatterSchema,
-} from "../schemas/project";
+import { type Project, projectFrontmatterSchema } from "../schemas/project";
 import { getContentDir, getMdxFiles, parseMdxFile } from "./mdx";
 
 const PROJECTS_DIR = getContentDir("projects");
@@ -29,8 +25,6 @@ export async function getProject(slug: string): Promise<Project | null> {
 }
 
 export async function getAllProjects(options?: {
-  status?: ProjectFrontmatter["status"];
-  featured?: boolean;
   technology?: string;
 }): Promise<Project[]> {
   const files = await getMdxFiles(PROJECTS_DIR);
@@ -47,15 +41,6 @@ export async function getAllProjects(options?: {
         );
 
         // Apply filters
-        if (options?.status && frontmatter.status !== options.status) {
-          return null;
-        }
-        if (
-          options?.featured !== undefined &&
-          frontmatter.featured !== options.featured
-        ) {
-          return null;
-        }
         if (
           options?.technology &&
           !frontmatter.technologies.includes(options.technology)
@@ -85,9 +70,6 @@ export async function getAllProjects(options?: {
   projects.sort((a, b) => {
     if (a.frontmatter.order !== b.frontmatter.order) {
       return a.frontmatter.order - b.frontmatter.order;
-    }
-    if (a.frontmatter.featured !== b.frontmatter.featured) {
-      return a.frontmatter.featured ? -1 : 1;
     }
     return 0;
   });

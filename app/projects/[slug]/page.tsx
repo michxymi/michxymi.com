@@ -96,22 +96,6 @@ export default async function ProjectDetailPage({ params }: Props) {
         <header className="mb-8">
           <div className="mb-4 flex items-start justify-between gap-4">
             <PageHeader title={project.frontmatter.title} />
-            <span
-              className={`shrink-0 rounded px-2 py-1 text-xs ${(() => {
-                if (project.frontmatter.status === "completed") {
-                  return "bg-green-500/10 text-green-500";
-                }
-                if (project.frontmatter.status === "active") {
-                  return "bg-blue-500/10 text-blue-500";
-                }
-                if (project.frontmatter.status === "in-progress") {
-                  return "bg-yellow-500/10 text-yellow-500";
-                }
-                return "bg-muted text-muted-foreground";
-              })()}`}
-            >
-              {project.frontmatter.status}
-            </span>
           </div>
 
           <p className="mb-4 text-muted-foreground">

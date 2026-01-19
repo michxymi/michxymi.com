@@ -42,18 +42,6 @@ export default async function OGImage({
     );
   }
 
-  const statusColors: Record<string, { bg: string; text: string }> = {
-    completed: { bg: "#22c55e20", text: "#22c55e" },
-    active: { bg: "#3b82f620", text: "#3b82f6" },
-    "in-progress": { bg: "#eab30820", text: "#eab308" },
-  };
-
-  const status = project.frontmatter.status;
-  const statusStyle = (status && statusColors[status]) || {
-    bg: "#27272a",
-    text: "#a1a1aa",
-  };
-
   return new ImageResponse(
     <div
       style={{
@@ -85,19 +73,6 @@ export default async function OGImage({
           }}
         >
           Project
-        </div>
-        <div
-          style={{
-            display: "flex",
-            background: statusStyle.bg,
-            color: statusStyle.text,
-            fontSize: 16,
-            padding: "8px 16px",
-            borderRadius: 6,
-            textTransform: "capitalize",
-          }}
-        >
-          {status ?? "project"}
         </div>
       </div>
 
